@@ -44,6 +44,19 @@ You can use `run_solver.m` to find optimal weights for **n = 5 alternatives** wi
 Each column of `V` encodes how a ranking would choose in every possible subset.
 
 ---
+### `pricing_problem.m` - find best new column and its score
+
+#### Inputs: (In `solve_rum_columngen.m` after  `generate_choice_vectors.m`)
+
+-  `V_full`     - full deterministic matrix (rows x Kfull)
+-   `residual`   - current residual vector (p_obs - V_sub*lambda)
+-   `subset_idx` - indices of columns already in the restricted master
+
+#### Outputs:
+- `best_idx`   - index in V_full of the best column to add
+- `best_score` - v' * residual value for that column
+
+---
 
 ### `solve_rum_columngen.m` (Column Generation)
 - **Description**: Implements the **Column Generation (CG)** algorithm, a discrete-choice analogue of the **KS framework**, to find a mixture of deterministic rankings that best fits the observed choice probabilities `p_obs`.
@@ -70,19 +83,20 @@ Example usage:
 ```matlab
 [lam, Vsub, idx, r, sets, err, it] = solve_rum_columngen(p_obs, 5, 1, 200, 1e-8);
 
- **Procedure:**
+ Procedure:
 1. Generate the full design matrix `V_full` via `generate_choice_vectors`.
 2. Start with a **small subset** of columns (e.g., 1 ranking).
-3. **Solve the restricted master problem (RMP)**:
+3. Solve the restricted master problem (RMP):
    \[
    \min_{\lambda \ge 0,\, \mathbf{1}'\lambda = 1} \|V_{\text{sub}}\lambda - p_{\text{obs}}\|^2
    \]
-4. Compute the **residual** \( r = p_{\text{obs}} - V_{\text{sub}}\lambda \).
-5. Run the **pricing problem** to find a column \( v_j \) maximizing \( v_j' r \).
-6. If the improvement `best_score` > tolerance, **add the column** and repeat.
+4. Compute the residual \( r = p_{\text{obs}} - V_{\text{sub}}\lambda \).
+5. Run the pricing problem to find a column \( v_j \) maximizing \( v_j' r \).
+6. If the improvement `best_score` > tolerance, add the column** and repeat.
 7. Stop when no further improvement is possible.
 
- Output→ `RUM_results.mat` (contains fitted weights, predicted probabilities, and chosen rankings)
+ Output→ `RUM_results.mat` (contains fitted weights, predicted probabilities,
+                             and chosen rankings)
 
 
 
