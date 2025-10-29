@@ -99,4 +99,7 @@ Example usage:
                              and chosen rankings)
 
 
+---
+
+### `bestinsertion.m` (Best Insertion algorithm)
 
