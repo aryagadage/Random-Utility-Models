@@ -7,7 +7,7 @@ We assume a universe of **n = 5 alternatives** and observed choice probabilities
 ## File Structure
 
 ### `p_observations.m`
-- **Description**: Constructs an 80×1 vector of observed choice probabilities for **n = 5 alternatives** and saves it as `p_obs.mat`. This file is used as input to the solvers.
+- **Description**: Constructs an 80×1 vector of observed choice probabilities for **n = 5 alternatives** and saves it as `p_obs.mat`. This file is used as input to the solvers. It also generates `p_obs.csv` with labels A-A, B-B, ....
   
 ---
 
