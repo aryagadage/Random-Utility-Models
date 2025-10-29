@@ -97,7 +97,7 @@ Example usage:
 
  Output→ `RUM_results.mat` (contains fitted weights, predicted probabilities,
                              and chosen rankings)
-
+````
 
 ---
 
