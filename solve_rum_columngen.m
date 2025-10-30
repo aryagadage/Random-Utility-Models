@@ -69,7 +69,7 @@ improved = true;   % whether we added a new column in the last iteration
 while iter < max_iters && improved
     iter = iter + 1;
 
-    % ----- (A) Solve the Restricted Master Problem (RMP) -----
+    % Solve the Restricted Master Problem (RMP) -----
     % Minimize ||V_sub * lambda - p_obs||^2 s.t. lambda >= 0, sum(lambda)=1
     % Standard quadratic form: (V_sub*lambda - p)'(V_sub*lambda - p)
     H = 2 * (V_sub' * V_sub);      % quadratic term (symmetric positive semidefinite)
@@ -88,12 +88,12 @@ while iter < max_iters && improved
         warning('quadprog exitflag = %d at iter %d; continuing with current solution.', exitflag, iter);
     end
 
-    % ----- (B) Compute residual and objective value -----
+    %  Compute residual and objective value -----
     pred = V_sub * lambda_sub;      % model-predicted probabilities
     residual = p_obs - pred;        % what the current model fails to explain
     error_val = norm(residual)^2;   % squared L2 error (objective)
 
-    % ----- (C) Pricing problem (search for best new column) -----
+    %  Pricing problem (search for best new column) -----
     % The "score" of a candidate column v_j is v_j' * residual.
     % A large positive score means adding that column will reduce squared error.
     [best_idx, best_score] = pricing_problem(V_full, residual, subset_idx);
@@ -102,7 +102,7 @@ while iter < max_iters && improved
     fprintf('Iter %d | error = %.8g | best_score = %.8g | new_col = %d | subset_size = %d\n', ...
             iter, error_val, best_score, best_idx, size(V_sub,2));
 
-    % ----- (D) Acceptance rule: add column if sufficiently improving -----
+    %  Acceptance rule: add column if sufficiently improving -----
     if best_score > tol
         % Add the best column to the restricted master set
         subset_idx = [subset_idx, best_idx];
