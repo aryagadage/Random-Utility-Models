@@ -10,5 +10,5 @@ if istable(p_obs)
     end
 end
 
-[lambda_sub, V_sub, subset_idx, rankings, choice_sets, error_val, iter] = ...
+[lambda_sub, V_sub, subset_idx, rankings, choice_sets, error_val, iter, x_est] = ...
     solve_rum_columngen(p_obs, n, 1, 200, 1e-8);
