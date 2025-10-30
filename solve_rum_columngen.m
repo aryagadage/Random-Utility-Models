@@ -124,4 +124,35 @@ fprintf('\nFinal error = %.6f with %d columns selected.\n', error_val, size(V_su
 % Save results for later inspection
 save('RUM_results.mat', 'lambda_full', 'V_sub', 'subset_idx', 'rankings', 'choice_sets', 'error_val');
 
+%% ---- Final results and cleanup ----
+% Ensure we have a valid lambda solution
+if exist('lambda_sub', 'var') && ~isempty(lambda_sub)
+    lambda_full = lambda_sub;   % last feasible weights
+else
+    % fallback if solver failed or terminated early
+    lambda_full = ones(size(V_sub,2),1) / size(V_sub,2);
+    warning('No valid lambda found at termination; using uniform weights as fallback.');
 end
+
+% Compute estimated choice probabilities even if not converged
+try
+    x_est = V_sub * lambda_full;  % fitted probabilities
+    error_val = norm(p_obs - x_est)^2;  % L2 fit error
+catch ME
+    warning('Dimension mismatch when computing final fit: %s', ME.message);
+    x_est = nan(size(p_obs));
+    error_val = NaN;
+end
+
+fprintf('\nFinal error = %.6f with %d columns selected (after %d iterations).\n', ...
+        error_val, size(V_sub,2), iter);
+
+% Save current results, even if not converged
+save('RUM_results.mat', 'lambda_full', 'V_sub', 'subset_idx', ...
+     'rankings', 'choice_sets', 'error_val', 'x_est');
+
+% Optional diagnostic message
+if iter >= max_iters
+    warning('Reached maximum iterations (%d) before convergence.', max_iters);
+end
+
