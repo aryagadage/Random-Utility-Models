@@ -1,5 +1,6 @@
-function [lambda_full, V_sub, subset_idx, rankings, choice_sets, error_val, iter] = ...
-    solve_rum_columngen(p_obs, n, init_k, max_iters, tol)
+function [lambda_full, V_sub, subset_idx, rankings, choice_sets, error_val, iter, x_est] = ...
+    solve_rum_columngen(p_obs, n, init_k, max_iters, tol, pricing_mode)
+
 % SOLVE_RUM_COLUMNGEN  Column-generation projection for discrete-choice RUM
 %
 % This function implements a column-generation (restricted master + pricing)
@@ -12,6 +13,7 @@ function [lambda_full, V_sub, subset_idx, rankings, choice_sets, error_val, iter
 %   init_k   - initial number of columns to seed the restricted master (default 1)
 %   max_iters- max column-generation iterations (default 200)
 %   tol      - threshold for accepting a new column (default 1e-8)
+%   pricing_mode - string: 'brute' or 'bestinsertion'
 %
 % Outputs:
 %   lambda_full - optimal mixture weights for the final subset (size = #subset)
@@ -28,131 +30,86 @@ function [lambda_full, V_sub, subset_idx, rankings, choice_sets, error_val, iter
 % Example:
 %   [lam, Vsub, idx, r, sets, err, it] = solve_rum_columngen(p_obs, 5, 1, 200, 1e-8);
 
-%% ---- Input handling and defaults ----
+%% ---- Defaults ----
 if nargin < 3 || isempty(init_k); init_k = 1; end
 if nargin < 4 || isempty(max_iters); max_iters = 200; end
 if nargin < 5 || isempty(tol); tol = 1e-8; end
+if nargin < 6 || isempty(pricing_mode); pricing_mode = 'brute'; end
 
-%% ---- Build full set of deterministic columns (V_full) ----
-% For n=5 this creates 120 columns (one per strict ranking).
+%% ---- Build full deterministic matrix ----
 [V_full, rankings, choice_sets] = generate_choice_vectors(n);
 [num_rows, Kfull] = size(V_full);
 
-% check that p_obs length matches the stacked row count of V
 if length(p_obs) ~= num_rows
-    error('Length of p_obs (%d) must equal the number of stacked rows in V (%d).', length(p_obs), num_rows);
+    error('Length of p_obs (%d) must equal number of stacked rows in V (%d).', ...
+        length(p_obs), num_rows);
 end
 
-%% ---- Initialize the restricted master (subset of columns) ----
-% You can start with one column (init_k = 1) or a small handful.
-% Using a single column is permitted; the algorithm will iteratively discover more.
-if init_k <= 0
-    init_k = 1;
-end
-if init_k > Kfull
-    init_k = Kfull;
-end
-
-% Simple deterministic choice: start with the first `init_k` permutations.
-% You might prefer randperm(Kfull, init_k) to randomize the seed.
+%% ---- Initialize restricted master problem ----
 subset_idx = 1:init_k;
-V_sub = V_full(:, subset_idx);   % restricted design matrix (rows x #subset)
+V_sub = V_full(:, subset_idx);
 
-%% ---- Quadprog options (QP solver) ----
-% Use tight tolerances to reduce numerical noise when solving small QPs.
 options = optimoptions('quadprog','Display','off','TolFun',1e-12,'TolX',1e-12);
 
 %% ---- Column-generation loop ----
 iter = 0;
-improved = true;   % whether we added a new column in the last iteration
+improved = true;
 
 while iter < max_iters && improved
     iter = iter + 1;
 
-    % Solve the Restricted Master Problem (RMP) -----
-    % Minimize ||V_sub * lambda - p_obs||^2 s.t. lambda >= 0, sum(lambda)=1
-    % Standard quadratic form: (V_sub*lambda - p)'(V_sub*lambda - p)
-    H = 2 * (V_sub' * V_sub);      % quadratic term (symmetric positive semidefinite)
-    f = -2 * (V_sub' * p_obs);     % linear term
+    % --- (A) Solve Restricted Master Problem ---
+    H = 2 * (V_sub' * V_sub);
+    f = -2 * (V_sub' * p_obs);
 
     ksub = size(V_sub,2);
-    A = -eye(ksub); b = zeros(ksub,1);   % inequality lambda >= 0 (written -I * lambda <= 0)
-    Aeq = ones(1,ksub); beq = 1;         % equality: sum(lambda) = 1
+    A = -eye(ksub); b = zeros(ksub,1);
+    Aeq = ones(1,ksub); beq = 1;
 
-    % Solve QP. quadprog returns lambda_sub and objective (fval).
-    [lambda_sub, fval, exitflag, output, qp_lambda] = ...
-        quadprog(H, f, A, b, Aeq, beq, [], [], [], options);
+    [lambda_sub, fval, exitflag] = quadprog(H, f, A, b, Aeq, beq, [], [], [], options);
 
-    % If quadprog signals numerical problems, warn but continue with result.
     if ~(exitflag == 1 || exitflag == 2 || exitflag == 0)
-        warning('quadprog exitflag = %d at iter %d; continuing with current solution.', exitflag, iter);
+        warning('quadprog exitflag = %d at iter %d.', exitflag, iter);
     end
 
-    %  Compute residual and objective value -----
-    pred = V_sub * lambda_sub;      % model-predicted probabilities
-    residual = p_obs - pred;        % what the current model fails to explain
-    error_val = norm(residual)^2;   % squared L2 error (objective)
+    % --- (B) Compute residual ---
+    pred = V_sub * lambda_sub;
+    residual = p_obs - pred;
+    error_val = norm(residual)^2;
 
-    %  Pricing problem (search for best new column) -----
-    % The "score" of a candidate column v_j is v_j' * residual.
-    % A large positive score means adding that column will reduce squared error.
-    [best_idx, best_score] = pricing_problem(V_full, residual, subset_idx);
+    % --- (C) Pricing problem switch ---
+    switch lower(pricing_mode)
+        case 'brute'
+            [best_idx, best_score] = pricing_problem(V_full, residual, subset_idx);
+        case 'bestinsertion'
+            [best_idx, best_score] = pricing_bestinsertion( residual, ...
+                rankings, choice_sets, subset_idx, 10);
+        otherwise
+            error('Unknown pricing_mode "%s". Use "brute" or "bestinsertion".', pricing_mode);
+    end
 
-    % Print progress for debugging/demonstration (can be silenced)
     fprintf('Iter %d | error = %.8g | best_score = %.8g | new_col = %d | subset_size = %d\n', ...
             iter, error_val, best_score, best_idx, size(V_sub,2));
 
-    %  Acceptance rule: add column if sufficiently improving -----
-    if best_score > tol
-        % Add the best column to the restricted master set
+    % --- (D) Accept column if improvement significant ---
+    if best_score > tol && ~isempty(best_idx)
         subset_idx = [subset_idx, best_idx];
-        V_sub = V_full(:, subset_idx);   % expand RMP matrix
+        V_sub = V_full(:, subset_idx);
         improved = true;
     else
-        % No column meaningfully improves the fit: stop CG
         improved = false;
     end
 end
 
-   %% ---- Final results and cleanup ----
-lambda_full = lambda_sub;            % optimal weights (for last RMP)
-V_sub = V_sub;                       % final restricted design matrix
-error_val = norm(p_obs - V_sub*lambda_full)^2; % final squared error
+%% ---- Finalization ----
+lambda_full = lambda_sub;
+x_est = V_sub * lambda_full;
+error_val = norm(p_obs - x_est)^2;
 
-fprintf('\nFinal error = %.6f with %d columns selected.\n', error_val, size(V_sub,2));
+fprintf('\nFinal error = %.6f with %d columns selected (%d iterations).\n', ...
+    error_val, size(V_sub,2), iter);
 
-% Save results for later inspection
-save('RUM_results.mat', 'lambda_full', 'V_sub', 'subset_idx', 'rankings', 'choice_sets', 'error_val');
-
-%% ---- Final results and cleanup ----
-% Ensure we have a valid lambda solution
-if exist('lambda_sub', 'var') && ~isempty(lambda_sub)
-    lambda_full = lambda_sub;   % last feasible weights
-else
-    % fallback if solver failed or terminated early
-    lambda_full = ones(size(V_sub,2),1) / size(V_sub,2);
-    warning('No valid lambda found at termination; using uniform weights as fallback.');
-end
-
-% Compute estimated choice probabilities even if not converged
-try
-    x_est = V_sub * lambda_full;  % fitted probabilities
-    error_val = norm(p_obs - x_est)^2;  % L2 fit error
-catch ME
-    warning('Dimension mismatch when computing final fit: %s', ME.message);
-    x_est = nan(size(p_obs));
-    error_val = NaN;
-end
-
-fprintf('\nFinal error = %.6f with %d columns selected (after %d iterations).\n', ...
-        error_val, size(V_sub,2), iter);
-
-% Save current results, even if not converged
 save('RUM_results.mat', 'lambda_full', 'V_sub', 'subset_idx', ...
      'rankings', 'choice_sets', 'error_val', 'x_est');
 
-% Optional diagnostic message
-if iter >= max_iters
-    warning('Reached maximum iterations (%d) before convergence.', max_iters);
 end
-
