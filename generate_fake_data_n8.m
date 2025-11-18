@@ -1,4 +1,5 @@
 % generate_fake_data_n8.m
+% Can you see this edit??
 % --------------------------------------------------------------
 % Generate fake pairwise choice data for n=8 alternatives
 % Format matches the Haoge CSV structure
