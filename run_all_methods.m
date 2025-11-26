@@ -1,5 +1,5 @@
 clear; clc;
-fprintf('Comparing 3 methods - Pure brute, Colgen brute, Colgen Best Insertion');
+fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, Colgen Random Insertion');
 % --- Load data from CSV ---
 % generate_fake_data file
 csv_file = 'fake_data_n7_binary.csv'; 
@@ -39,7 +39,7 @@ results = struct();
 
 
 %% METHOD 1: PURE BRUTE FORCE with LSQLIN
-fprintf('\n[1/3] Pure Brute Force Method\n');
+fprintf('\n[1/4] Pure Brute Force Method\n');
 fprintf('========================================================\n');
 fprintf('How it works:\n');
 fprintf('  - Generates ALL %d! = %d possible rankings upfront\n', n, factorial(n));
@@ -136,7 +136,7 @@ end
 
 
 %% METHOD 2: COLUMN GENERATION with BRUTE FORCE PRICING
-fprintf('\n[2/3] Column Generation with BRUTE FORCE Pricing\n');
+fprintf('\n[2/4] Column Generation with BRUTE FORCE Pricing\n');
 fprintf('========================================================\n');
 fprintf('How it works:\n');
 fprintf('  - Starts with %d initial ranking(s)\n', init_k);
@@ -144,7 +144,7 @@ fprintf('  - Each iteration: checks ALL %d rankings to find best one to add\n', 
 tic;
 try
     [lambda1, V1, idx1, rank1, cs1, err1, iter1, x1] = ...
-        solve_rum_columngen2(p_obs, n, init_k, max_iters, tol, choice_sets, 'brute', chosen_alts);
+        solve_rum_columngen3(p_obs, n, init_k, max_iters, tol, choice_sets, 'brute', chosen_alts);
     time1 = toc;
     
     results.colgen_brute.lambda = lambda1;
@@ -172,7 +172,7 @@ catch ME
 end
 
 %% METHOD 3: COLUMN GENERATION with BEST INSERTION PRICING
-fprintf('\n[3/3] Column Generation with BEST INSERTION Pricing\n');
+fprintf('\n[3/4] Column Generation with BEST INSERTION Pricing\n');
 fprintf('========================================================\n');
 fprintf('How it works:\n');
 fprintf('  - Starts with %d initial ranking(s)\n', init_k);
@@ -180,7 +180,7 @@ fprintf('  - Each iteration: uses HEURISTIC to construct a good ranking\n');
 tic;
 try
     [lambda2, V2, idx2, rank2, cs2, err2, iter2, x2] = ...
-        solve_rum_columngen2(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion', chosen_alts);
+        solve_rum_columngen3(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion', chosen_alts);
     time2 = toc;
     
     results.best_insertion.lambda = lambda2;
@@ -213,6 +213,51 @@ catch ME
         fprintf('    %s (line %d)\n', ME.stack(i).name, ME.stack(i).line);
     end
 end
+
+%% METHOD 4: COLUMN GENERATION with RANDOM INSERTION PRICING
+fprintf('\n[4/4] Column Generation with RANDOM INSERTION Pricing\n');
+fprintf('========================================================\n');
+fprintf('How it works:\n');
+fprintf('  - Starts with %d initial ranking(s)\n', init_k);
+fprintf('  - Each iteration: uses RANDOMIZED HEURISTIC to construct a ranking\n');
+fprintf('  - Picks ONE random alternative, tries ALL positions for that one\n');
+fprintf('  - Much faster than best insertion, but may need more iterations\n');
+tic;
+try
+    [lambda3, V3, idx3, rank3, cs3, err3, iter3, x3] = ...
+        solve_rum_columngen3(p_obs, n, init_k, max_iters, tol, choice_sets, 'randominsertion', chosen_alts);
+    time3 = toc;
+    
+    results.random_insertion.lambda = lambda3;
+    results.random_insertion.error = err3;
+    results.random_insertion.iterations = iter3;
+    results.random_insertion.time = time3;
+    results.random_insertion.num_columns = length(idx3);
+    results.random_insertion.rankings = rank3;
+    results.random_insertion.success = true;
+    
+    fprintf('✓ Completed in %.2f seconds\n', time3);
+    fprintf('  - Iterations: %d\n', iter3);
+    fprintf('  - Final error: %.6e\n', err3);
+    fprintf('  - Rankings used: %d\n', length(idx3));
+    fprintf('  - Top 5 rankings by weight:\n');
+    [sorted_lambda, sort_idx] = sort(lambda3, 'descend');
+    for i = 1:min(5, length(lambda3))
+        if sorted_lambda(i) > 1e-8
+            fprintf('    Lambda = %.6f | Ranking: [%s]\n', sorted_lambda(i), num2str(rank3(sort_idx(i),:)));
+        end
+    end
+    
+catch ME
+    time3 = toc;
+    results.random_insertion.success = false;
+    results.random_insertion.error_msg = ME.message;
+    fprintf('✗ FAILED: %s\n', ME.message);
+    fprintf('ERROR DETAILS:\n');
+    fprintf('  File: %s\n', ME.stack(1).file);
+    fprintf('  Line: %d\n', ME.stack(1).line);
+end
+
 
 %% COMPARISON SUMMARY
 fprintf('\n\n==================================================\n');
@@ -250,4 +295,14 @@ if results.best_insertion.success
 else
     fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
         'ColGen (Best Insertion)', time2, '-', '-', '-', '✗ FAIL');
+end
+
+
+% Random Insertion
+if results.random_insertion.success
+    fprintf('%-35s | %10.2f | %10d | %12.2e | %10d | %s\n', ...
+        'ColGen (Random Insertion)', time3, iter3, err3, length(idx3), '✓ OK');
+else
+    fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
+        'ColGen (Random Insertion)', time3, '-', '-', '-', '✗ FAIL');
 end
