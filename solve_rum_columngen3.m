@@ -1,0 +1,495 @@
+function [lambda_full, V_sub, subset_idx, rankings, choice_sets_out, error_val, iter, x_est] = ...
+    solve_rum_columngen3(p_obs, n, init_k, max_iters, tol, choice_sets, pricing_mode, chosen_alts)
+% SOLVE_RUM_COLUMNGEN3
+% -------------------------------------------------------------------------
+% Column generation solver for discrete choice RUM problem.
+%  Added 'randominsertion' pricing mode 
+% 
+% Inputs:
+%   p_obs        : observed choice probabilities (vector)
+%   n            : number of alternatives
+%   init_k       : number of initial columns (rankings) to start with
+%   max_iters    : maximum number of iterations
+%   tol          : convergence tolerance
+%   choice_sets  : cell array of choice sets to use (if empty, generates all)
+%   pricing_mode : 'brute', 'bestinsertion', or 'randominsertion' (default: 'brute')
+%   chosen_alts  : vector of actually chosen alternatives for each observation (optional)
+%
+% Outputs:
+%   lambda_full  : weights on selected columns (sums to 1)
+%   V_sub        : matrix of selected choice vectors
+%   subset_idx   : indices of selected rankings
+%   rankings     : the actual selected rankings (matrix)
+%   choice_sets_out : choice sets used in the algorithm
+%   error_val    : final squared error
+%   iter         : number of iterations performed
+%   x_est        : estimated utilities (if computed)
+% -------------------------------------------------------------------------
+
+% Handle optional inputs
+if nargin < 8 || isempty(chosen_alts)
+    chosen_alts = [];  % Will use set_alts(1) as fallback
+end
+if nargin < 7
+    pricing_mode = 'brute';
+end
+if nargin < 6 || isempty(choice_sets)
+    choice_sets = [];
+end
+
+fprintf('Starting column generation with %d initial columns...\n', init_k);
+fprintf('Pricing mode: %s\n', pricing_mode);
+
+% -------------------------------------------------------------------------
+% CONDITIONAL SETUP: Only generate full rankings for brute force
+% -------------------------------------------------------------------------
+
+if strcmp(pricing_mode, 'brute')
+    % BRUTE FORCE MODE: Generate all rankings upfront
+    fprintf('Generating all %d! = %d possible rankings...\n', n, factorial(n));
+    
+    if isempty(choice_sets)
+        % Generate all choice sets if not provided
+        [V_full, all_rankings, choice_sets] = generate_choice_vectors(n);
+    else
+        % Use provided choice sets
+        fprintf('Using %d provided choice sets\n', length(choice_sets));
+        all_rankings = perms(1:n);
+        V_full = zeros(length(p_obs), size(all_rankings, 1));
+        
+        % Build V_full for provided choice sets
+        for col = 1:size(all_rankings, 1)
+            ranking = all_rankings(col, :);
+            for s = 1:length(choice_sets)
+                set_alts = choice_sets{s};
+                
+                % Find positions of each alternative in the ranking
+                positions = zeros(1, length(set_alts));
+                for j = 1:length(set_alts)
+                    positions(j) = find(ranking == set_alts(j), 1, 'first');
+                end
+                
+                [~, top_idx] = min(positions);
+                top_alt = set_alts(top_idx);
+                
+                % Use chosen_alts if provided, otherwise default to set_alts(1)
+                if ~isempty(chosen_alts)
+                    V_full(s, col) = (top_alt == chosen_alts(s));
+                else
+                    V_full(s, col) = (top_alt == set_alts(1));
+                end
+            end
+        end
+    end
+    
+    fprintf('✓ Full ranking matrix generated\n\n');
+    
+else
+    % BEST INSERTION or RANDOM INSERTION MODE: Only generate choice sets, build rankings on-the-fly
+    fprintf('Generating choice sets only (rankings built on-demand)...\n');
+    
+    if isempty(choice_sets)
+        % Generate only the choice sets (all nonempty subsets)
+        alternatives = 1:n;
+        num_sets = 2^n - 1;
+        choice_sets = cell(num_sets, 1);
+        idx = 1;
+        for k = 1:n
+            subsets = nchoosek(alternatives, k);
+            for i = 1:size(subsets, 1)
+                choice_sets{idx} = subsets(i, :);
+                idx = idx + 1;
+            end
+        end
+    else
+        fprintf('Using %d provided choice sets\n', length(choice_sets));
+    end
+    
+    % For best insertion / random insertion, we don't need V_full or all_rankings upfront
+    V_full = [];
+    all_rankings = [];
+    fprintf('✓ %d choice sets generated (no ranking enumeration needed)\n\n', length(choice_sets));
+end
+
+% -------------------------------------------------------------------------
+% INITIALIZATION: Start with init_k random rankings
+% -------------------------------------------------------------------------
+
+if strcmp(pricing_mode, 'brute')
+    % Brute mode: select from existing rankings
+    subset_idx = randsample(size(V_full, 2), init_k);
+    V_sub = V_full(:, subset_idx);
+    rankings = all_rankings(subset_idx, :);
+else
+    % Best insertion / random insertion mode: generate init_k random rankings
+    V_sub = zeros(length(p_obs), init_k);
+    rankings = zeros(init_k, n);
+    subset_idx = zeros(init_k, 1);
+    
+    for k = 1:init_k
+        % Generate a random ranking
+        random_ranking = randperm(n);
+        rankings(k, :) = random_ranking;
+        
+        % Compute its choice vector
+        v_k = zeros(length(p_obs), 1);
+        for s = 1:length(choice_sets)
+            set_alts = choice_sets{s};
+            
+            % Find positions of each alternative in random_ranking
+            positions = zeros(1, length(set_alts));
+            for j = 1:length(set_alts)
+                positions(j) = find(random_ranking == set_alts(j), 1, 'first');
+            end
+            
+            [~, top_idx] = min(positions);
+            top_alt = set_alts(top_idx);
+            
+            % Use chosen_alts if provided, otherwise default to set_alts(1)
+            if ~isempty(chosen_alts)
+                v_k(s) = (top_alt == chosen_alts(s));
+            else
+                v_k(s) = (top_alt == set_alts(1));
+            end
+        end
+        V_sub(:, k) = v_k;
+        subset_idx(k) = k;
+    end
+end
+
+% -------------------------------------------------------------------------
+% COLUMN GENERATION MAIN LOOP
+% -------------------------------------------------------------------------
+
+prev_error = inf;
+
+for iter = 1:max_iters
+    
+    % --- Solve Restricted Master Problem (RMP) ---
+    % min ||V_sub * lambda - p_obs||^2
+    % s.t. lambda >= 0, sum(lambda) = 1
+    
+    H = 2 * (V_sub' * V_sub);
+    f = -2 * V_sub' * p_obs;
+    Aeq = ones(1, size(V_sub, 2));
+    beq = 1;
+    lb = zeros(size(V_sub, 2), 1);
+    
+    options = optimoptions('quadprog', 'Display', 'off');
+    lambda_sub = quadprog(H, f, [], [], Aeq, beq, lb, [], [], options);
+    
+    % Compute residual
+    residual = p_obs - V_sub * lambda_sub;
+    error_val = norm(residual)^2;
+    error_improvement = prev_error - error_val;
+    
+    % --- Pricing Problem: Find best new column to add ---
+    
+    if strcmp(pricing_mode, 'brute')
+        % ===================================================================
+        % BRUTE FORCE PRICING
+        % ===================================================================
+        scores = V_full' * residual;
+        scores(subset_idx) = -Inf;
+        [best_score, best_idx] = max(scores);
+        
+    elseif strcmp(pricing_mode, 'bestinsertion')
+        % ===================================================================
+        % BEST INSERTION PRICING (Greedy heuristic)
+        % ===================================================================
+        
+        % Start with random alternative (ensure it's a row vector)
+        best_ranking = randsample(n, 1);
+        best_ranking = reshape(best_ranking, 1, []);  % Force row vector
+        remaining_alts = setdiff(1:n, best_ranking);
+        
+        % Greedily add remaining alternatives
+        while ~isempty(remaining_alts)
+            best_pos = -1;
+            best_pos_score = -Inf;
+            best_alt_to_add = -1;
+            
+            % Try EACH remaining alternative
+            for alt = remaining_alts
+                % Try inserting at each position
+                for pos = 1:(length(best_ranking) + 1)
+                    % Create candidate ranking (handle different cases explicitly)
+                    if pos == 1
+                        candidate = [alt, best_ranking];
+                    elseif pos > length(best_ranking)
+                        candidate = [best_ranking, alt];
+                    else
+                        candidate = [best_ranking(1:pos-1), alt, best_ranking(pos:end)];
+                    end
+                    
+                    % Compute score for this candidate
+                    v_candidate = zeros(length(p_obs), 1);
+                    for s = 1:length(choice_sets)
+                        set_alts = choice_sets{s};
+                        
+                        % Skip if any alternative in this choice set is not yet in candidate
+                        all_present = true;
+                        for j = 1:length(set_alts)
+                            if isempty(find(candidate == set_alts(j), 1))
+                                all_present = false;
+                                break;
+                            end
+                        end
+                        if ~all_present
+                            continue;  % Skip this choice set
+                        end
+                        
+                        % Find positions of each alternative in the candidate ranking
+    
+                            % Where is {1,4,5} location in ranking [ 3 1 5 2 4]
+                        positions = zeros(1, length(set_alts));
+                        for j = 1:length(set_alts)
+                            positions(j) = find(candidate == set_alts(j), 1, 'first');
+                        end
+                        
+                        [~, top_idx] = min(positions);
+                        top_alt = set_alts(top_idx);
+                        
+                        % Use chosen_alts if provided, otherwise default to set_alts(1)
+                        if ~isempty(chosen_alts)
+                            v_candidate(s) = (top_alt == chosen_alts(s));
+                        else
+                            v_candidate(s) = (top_alt == set_alts(1));
+                        end
+                    end
+                    score = v_candidate' * residual;
+                    
+                    if score > best_pos_score
+                        best_pos_score = score;
+                        best_pos = pos;
+                        best_alt_to_add = alt;
+                    end
+                end
+            end
+            
+            % Insert best alternative at best position (handle cases explicitly)
+            if best_pos == 1
+                best_ranking = [best_alt_to_add, best_ranking];
+            elseif best_pos > length(best_ranking)
+                best_ranking = [best_ranking, best_alt_to_add];
+            else
+                best_ranking = [best_ranking(1:best_pos-1), best_alt_to_add, best_ranking(best_pos:end)];
+            end
+            
+            remaining_alts = setdiff(remaining_alts, best_alt_to_add);
+        end
+        
+        % Compute final score
+        v_final = zeros(length(p_obs), 1);
+        for s = 1:length(choice_sets)
+            set_alts = choice_sets{s};
+            
+            % Find positions of each alternative in best_ranking
+            positions = zeros(1, length(set_alts));
+            for j = 1:length(set_alts)
+                positions(j) = find(best_ranking == set_alts(j), 1, 'first');
+            end
+            
+            [~, top_idx] = min(positions);
+            top_alt = set_alts(top_idx);
+            
+            % Use chosen_alts if provided, otherwise default to set_alts(1)
+            if ~isempty(chosen_alts)
+                v_final(s) = (top_alt == chosen_alts(s));
+            else
+                v_final(s) = (top_alt == set_alts(1));
+            end
+        end
+        best_score = v_final' * residual;
+        
+        best_idx = -1;
+        
+    else  % 'randominsertion'
+        % ===================================================================
+        % RANDOM INSERTION PRICING (Heuristic 1 from paper)
+        % ===================================================================
+        
+        % Start with random alternative (ensure it's a row vector)
+        best_ranking = randsample(n, 1);
+        best_ranking = reshape(best_ranking, 1, []);  % Force row vector
+        remaining_alts = setdiff(1:n, best_ranking);
+        
+        % Randomly add remaining alternatives
+        while ~isempty(remaining_alts)
+            % Pick ONE random alternative
+            alt = randsample(remaining_alts, 1);
+            
+            best_pos = -1;
+            best_pos_score = -Inf;
+            
+            % Try inserting ONLY this alternative at each position
+            for pos = 1:(length(best_ranking) + 1)
+                % Create candidate ranking (handle different cases explicitly)
+                if pos == 1
+                    candidate = [alt, best_ranking];
+                elseif pos > length(best_ranking)
+                    candidate = [best_ranking, alt];
+                else
+                    candidate = [best_ranking(1:pos-1), alt, best_ranking(pos:end)];
+                end
+                
+                % Compute score for this candidate
+                v_candidate = zeros(length(p_obs), 1);
+                for s = 1:length(choice_sets)
+                    set_alts = choice_sets{s};
+                    
+                    % Skip if any alternative in this choice set is not yet in candidate
+                    all_present = true;
+                    for j = 1:length(set_alts)
+                        if isempty(find(candidate == set_alts(j), 1))
+                            all_present = false;
+                            break;
+                        end
+                    end
+                    if ~all_present
+                        continue;  % Skip this choice set
+                    end
+                    
+                    % Find positions of each alternative in the candidate ranking
+                    positions = zeros(1, length(set_alts));
+                    for j = 1:length(set_alts)
+                        positions(j) = find(candidate == set_alts(j), 1, 'first');
+                    end
+                    
+                    [~, top_idx] = min(positions);
+                    top_alt = set_alts(top_idx);
+                    
+                    % Use chosen_alts if provided, otherwise default to set_alts(1)
+                    if ~isempty(chosen_alts)
+                        v_candidate(s) = (top_alt == chosen_alts(s));
+                    else
+                        v_candidate(s) = (top_alt == set_alts(1));
+                    end
+                end
+                score = v_candidate' * residual;
+                
+                if score > best_pos_score
+                    best_pos_score = score;
+                    best_pos = pos;
+                end
+            end
+            
+            % Insert this alternative at its best position (handle cases explicitly)
+            if best_pos == 1
+                best_ranking = [alt, best_ranking];
+            elseif best_pos > length(best_ranking)
+                best_ranking = [best_ranking, alt];
+            else
+                best_ranking = [best_ranking(1:best_pos-1), alt, best_ranking(best_pos:end)];
+            end
+            
+            remaining_alts = setdiff(remaining_alts, alt);
+        end
+        
+        % Compute final score
+        v_final = zeros(length(p_obs), 1);
+        for s = 1:length(choice_sets)
+            set_alts = choice_sets{s};
+            
+            % Find positions of each alternative in best_ranking
+            positions = zeros(1, length(set_alts));
+            for j = 1:length(set_alts)
+                positions(j) = find(best_ranking == set_alts(j), 1, 'first');
+            end
+            
+            [~, top_idx] = min(positions);
+            top_alt = set_alts(top_idx);
+            
+            % Use chosen_alts if provided, otherwise default to set_alts(1)
+            if ~isempty(chosen_alts)
+                v_final(s) = (top_alt == chosen_alts(s));
+            else
+                v_final(s) = (top_alt == set_alts(1));
+            end
+        end
+        best_score = v_final' * residual;
+        
+        best_idx = -1;
+    end
+    
+    % --- Check convergence ---
+    
+    fprintf('Iter %d | error = %.6f | best_score = %.4f | error_improvement = %.2e | ', ...
+        iter, error_val, best_score, error_improvement);
+    
+    % Convergence condition: Error not improving significantly
+    % ONLY for best insertion and random insertion modes (brute should run until best_score <= 0)
+    if ~strcmp(pricing_mode, 'brute') && iter > 5 && error_improvement < 1e-12
+        fprintf('new_col = -1 | subset_size = %d\n', length(subset_idx));
+        fprintf('\nConverged! Error not improving (improvement = %.2e < 1e-12).\n', error_improvement);
+        break;
+    end
+    
+    % Update previous error for next iteration
+    prev_error = error_val;
+    
+    % --- Add new column ---
+    
+    if strcmp(pricing_mode, 'brute')
+        % Brute mode: Add column from V_full
+        V_sub = [V_sub, V_full(:, best_idx)];
+        subset_idx = [subset_idx; best_idx];
+        rankings = [rankings; all_rankings(best_idx, :)];
+        fprintf('new_col = %d | subset_size = %d\n', best_idx, length(subset_idx));
+    else
+        % Best insertion or random insertion mode: Build column from constructed ranking
+        v_new = zeros(length(p_obs), 1);
+        for s = 1:length(choice_sets)
+            set_alts = choice_sets{s};
+            
+            % Find positions of each alternative in best_ranking
+            positions = zeros(1, length(set_alts));
+            for j = 1:length(set_alts)
+                positions(j) = find(best_ranking == set_alts(j), 1, 'first');
+            end
+            
+            [~, top_idx] = min(positions);
+            top_alt = set_alts(top_idx);
+            
+            % Use chosen_alts if provided, otherwise default to set_alts(1)
+            if ~isempty(chosen_alts)
+                v_new(s) = (top_alt == chosen_alts(s));
+            else
+                v_new(s) = (top_alt == set_alts(1));
+            end
+        end
+        
+        V_sub = [V_sub, v_new];
+        best_ranking = reshape(best_ranking, 1, n);  % Ensure row vector with n elements
+        rankings = [rankings; best_ranking];
+        subset_idx = [subset_idx; length(subset_idx) + 1];
+        fprintf('new_col = constructed | subset_size = %d\n', length(subset_idx));
+    end
+    
+end
+
+% -------------------------------------------------------------------------
+% FINAL SOLVE: Recompute lambda with all selected columns
+% -------------------------------------------------------------------------
+
+H = 2 * (V_sub' * V_sub);
+f = -2 * V_sub' * p_obs;
+Aeq = ones(1, size(V_sub, 2));
+beq = 1;
+lb = zeros(size(V_sub, 2), 1);
+
+options = optimoptions('quadprog', 'Display', 'off');
+lambda_full = quadprog(H, f, [], [], Aeq, beq, lb, [], [], options);
+
+error_val = norm(p_obs - V_sub * lambda_full)^2;
+
+fprintf('\nFinal error = %.6f with %d columns selected (%d iterations).\n', ...
+    error_val, length(subset_idx), iter);
+
+% Return the choice sets used
+choice_sets_out = choice_sets;
+
+% Placeholder for x_est (utilities) - not computed in this version
+x_est = [];
+
+end
