@@ -41,130 +41,16 @@ fprintf('Starting column generation with %d initial columns...\n', init_k);
 fprintf('Pricing mode: %s\n', pricing_mode);
 
 % -------------------------------------------------------------------------
-% CONDITIONAL SETUP: Only generate full rankings for brute force
+% Step 1: Only generate full rankings for brute force
 % -------------------------------------------------------------------------
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%For Brutal Force%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-if strcmp(pricing_mode, 'brute')
-    % BRUTE FORCE MODE: Generate all rankings upfront
-    fprintf('Generating all %d! = %d possible rankings...\n', n, factorial(n));
-    
-    if isempty(choice_sets)
-        % Generate all choice sets if not provided
-        [V_full, all_rankings, choice_sets] = generate_choice_vectors(n);
-    else
-        % Use provided choice sets
-        fprintf('Using %d provided choice sets\n', length(choice_sets));
-        all_rankings = perms(1:n);
-        V_full = zeros(length(p_obs), size(all_rankings, 1));
-        
-        % Build V_full for provided choice sets
-        for col = 1:size(all_rankings, 1)
-            ranking = all_rankings(col, :);
-            for s = 1:length(choice_sets)
-                set_alts = choice_sets{s};
-                
-                % Find positions of each alternative in the ranking
-                positions = zeros(1, length(set_alts));
-                for j = 1:length(set_alts)
-                    positions(j) = find(ranking == set_alts(j), 1, 'first');
-                end
-                
-                [~, top_idx] = min(positions);
-                top_alt = set_alts(top_idx);
-                
-                % Use chosen_alts if provided, otherwise default to set_alts(1)
-                if ~isempty(chosen_alts)
-                    V_full(s, col) = (top_alt == chosen_alts(s));
-                else
-                    fprintf('Incomplete Ranking!');
-                    break;
-                end
-            end
-        end
-    end
-    
-    fprintf('✓ Full ranking matrix generated\n\n');
-    
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%For Heuristic Methods%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-else
-
-    % BEST INSERTION or RANDOM INSERTION MODE: Only generate choice sets, build rankings on-the-fly
-    fprintf('Generating choice sets only (rankings built on-demand)...\n');
-    
-    if isempty(choice_sets)
-        % Generate only the choice sets (all nonempty subsets)
-        alternatives = 1:n;
-        num_sets = 2^n - 1;
-        choice_sets = cell(num_sets, 1);
-        idx = 1;
-        for k = 1:n
-            subsets = nchoosek(alternatives, k);
-            for i = 1:size(subsets, 1)
-                choice_sets{idx} = subsets(i, :);
-                idx = idx + 1;
-            end
-        end
-    else
-        fprintf('Using %d provided choice sets\n', length(choice_sets));
-    end
-    
-    % For best insertion / random insertion, we don't need V_full or all_rankings upfront
-    V_full = [];
-    all_rankings = [];
-    fprintf('✓ %d choice sets generated (no ranking enumeration needed)\n\n', length(choice_sets));
-end
+[V_full, all_rankings, choice_sets]=C_gen_V_full(n,choice_sets,pricing_mode,p_obs,chosen_alts);
 
 % -------------------------------------------------------------------------
 % INITIALIZATION: Start with init_k random rankings
 % -------------------------------------------------------------------------
 
-if strcmp(pricing_mode, 'brute')
-    % Brute mode: select from existing rankings
-    subset_idx = randsample(size(V_full, 2), init_k);
-    V_sub = V_full(:, subset_idx);
-    rankings = all_rankings(subset_idx, :);
-else
-    % Best insertion / random insertion mode: generate init_k random rankings
-    V_sub = zeros(length(p_obs), init_k);
-    rankings = zeros(init_k, n);
-    subset_idx = zeros(init_k, 1);
-    
-    for k = 1:init_k
-        % Generate a random ranking
-        random_ranking = randperm(n);
-        rankings(k, :) = random_ranking;
-        
-        % Compute its choice vector
-        v_k = zeros(length(p_obs), 1);
-        for s = 1:length(choice_sets)
-            set_alts = choice_sets{s};
-            
-            % Find positions of each alternative in random_ranking
-            positions = zeros(1, length(set_alts));
-            for j = 1:length(set_alts)
-                positions(j) = find(random_ranking == set_alts(j), 1, 'first');
-            end
-            
-            [~, top_idx] = min(positions);
-            top_alt = set_alts(top_idx);
-            
-            % Use chosen_alts if provided, otherwise default to set_alts(1)
-            if ~isempty(chosen_alts)
-                v_k(s) = (top_alt == chosen_alts(s));
-            else
-                v_k(s) = (top_alt == set_alts(1));
-            end
-        end
-        V_sub(:, k) = v_k;
-        subset_idx(k) = k;
-    end
-end
+[V_sub, rankings, subset_idx] = C_gen_random_V(p_obs,init_k,choice_sets,chosen_alts,n);
 
 % -------------------------------------------------------------------------
 % COLUMN GENERATION MAIN LOOP
@@ -178,30 +64,21 @@ for iter = 1:max_iters
     % min ||V_sub * lambda - p_obs||^2
     % s.t. lambda >= 0, sum(lambda) = 1
     
-    H = 2 * (V_sub' * V_sub);
-    f = -2 * V_sub' * p_obs;
-    Aeq = ones(1, size(V_sub, 2));
-    beq = 1;
-    lb = zeros(size(V_sub, 2), 1);
-    
-    options = optimoptions('quadprog', 'Display', 'off');
-    lambda_sub = quadprog(H, f, [], [], Aeq, beq, lb, [], [], options);
-    
-    % Compute residual
-    residual = p_obs - V_sub * lambda_sub;
-    error_val = norm(residual)^2;
-    error_improvement = prev_error - error_val;
-    
+    result=B_QP(V_sub,p_obs,false);
+    error_val=result.QP.error;
+    error_improvement = prev_error-error_val;
     % --- Pricing Problem: Find best new column to add ---
     
     if strcmp(pricing_mode, 'brute')
         % ===================================================================
         % BRUTE FORCE PRICING
         % ===================================================================
-        scores = V_full' * residual;
+        [V_sub,subset_idx,rankings,best_score]=B_CG_exact(V_full,result.QP.residual,subset_idx,p_optim)
+
+        scores = V_full' * result.QP.residual;
         scores(subset_idx) = -Inf;
         [best_score, best_idx] = max(scores);
-        
+        best_score = best_score-result.QP.optim_p' * result.QP.residual;
     elseif strcmp(pricing_mode, 'bestinsertion')
         % ===================================================================
         % BEST INSERTION PRICING (Greedy heuristic)
@@ -429,6 +306,10 @@ for iter = 1:max_iters
     % Convergence condition: Error not improving significantly
     % ONLY for best insertion and random insertion modes (brute should run until best_score <= 0)
     if ~strcmp(pricing_mode, 'brute') && iter > 5 && error_improvement < 1e-12
+        fprintf('new_col = -1 | subset_size = %d\n', length(subset_idx));
+        fprintf('\nConverged! Error not improving (improvement = %.2e < 1e-12).\n', error_improvement);
+        break;
+    elseif strcmp(pricing_mode, 'brute') && best_score < tol
         fprintf('new_col = -1 | subset_size = %d\n', length(subset_idx));
         fprintf('\nConverged! Error not improving (improvement = %.2e < 1e-12).\n', error_improvement);
         break;

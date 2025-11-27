@@ -1,4 +1,4 @@
-function [V, rankings, choice_sets] = generate_choice_vectors(n)
+function [V, rankings, choice_sets] = C_generate_choice_vectors(n)
 % Generate all deterministic choice vectors for n alternatives.
 % Each column = deterministic ranking (a "type")
 % Each row    = one observed choice probability (across all sets)

@@ -18,7 +18,7 @@ choice_sets = cell(height(data), 1);
 chosen_alts = zeros(height(data), 1);
 for i = 1:height(data)
     choice_sets{i} = [data.set_alt1(i), data.set_alt2(i)];
-    chosen_alts(i) = data.alt(i);  % The actual chosen alternative
+    chosen_alts(i) = data.alt(i);  % the alternative corresponding to the row
 end
 
 fprintf('✓ Loaded data from: %s\n', csv_file);

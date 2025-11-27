@@ -7,11 +7,11 @@
 
 clear; clc;
 
-rng(42); % For reproducibility
+rng(41); % For reproducibility
 
-n = 8;  % number of alternatives
+n = 12;  % number of alternatives
 max_possible = nchoosek(n, 2);  % Maximum possible pairwise comparisons
-num_comparisons = min(25, max_possible);  % 25 comparisons (out of 28 possible)
+num_comparisons = min(276, max_possible);  % 25 comparisons (out of 28 possible)
 
 fprintf('Generating fake data for n=%d alternatives...\n', n);
 fprintf('Maximum possible pairwise comparisons: %d\n', max_possible);
@@ -54,11 +54,11 @@ while size(comparisons_used, 1) < num_comparisons && attempts < max_attempts
     u1 = true_utilities(alt1);
     u2 = true_utilities(alt2);
     
-    prob_alt1 = rand(1,1);
-    prob_alt2 = 1-prob_alt1;
+    %prob_alt1 = rand(1,1);
+    %prob_alt2 = 1-prob_alt1;
     
-    %prob_alt1 = exp(u1) / (exp(u1) + exp(u2));
-    %prob_alt2 = 1 - prob_alt1;
+    prob_alt1 = normcdf(u1-u2)
+    prob_alt2 = 1 - prob_alt1;
     
     % Add both rows (one for each alternative's probability)
     data = [data; prob_alt1, alt1, alt2, alt1];

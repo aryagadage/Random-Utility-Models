@@ -1,0 +1,132 @@
+clear; clc;
+fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, Colgen Random Insertion');
+% --- Load data from CSV ---
+% generate_fake_data file
+csv_file = 'fake_data_n15_binary.csv'; 
+
+fprintf('Loading data from CSV...\n');
+data = readtable(csv_file);
+
+% Extract the choice probability column
+p_obs = data.choice_probability;
+
+% Determine number of alternatives from the data
+n = max(max(data.set_alt1), max(data.set_alt2));
+
+% Convert ALL pairs to choice_sets AND extract chosen alternatives
+choice_sets = cell(height(data), 1);
+chosen_alts = zeros(height(data), 1);
+for i = 1:height(data)
+    choice_sets{i} = [data.set_alt1(i), data.set_alt2(i)];
+    chosen_alts(i) = data.alt(i);  % the alternative corresponding to the row
+end
+
+fprintf('✓ Loaded data from: %s\n', csv_file);
+fprintf('  - Number of observations: %d\n', length(p_obs));
+fprintf('  - Number of alternatives: %d\n', n);
+fprintf('  - Number of unique choice sets (pairs): %d\n', length(choice_sets));
+fprintf('  - Choice probability range: [%.4f, %.4f]\n', min(p_obs), max(p_obs));
+fprintf('  - Total possible rankings: %d! = %d\n', n, factorial(n));
+fprintf('\n');
+
+% --- Algorithm parameters (same for all methods) ---
+init_k = 1;          
+max_iters = 100;     
+tol = 1e-8;          
+
+% Storage for results
+results = struct();
+
+
+%% METHOD 1: PURE BRUTE FORCE with LSQLIN
+fprintf('\n[1/4] Pure Brute Force Method\n');
+fprintf('========================================================\n');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%QP with all_possible rankings%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Generate all possible rankings (n! permutations)
+[V_full, all_rankings, choice_sets]=C_gen_V_full(n,choice_sets,'brute',p_obs,chosen_alts);
+    
+% Brutal Force QP
+result_QP = B_QP(V_full,p_obs,true);
+
+result_QP.QP.error
+
+%% METHOD 2: COLUMN GENERATION with BRUTE FORCE PRICING
+fprintf('\n[2/4] Column Generation with BRUTE FORCE Pricing\n');
+fprintf('========================================================\n');
+
+% Brutal Force CG
+result_CG= B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'brute', chosen_alts);
+
+error_CG=result_CG.QP.error;
+
+ 
+%% METHOD 3: COLUMN GENERATION with BEST INSERTION PRICING
+fprintf('\n[3/4] Column Generation with BEST INSERTION Pricing\n');
+fprintf('========================================================\n');
+fprintf('How it works:\n');
+fprintf('  - Starts with %d initial ranking(s)\n', init_k);
+fprintf('  - Each iteration: uses HEURISTIC to construct a good ranking\n');
+tic;
+result_CG_BI = ...
+   B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion', chosen_alts);
+time2 = toc;
+
+error_CG_BI=result_CG_BI.QP.error;
+
+  
+
+%% METHOD 4: COLUMN GENERATION with RANDOM INSERTION PRICING
+fprintf('\n[4/4] Column Generation with RANDOM INSERTION Pricing\n');
+result_CG_BI_rand = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion_rand', chosen_alts);
+
+%% COMPARISON SUMMARY
+fprintf('\n\n==================================================\n');
+fprintf('              COMPARISON SUMMARY\n');
+fprintf('==================================================\n\n');
+
+fprintf('%-35s | %10s | %10s | %12s | %10s | %s\n', ...
+    'Method', 'Time (s)', 'Iterations', 'Error', 'Columns', 'Status');
+fprintf('-------------------------------------|------------|------------|--------------|------------|--------\n');
+
+% Brute Force
+if results.brute_force.success
+    fprintf('%-35s | %10.2f | %10s | %12.2e | %10d | %s\n', ...
+        'Brute Force (LSQLIN)', time_brute, 'N/A', error_brute, num_active, '✓ OK');
+else
+    fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
+        'Brute Force (LSQLIN)', time_brute, '-', '-', '-', '✗ FAIL');
+end
+
+
+
+% ColGen Brute
+if results.colgen_brute.success
+    fprintf('%-35s | %10.2f | %10d | %12.2e | %10d | %s\n', ...
+        'ColGen (Brute Pricing)', time1, iter1, err1, length(idx1), '✓ OK');
+else
+    fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
+        'ColGen (Brute Pricing)', time1, '-', '-', '-', '✗ FAIL');
+end
+
+% Best Insertion
+if results.best_insertion.success
+    fprintf('%-35s | %10.2f | %10d | %12.2e | %10d | %s\n', ...
+        'ColGen (Best Insertion)', time2, iter2, err2, length(idx2), '✓ OK');
+else
+    fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
+        'ColGen (Best Insertion)', time2, '-', '-', '-', '✗ FAIL');
+end
+
+
+% Random Insertion
+if results.random_insertion.success
+    fprintf('%-35s | %10.2f | %10d | %12.2e | %10d | %s\n', ...
+        'ColGen (Random Insertion)', time3, iter3, err3, length(idx3), '✓ OK');
+else
+    fprintf('%-35s | %10.2f | %10s | %12s | %10s | %s\n', ...
+        'ColGen (Random Insertion)', time3, '-', '-', '-', '✗ FAIL');
+end

@@ -28,7 +28,7 @@ function [lambda_full, V_sub, subset_idx, rankings, choice_sets_out, error_val, 
 
 % Handle optional inputs
 if nargin < 8 || isempty(chosen_alts)
-    error('Error! Need chosen_alts');
+    chosen_alts = [];  % Will use set_alts(1) as fallback
 end
 if nargin < 7
     pricing_mode = 'brute';
@@ -89,11 +89,10 @@ if strcmp(pricing_mode, 'brute')
     
     fprintf('✓ Full ranking matrix generated\n\n');
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%For Heuristic Methods%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 else
-
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%For Heu%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%
     % BEST INSERTION or RANDOM INSERTION MODE: Only generate choice sets, build rankings on-the-fly
     fprintf('Generating choice sets only (rankings built on-demand)...\n');
     
