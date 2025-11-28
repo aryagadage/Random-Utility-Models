@@ -1,6 +1,11 @@
+%%
 clear; clc;
+
+%%
 fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, Colgen Random Insertion');
+%{
 % --- Load data from CSV ---
+
 % generate_fake_data file
 csv_file = 'fake_data_n24_binary.csv'; 
 
@@ -28,7 +33,9 @@ fprintf('  - Number of unique choice sets (pairs): %d\n', length(choice_sets));
 fprintf('  - Choice probability range: [%.4f, %.4f]\n', min(p_obs), max(p_obs));
 fprintf('  - Total possible rankings: %d! = %d\n', n, factorial(n));
 fprintf('\n');
+%}
 
+%%
 % --- Algorithm parameters (same for all methods) ---
 init_k = 1;          
 max_iters = 100;     
@@ -38,6 +45,9 @@ tol = 1e-8;
 results = struct();
 
 
+%%
+n=7;
+[p_obs,choice_sets,chosen_alts]=generate_fake_data_binarytenary();
 %% METHOD 1: PURE BRUTE FORCE with LSQLIN
 fprintf('\n[1/4] Pure Brute Force Method\n');
 fprintf('========================================================\n');

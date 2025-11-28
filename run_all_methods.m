@@ -1,3 +1,6 @@
+
+
+
 clear; clc;
 fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, Colgen Random Insertion');
 % --- Load data from CSV ---
