@@ -47,7 +47,7 @@ results = struct();
 
 %%
 n=7;
-[p_obs,choice_sets,chosen_alts]=generate_fake_data_binarytenary();
+[p_obs,choice_sets,chosen_alts,choice_set_list]=generate_fake_data_binarytenary();
 %% METHOD 1: PURE BRUTE FORCE with LSQLIN
 fprintf('\n[1/4] Pure Brute Force Method\n');
 fprintf('========================================================\n');

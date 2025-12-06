@@ -1,0 +1,32 @@
+Included in the replication folder are the following files:
+
+Matlab Code Files:
+	(1) DCmat.m - this file creates the DC.mat file which contains the averaged discrete choice data
+	(2) FullAnalysisQE.m - this file contains the code that produces all statistics reported in the paper and Figure 6, Table 2, Figure 7, Table 3, Figure 10, Figure 11, 
+				Table 4, Figure 17, Table 5, Table 6, Figure 18, Figure 19, and Table 7
+	(3) AllBro.m - this file runs the bronars simulations to compute houtman maks
+		Requirements: Gurobi optimization software, free to download for academics
+	(4) RPTest.m - this file runs the houtman maks test for all subjects
+		Requirements: Gurobi optimization software, free to download for academics
+	(5) fEU.m - this function gives the distance of choices from expected utility predictions
+	(6) latexTable.m - A function to help produce latex tables from matlab data
+	(7) HMIG_FR.m - A function to generate the problem to compute the Houtman Maks Index from choice data
+
+Matlab Datafiles:
+	(1) RPwDC.mat - contains all task data including the discrete choices (Description of Columns in DCmat.m)
+	(2) rpNumData.mat - contains task data only for the convex choice tasks (Description of Columns in FullAnalysis.m)
+	(3) HMI8.mat - contains the Houtman-Maks results for a given run of the different benchmark behavior
+	(4) TestResMain8.mat - contains the Houtman-Maks results for the subjects (This generates Table 4, formatting is custom) 
+	(5) DC.mat - Matrix of the discrete choies as the "convex" version
+
+R-files: 
+	(1) Prefs4Mix_Comparisons.R - Recreates Figure 8 
+		Requirements: ggplot2, specified at the top, but requires the ability to download packages into R
+	(2) Prefs4Mix_Triangles.R - Recreates Figure 12, Figure 20, and Figure 21
+		Requirements: Specifying output folders for the pictures
+
+CSV Files:
+	(1) RP_r_clean.csv - the cleaned data file used in the R analysis
+
+Folder: 
+	(1) Figs- Contains all figures used in the manuscript

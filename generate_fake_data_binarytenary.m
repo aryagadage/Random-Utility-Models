@@ -1,4 +1,4 @@
-function [p_obs,choice_sets,chosen_alts]=generate_fake_data_binarytenary()
+function [p_obs,choice_sets,chosen_alts,choice_set_list]=generate_fake_data_binarytenary()
 
 rng(41); % For reproducibility
 binary_fraction=1;
@@ -18,10 +18,12 @@ n3=nchoosek(n,3);
 binary_set=binary_max_possible(randsample(n2,   round(n2*binary_fraction)),:);
 tenary_set=tenary_max_possible(randsample(n3,   round(n3*tenary_fraction)),:);
 whole_set=1:n;
-
+choice_set_list=[num2cell(binary_set,2);num2cell(tenary_set,2); num2cell(whole_set,2) ];
 fprintf('Generating fake data for n=%d alternatives...\n', n);
 
 length=size(binary_set,1)*2 + size(tenary_set,1)*3+n;
+n2=size(binary_set,1);
+n3=size(tenary_set,1);
 %% place holder
 choice_sets = cell(length, 1);
 chosen_alts = zeros(length, 1);
