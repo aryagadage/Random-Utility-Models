@@ -1,6 +1,6 @@
-function result_CG ...
-    = solve_rum_columngen3(p_obs, n, init_k, max_iters, tol, choice_sets, pricing_mode, chosen_alts)
-% SOLVE_RUM_COLUMNGEN3
+function [result_CG,residual] ...
+    = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, pricing_mode, chosen_alts,choice_set_list)
+% B_solve_rum_CG
 % -------------------------------------------------------------------------
 % Column generation solver for discrete choice RUM problem.
 %  Added 'randominsertion' pricing mode 
@@ -89,6 +89,7 @@ while and(exit==0, iter <= max_iters)
                 best_score = best_score_temp;
             end
         end
+
     elseif strcmp(pricing_mode, 'bestinsertion_rand')
 
         best_score=inf;
@@ -102,12 +103,23 @@ while and(exit==0, iter <= max_iters)
         end
     end
 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%Print Progres %%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     fprintf('Iter %d | error = %.6f | best_score = %.4f | error_improvement = %.2e |\n ', ...
     iter, error_val, best_score, error_improvement);
     % --- Termination Criterion: best_score < 0 (or a small tolerance)
     if best_score < tol
         fprintf('Convergence Criterion Achieved (best_score < tol)\n');
-        exit=1;
+
+        [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,tol,V_sub,rankings);
+        if optim_value<tol
+            exit=1;
+        else
+            exit=0;
+        end
+            
     end
     
     iter = iter+1;
@@ -136,5 +148,5 @@ end
 % -------------------------------------------------------------------------
 
 result_CG=result;
-
+residual=result.QP.residual;
 end

@@ -1,13 +1,12 @@
-function [p_obs,choice_sets,chosen_alts,choice_set_list]=generate_fake_data_binarytenary()
+function [p_obs,choice_sets,chosen_alts,choice_set_list]=generate_fake_data_binarytenary(n)
 
 rng(41); % For reproducibility
-binary_fraction=1;
-tenary_fraction=1;
+binary_fraction=0.5;
+tenary_fraction=0.5;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%Binary and Tenary Choice Sets%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-n =7;  % number of alternatives
 binary_max_possible = nchoosek(1:n, 2);  % Maximum possible pairwise comparisons
 tenary_max_possible = nchoosek(1:n, 3);  % Maximum possible pairwise comparisons
 n2=nchoosek(n,2);

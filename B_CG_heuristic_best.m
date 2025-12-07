@@ -38,7 +38,6 @@ while ~isempty(remaining_alts)
         %fprintf('%1d',alt)
         % Try inserting at each position -> (1 = most preferred, end+1 = least)
         for pos = 1:(length(best_ranking) + 1)
-        for pos = 1:(length(best_ranking) + 1)
             % Create candidate ranking (handle different cases explicitly)
             if pos == 1
                 candidate = [alt, best_ranking];
@@ -106,7 +105,7 @@ while ~isempty(remaining_alts)
         end
         % Remove the inserted alternative from remaining set    
         remaining_alts = setdiff(remaining_alts, best_alt_to_add);
-end
+    end
         
         % Compute final score
 [v_final, ~, ~]=C_gen_one_ranking(p_obs,choice_sets,chosen_alts,n,'deterministic',best_ranking);
