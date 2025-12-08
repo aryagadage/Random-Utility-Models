@@ -3,37 +3,6 @@ clear; clc;
 
 %%
 fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, Colgen Random Insertion');
-%{
-% --- Load data from CSV ---
-
-% generate_fake_data file
-csv_file = 'fake_data_n24_binary.csv'; 
-
-fprintf('Loading data from CSV...\n');
-data = readtable(csv_file);
-
-% Extract the choice probability column
-p_obs = data.choice_probability;
-
-% Determine number of alternatives from the data
-n = max(max(data.set_alt1), max(data.set_alt2));
-
-% Convert ALL pairs to choice_sets AND extract chosen alternatives
-choice_sets = cell(height(data), 1);
-chosen_alts = zeros(height(data), 1);
-for i = 1:height(data)
-    choice_sets{i} = [data.set_alt1(i), data.set_alt2(i)];
-    chosen_alts(i) = data.alt(i);  % the alternative corresponding to the row
-end
-
-fprintf('✓ Loaded data from: %s\n', csv_file);
-fprintf('  - Number of observations: %d\n', length(p_obs));
-fprintf('  - Number of alternatives: %d\n', n);
-fprintf('  - Number of unique choice sets (pairs): %d\n', length(choice_sets));
-fprintf('  - Choice probability range: [%.4f, %.4f]\n', min(p_obs), max(p_obs));
-fprintf('  - Total possible rankings: %d! = %d\n', n, factorial(n));
-fprintf('\n');
-%}
 
 %%
 % --- Algorithm parameters (same for all methods) ---
@@ -44,10 +13,9 @@ tol = 1e-8;
 % Storage for results
 results = struct();
 
-
 %%
-n=7;
-[p_obs,choice_sets,chosen_alts]=generate_fake_data_binarytenary();
+n=15;
+[p_obs,choice_sets,chosen_alts,choice_set_list]=generate_fake_data_binarytenary(n);
 %% METHOD 1: PURE BRUTE FORCE with LSQLIN
 fprintf('\n[1/4] Pure Brute Force Method\n');
 fprintf('========================================================\n');
@@ -69,7 +37,7 @@ fprintf('\n[2/4] Column Generation with BRUTE FORCE Pricing\n');
 fprintf('========================================================\n');
 
 % Brutal Force CG
-result_CG= B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'brute', chosen_alts);
+result_CG= B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'brute', chosen_alts,choice_set_list);
 
 error_CG=result_CG.QP.error;
 
@@ -81,8 +49,8 @@ fprintf('How it works:\n');
 fprintf('  - Starts with %d initial ranking(s)\n', init_k);
 fprintf('  - Each iteration: uses HEURISTIC to construct a good ranking\n');
 tic;
-result_CG_BI = ...
-   B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion', chosen_alts);
+[result_CG_BI,residual] = ...
+   B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion', chosen_alts,choice_set_list);
 time2 = toc;
 
 error_CG_BI=result_CG_BI.QP.error;
@@ -91,7 +59,7 @@ error_CG_BI=result_CG_BI.QP.error;
 
 %% METHOD 4: COLUMN GENERATION with RANDOM INSERTION PRICING
 fprintf('\n[4/4] Column Generation with RANDOM INSERTION Pricing\n');
-result_CG_BI_rand = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion_rand', chosen_alts);
+[result_CG_BI_rand,residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, 'bestinsertion_rand', chosen_alts,choice_set_list);
 
 %% COMPARISON SUMMARY
 fprintf('\n\n==================================================\n');

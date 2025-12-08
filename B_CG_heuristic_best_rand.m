@@ -1,5 +1,9 @@
 function [V_sub,rankings,best_score]=B_CG_heuristic_best_rand(V_sub,n,choice_sets,chosen_alts,residual,p_optim,rankings,p_obs)
+%-----------------------------------------------------------------------------------------------------------------------------
+% Randomized Best Insertion Heuristic for Column Generation.
 
+%  B_CG_heuristic_best_rand: picks a RANDOM alternative, finds best position for it
+%-----------------------------------------------------------------------------------------------------------------------------
 % Input:
 %   k        : the initial element
 %   n        : number of alternatives
@@ -11,8 +15,10 @@ function [V_sub,rankings,best_score]=B_CG_heuristic_best_rand(V_sub,n,choice_set
 %   residual : current prices
 %   rankings : current columns
 %   p_optim  : current optimizers
+%-----------------------------------------------------------------------------------------------------------------------------
 % Start with random alternative (ensure it's a row vector)
 
+% Initialize: start with a RANDOM alternative (unlike B_CG_heuristic_best which takes k as input)
 best_ranking = randsample(1:n,1);
 best_ranking = reshape(best_ranking, 1, []);  % Force row vector
 remaining_alts = setdiff(1:n, best_ranking);

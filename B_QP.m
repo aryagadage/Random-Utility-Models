@@ -1,5 +1,7 @@
 function [results]=B_QP(V,p_obs,display)
-
+%----------------------------------------------------------------------
+% Solve the RUM estimation problem using Quadratic Programming (least squares).
+%----------------------------------------------------------------------
 % Input:
 %   p_obs        : observed choice probabilities (vector)
 %   V_full       : given preference rankings 
@@ -13,15 +15,16 @@ function [results]=B_QP(V,p_obs,display)
         fprintf('Solving optimization...\n');
     end
     
-    % Solve optimization using LSQLIN
+    % Set up constraints for lsqlin, solve optimization using LSQLIN
+    
     Aeq = ones(1, size(V_unique,2));  % sum(lambda) = 1
     beq = 1;
     lb = zeros(size(V_unique,2), 1);  % lambda >= 0
     ub = ones(size(V_unique,2), 1);   % lambda <= 1
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%% Display Options %%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %----------------------------------------------------------------------
+    % Display Options 
+   %----------------------------------------------------------------------
 
     if display
         options = optimoptions('lsqlin', ...
@@ -58,7 +61,7 @@ function [results]=B_QP(V,p_obs,display)
     fprintf('  - Active rankings: %d (out of %d unique columns)\n', num_active, size(V_unique,2));
     fprintf('  - Sum of lambdas: %.10f\n', sum(lambda_QP));
     
-    % Show top rankings
+       % Show top rankings by weight (most important types in the mixture)
     fprintf('  - Top 5 rankings by weight:\n');
     [sorted_lambda, sort_idx] = sort(lambda_QP, 'descend');
     for i = 1:min(5, num_active)
