@@ -1,11 +1,24 @@
 function [V_full, all_rankings, choice_sets] = C_gen_V_full(n,choice_sets,pricing_mode,p_obs,chosen_alts)
+	
+%Purpose:
+
+%This program prepares the objects needed for the DC-RUM algorithm.  
+
+%- In pricing_mode=='brute'*, it **enumerates all preference rankings over n alternatives and builds the full matrix V_full', whose columns correspond to rankings and whose rows correspond to observed choice sets.  
+%- In other pricing_modes  (`'bestinsertion'` or `'randominsertion'`), it only generates the choice sets and leaves rankings (and the corresponding columns of V_full) to be constructed on the fly by the heuristic.
 
 % Input:
 %   p_obs        : observed choice probabilities (vector)
 %   pricing_mode : 'brute', 'bestinsertion', or 'randominsertion' (default: 'brute')
 %   choice_sets  : cell array of choice sets to use (if empty, generates all)
 %   n            : number of alternatives
-%   chosen_alts  : vector of actually chosen alternatives for each observation (optional)
+%   chosen_alts  : vector of actually chosen alternatives for each observation 
+
+% Output:
+% V_full: matrices of deterministic rankings projected onto the observed
+% choice sets.
+% all_rankings: all permutations of 1:n, each row being a ranking. In heuristic modes: returned as [].
+% choice_sets: The cell array of choice sets used.
 
 if strcmp(pricing_mode, 'brute')
 

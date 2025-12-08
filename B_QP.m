@@ -46,14 +46,14 @@ function [results]=B_QP(V,p_obs,display)
     error = norm(p_obs - V_unique * lambda_QP)^2;
     num_active = sum(lambda_QP > 1e-8);
     
-    results.QP.lambda = lambda_QP;
-    results.QP.V = V_unique;
-    results.QP.error = error;
-    results.QP.time = time_brute;
-    results.QP.num_active = num_active;
-    results.QP.success = true;
-    results.QP.residual = p_obs - V_unique* lambda_QP;
-    results.QP.optim_p = V_unique* lambda_QP;
+    results.QP.lambda = lambda_QP; %optimal weiights
+    results.QP.V = V_unique; %columns of deterministic rankings 
+    results.QP.error = error; %distance 
+    results.QP.time = time_brute; %time spent
+    results.QP.num_active = num_active; %number of rankings with nonzero weights
+    results.QP.success = true; 
+    results.QP.residual = p_obs - V_unique* lambda_QP; %residual (prices)
+    results.QP.optim_p = V_unique* lambda_QP; %predicted choice probability
     
     if display
     fprintf('✓ Completed in %.2f seconds\n', time_brute);

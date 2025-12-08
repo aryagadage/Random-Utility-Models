@@ -1,5 +1,5 @@
 function [result_CG,residual] ...
-    = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, pricing_mode, chosen_alts,choice_set_list)
+    = B_solve_rum_CG(p_obs, n, init_k, max_iters, tol, choice_sets, pricing_mode, chosen_alts,choice_set_list,IP)
 % B_solve_rum_CG
 % -------------------------------------------------------------------------
 % Column generation solver for discrete choice RUM problem.
@@ -14,6 +14,8 @@ function [result_CG,residual] ...
 %   choice_sets  : cell array of choice sets to use (if empty, generates all)
 %   pricing_mode : 'brute', 'bestinsertion', or 'randominsertion' (default: 'brute')
 %   chosen_alts  : vector of actually chosen alternatives for each observation (optional)
+%   IP  : whether to use integer programming to exit
+
 %
 % Outputs:
 %   lambda_full  : weights on selected columns (sums to 1)
@@ -27,14 +29,8 @@ function [result_CG,residual] ...
 % -------------------------------------------------------------------------
 
 % Handle optional inputs
-if nargin < 8 || isempty(chosen_alts)
+if nargin < 9 || isempty(chosen_alts)
     error('Error! Need chosen_alts');
-end
-if nargin < 7
-    pricing_mode = 'brute';
-end
-if nargin < 6 || isempty(choice_sets)
-    choice_sets = [];
 end
 
 fprintf('Starting column generation with %d initial columns...\n', init_k);
@@ -93,7 +89,7 @@ while and(exit==0, iter <= max_iters)
     elseif strcmp(pricing_mode, 'bestinsertion_rand')
 
         best_score=inf;
-        for k=1:10
+        for k=1:10 %do random insertion 10 times
             [V_sub_temp,rankings_temp,best_score_temp]= B_CG_heuristic_best_rand(V_sub,n,choice_sets,chosen_alts,result.QP.residual,result.QP.optim_p,rankings,p_obs);
             if best_score_temp < best_score
                 V_sub=V_sub_temp;
@@ -111,34 +107,26 @@ while and(exit==0, iter <= max_iters)
     iter, error_val, best_score, error_improvement);
     % --- Termination Criterion: best_score < 0 (or a small tolerance)
     if best_score < tol
-        fprintf('Convergence Criterion Achieved (best_score < tol)\n');
+        
+        if IP==true
+            fprintf('IP Pricing')
+            [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings); %use IP to make sure the convergence is reached
 
-        [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,tol,V_sub,rankings);
-        if optim_value<tol
-            exit=1;
+            if optim_value<tol
+                exit=1;
+            else
+                exit=0;
+            end
         else
-            exit=0;
+            fprintf('Convergence Criterion Achieved (best_score < tol)\n');
+            exit =1;
         end
             
     end
     
     iter = iter+1;
-    % --- Check convergence ---
-    
 
-    
-    % Convergence condition: Error not improving significantly
-    % ONLY for best insertion and random insertion modes (brute should run until best_score <= 0)
-    %if ~strcmp(pricing_mode, 'brute') && iter > 5 && error_improvement < 1e-12
-    %    fprintf('new_col = -1 | subset_size = %d\n', length(subset_idx));
-    %    fprintf('\nConverged! Error not improving (improvement = %.2e < 1e-12).\n', error_improvement);
-    %    break;
-    %end
-    
-    % Update previous error for next iteration
     prev_error = error_val;
-    
-    % --- Add new column ---
     
 
 end

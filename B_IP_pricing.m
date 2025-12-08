@@ -1,4 +1,28 @@
-function [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(price,choice_sets,chosen_alts,choice_set_list,tol,V_sub,rankings)
+function [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(price,choice_sets,chosen_alts,choice_set_list,V_sub,rankings)
+
+
+%Purpose:
+% This function solves an integer programming pricing problem used in the column generation algorithm for RUM estimation.
+
+%Given a current residual (dual prices) from the restricted master problem, the list of observed choice sets, 
+% it searches over all deterministic preference rankings and associated menu probabilities to maximize the reduced cost (the “price” objective).
+% If the optimal objective value is small (below a tolerance in the calling code), this certifies that no improving column remains and the column generation procedure has converged.
+
+
+% price: vector of “prices” (usually the residuals or dual-like quantities) coming from the restricted master problem. This is the coefficient vector in the objective that the IP maximizes.
+
+% choice_sets: Cell array of choice sets (used for constructing the final optimizer column via C_gen_one_ranking).
+
+%chosen_alts: Vector of actually chosen alternatives for each observation.
+
+% choice_set_list: Cell array of all choice sets over which the probability variables are defined. This is used to count how many choice sets of each size exist, 
+% define probability variables for menus of size ≥ 3, build the linking and simplex constraints on these probabilities.
+
+%tol: Tolerance passed in from the caller. 
+
+%V_sub: Current matrix of selected columns in the restricted master problem. Size: (#observations) × (#current_columns).
+
+%rankings: Current list/matrix of selected deterministic rankings corresponding to the columns in V_sub.
 
 n=max(chosen_alts); %number of alternatives
 
@@ -70,9 +94,8 @@ end
 counter = n*n+1;
 for j =1:size(choice_set_list,1) %for each choice set 
     
-    choice_set_temp=choice_set_list{j} %this choice set
-    choice_set_temp
-    j
+    choice_set_temp=choice_set_list{j}; %this choice set
+
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%binary choice set: don't do anything variables already defined%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,13 +192,10 @@ end
 obj((n*n+1):end)=price(counter:end);
 
 %params.BestObjStop=tol;
+params.OutputFlag=0;
 model.obj = obj;
 model.modelsense = 'max';  
-%result = gurobi(model,params);
-result = gurobi(model);
-
-
-fprintf('here')
+result = gurobi(model,params);
 
 %% returning the rank for the best objective function
 ranking=zeros(1,n);

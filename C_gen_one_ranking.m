@@ -9,7 +9,11 @@ function [V_sub, rankings, subset_idx] = C_gen_one_ranking(p_obs,choice_sets,cho
 %   according to the given_ranking
 %   given_ranking: user input for a determnistic ranking
 
-% Best insertion / random insertion mode: generate init_k random rankings
+% Output:
+%   rankings: randomly generated rankings
+%   V_sub: the corresponding choice probability vecotrs
+%   sub_idx: an index set for the rankings
+
     V_sub = zeros(length(p_obs), 1);
     rankings = zeros(1, n);
     subset_idx = zeros(1, 1);

@@ -27,8 +27,8 @@ remaining_alts = setdiff(1:n, best_ranking);
 %iter=0;
 % Greedily add remaining alternatives
 while ~isempty(remaining_alts)
-    %iter=iter+1;
-    %fprintf('\n Iter %1d:',iter);
+
+    
     best_pos = -1;
     best_pos_score = -Inf;
     best_alt_to_add = -1;
