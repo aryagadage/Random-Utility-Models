@@ -54,7 +54,7 @@ function [results]=B_QP(V,p_obs,display)
     results.QP.success = true; 
     results.QP.residual = p_obs - V_unique* lambda_QP; %residual (prices)
     results.QP.optim_p = V_unique* lambda_QP; %predicted choice probability
-    
+    results.QP.inner_product = sum(results.QP.residual .* results.QP.optim_p);
     if display
     fprintf('✓ Completed in %.2f seconds\n', time_brute);
     fprintf('  - Final error: %.6e\n', error);

@@ -106,13 +106,13 @@ while and(exit==0, iter <= max_iters)
     fprintf('Iter %d | error = %.6f | best_score = %.4f | error_improvement = %.2e |\n ', ...
     iter, error_val, best_score, error_improvement);
     % --- Termination Criterion: best_score < 0 (or a small tolerance)
-    if best_score < tol
-        
+    if best_score < result.QP.inner_product
+        %result.QP.inner_product
         if IP==true
             fprintf('IP Pricing')
             [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings); %use IP to make sure the convergence is reached
-
-            if optim_value<tol
+            %optim_value
+            if optim_value<result.QP.inner_product
                 exit=1;
             else
                 exit=0;
