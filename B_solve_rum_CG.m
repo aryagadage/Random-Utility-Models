@@ -110,7 +110,7 @@ while and(exit==0, iter <= max_iters)
         %result.QP.inner_product
         if IP==true
             fprintf('IP Pricing')
-            [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings); %use IP to make sure the convergence is reached
+            [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings,result.QP.inner_product); %use IP to make sure the convergence is reached
             %optim_value
             if optim_value<result.QP.inner_product
                 exit=1;

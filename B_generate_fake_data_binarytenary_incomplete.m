@@ -1,16 +1,18 @@
-function [p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary(n)
+function [p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary_incomplete(n)
 
-rng(41); % For reproducibility
-binary_fraction=0.5;
-tenary_fraction=0.5;
+%rng(41); % For reproducibility
+binary_fraction=1;
+tenary_fraction=1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%Binary and Tenary Choice Sets%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 binary_max_possible = nchoosek(1:n, 2);  % Maximum possible pairwise comparisons
 tenary_max_possible = nchoosek(1:n, 3);  % Maximum possible pairwise comparisons
-n2=nchoosek(n,2);
-n3=nchoosek(n,3);
+binary_max_possible = binary_max_possible(binary_max_possible(:,1)==1,:);
+tenary_max_possible = tenary_max_possible(tenary_max_possible(:,1)==1,:);
+n2=size(binary_max_possible,1);
+n3=size(tenary_max_possible,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%Sample Choice Sets%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,7 +33,7 @@ p_obs = [];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%Generate Uilities%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-true_utilities = randn(n, 1)*4;
+true_utilities = randn(n, 1)*50;
 fprintf('True utilities: ');
 fprintf('%.3f ', true_utilities);
 fprintf('\n\n');
@@ -51,20 +53,15 @@ for i=1:size(binary_set,1)
 
     % Compute choice probability using logit model
     % P(choose alt1 | {alt1, alt2}) = exp(u1) / (exp(u1) + exp(u2))
-    %u1 = true_utilities(alt1);
-    %u2 = true_utilities(alt2);
+    u1 = true_utilities(alt1);
+    u2 = true_utilities(alt2);
     
-    u1= randn(1, 1);
     
-    u1= randn(1, 1);
-    u2 = randn(1, 1);
-    
-    prob_alt1 = 1/(1+exp(u2-u1));
-    prob_alt2 = 1 - prob_alt1;
+    %prob_alt1 = 1/(1+exp(u2-u1));
+    %prob_alt2 = 1 - prob_alt1;
 
-    %prob_alt1 = 1/(1+exp(u2-u1)) * 0.5 + 1/(1+exp(u1-u2))*0.5;
-    %prob_alt2 = 1 - prob_alt1;    
-    
+    prob_alt1 = 1/(1+exp(u2-u1))* 0.5 + 1/(1+exp(u1-u2))*0.5;
+    prob_alt2 = 1 - prob_alt1;    
     
     % Add both rows (one for each alternative's probability)
     p_obs = [p_obs ;prob_alt1 ;prob_alt2];
@@ -90,17 +87,13 @@ for i=1:size(tenary_set,1)
 
     % Compute choice probability using logit model
     % P(choose alt1 | {alt1, alt2}) = exp(u1) / (exp(u1) + exp(u2))
-    %u1 = true_utilities(alt1);
-    %u2 = true_utilities(alt2);
-    %u3 = true_utilities(alt3);
+    u1 = true_utilities(alt1);
+    u2 = true_utilities(alt2);
+    u3 = true_utilities(alt3);
     
-    u1=randn(1,1);
-    u2=randn(1,1);
-    u3=randn(1,1);
-
-    prob_alt1 = 1/(1+exp(u2-u1)+exp(u3-u1)) * 0.5 + 1/(1+exp(u1-u2)+exp(u1-u3)) * 0.5;
-    prob_alt2 = 1/(1+exp(u1-u2)+exp(u3-u2)) * 0.5 + 1/(1+exp(u2-u1)+exp(u2-u3)) * 0.5;
-    prob_alt3 = 1/(1+exp(u2-u3)+exp(u1-u3)) * 0.5 + 1/(1+exp(u3-u1)+exp(u3-u2)) * 0.5;
+    prob_alt1 = 1/(1+exp(u2-u1)+exp(u3-u1))* 0.5 + 1/(1+exp(u1-u2)+exp(u1-u3)) * 0.5;
+    prob_alt2 = 1/(1+exp(u1-u2)+exp(u3-u2))* 0.5 + 1/(1+exp(u2-u1)+exp(u2-u3)) * 0.5;
+    prob_alt3 = 1/(1+exp(u2-u3)+exp(u1-u3))* 0.5 + 1/(1+exp(u3-u1)+exp(u3-u2)) * 0.5;
     
     % Add both rows (one for each alternative's probability)
     p_obs = [p_obs ;prob_alt1 ; prob_alt2; prob_alt3];
@@ -114,7 +107,7 @@ for i=1:n
     choice_sets{base_iter+i} = 1:n;
     chosen_alts(base_iter+i) = i ;
 
-    prob_temp = 1/sum(exp(true_utilities-true_utilities(i)))* 0.5 + 1/sum(exp(true_utilities(i)-true_utilities))* 0.5;
+    prob_temp = 1/sum(exp(true_utilities-true_utilities(i))); %* 0.5 + 1/sum(exp(true_utilities(i)-true_utilities))* 0.5;
 
     p_obs = [p_obs; prob_temp];
     

@@ -4,16 +4,24 @@ fprintf('Comparing 4 methods - Pure brute, Colgen brute, Colgen Best Insertion, 
 
 % --- Algorithm parameters (same for all methods) ---
 init_k = 1; % number of initial rankings for CGA         
-max_iters = 100; % maximum number of iterations for CGA     
+max_iters = 10000; % maximum number of iterations for CGA     
 tol = 1e-4;  % tolerance for CGA 
 
 % Storage for results
 results = struct();
 
 %% generate choice probabilities
-n=7;
+n=20;
 [p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary(n);
+%[p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary_incomplete(n);
+%[p_obs2,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary_incomplete(n);
 
+%p_obs=p_obs(chosen_alts==1);
+%choice_sets=choice_sets(chosen_alts==1);
+%p_obs2=p_obs2(chosen_alts==1);
+
+
+%B_IP_pricing_incomplete(p_obs,choice_sets,chosen_alts,choice_set_list,[],[]);
 
 % %% METHOD 1: PURE BRUTE FORCE with LSQLIN
 % fprintf('\n[1/5] Pure Brute Force Method\n');

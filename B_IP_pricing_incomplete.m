@@ -1,4 +1,4 @@
-function [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(price,choice_sets,chosen_alts,choice_set_list,V_sub,rankings,lb)
+function []=B_IP_pricing_incomplete(price,choice_sets,chosen_alts,choice_set_list,V_sub,rankings)
 
 
 %Purpose:
@@ -38,9 +38,7 @@ for i=1:size(choice_set_list,1)
 end
 
 % number of probability variables
-nvars= n^2 + sum(num_choice_set_size(3:end).* (3:n));
-num_D = sum(num_choice_set_size); %number of choice set
-
+nvars= n^2 + sum(num_choice_set_size(3:end));
 %initalize random variables
 model.vtype=repmat('B', 1, nvars);
 model.lb = zeros(1,nvars);
@@ -103,70 +101,36 @@ for j =1:size(choice_set_list,1) %for each choice set
     if size(choice_set_temp,2)==2
         continue
     else
-        
-       choice_set_size_temp=size(choice_set_temp,2);
+    
+    choice_set_size_temp=size(choice_set_temp,2);
 
-       for k=1:choice_set_size_temp
 
-           %the probability of choosing choice_set_temp(k) is upper bounded
-           %by the p(D,k)\leq x_{kj} to p(D,k) -x_{kj} \leq 0
+       %the probability of choosing choice_set_temp(k) is upper bounded
+       %by the p(D,k)\leq x_{kj} to p(D,k) -x_{kj} \leq 0
 
-           element_temp=choice_set_temp(k);        
+    element_temp=choice_set_temp(1);        
            
-           set_diff_temp = setdiff(choice_set_temp,element_temp); %all other elements
+    set_diff_temp = setdiff(choice_set_temp,element_temp); %all other elements
 
-           for l=1:size(set_diff_temp,2)
+    for l=1:size(set_diff_temp,2)
                   
-                row_temp = sparse(1, nvars);
-                
-                row_temp(index(element_temp,set_diff_temp(l),n))=-1;
+        row_temp = sparse(1, nvars);
+        row_temp(index(element_temp,set_diff_temp(l),n))=-1;
 
-                row_temp(counter)=1;
+        row_temp(counter)=1;
 
-                A = [A; row_temp];
+        A = [A; row_temp];
 
-                rhs = [rhs; 0];
+        rhs = [rhs; 0];
 
-                sense = [sense; '<'];
+        sense = [sense; '<'];
 
-
-           end
-                counter=counter+1;
 
     end
+        counter=counter+1;
     
     end
 end
-
-%% Probability Simplex Constraint
-% p(D,j)\leq x_{jk} forall k \not = j 
-counter = n*n+1;
-for j =1:size(choice_set_list,1) %for each choice set 
-    
-    choice_set_temp=choice_set_list{j}; %this choice set
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%binary choice set: don't do anything variables already defined%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    if size(choice_set_temp,2)==2
-        continue
-    else
-        
-       choice_set_size_temp=size(choice_set_temp,2);
-
-       row_temp = sparse(1,nvars);
-
-       row_temp(counter:(counter+choice_set_size_temp-1))=1;
-       
-       A = [A; row_temp];
-       rhs = [rhs; 1];
-       sense = [sense; '='];
-
-       counter = counter + choice_set_size_temp;
-       
-    end
-end
-
 
 
 model.A = A;
@@ -182,8 +146,8 @@ for j =1:size(choice_set_list,1) %for each choice set
     if size(choice_set_temp,2)==2
         
         obj(index(choice_set_temp(1),choice_set_temp(2),n))=price(counter);
-        obj(index(choice_set_temp(2),choice_set_temp(1),n))=price(counter+1);
-        counter = counter + 2;
+        obj(index(choice_set_temp(2),choice_set_temp(1),n))=1-price(counter);
+        counter = counter + 1;
 
     end
 end
@@ -191,12 +155,13 @@ end
 
 obj((n*n+1):end)=price(counter:end);
 
-params.BestObjStop=lb;
-%params.OutputFlag=1;
+%params.BestObjStop=tol;
+params.OutputFlag=1;
 model.obj = obj;
 model.modelsense = 'max';  
 result = gurobi(model,params);
 
+%{
 %% returning the rank for the best objective function
 ranking=zeros(1,n);
 counter=1;
@@ -217,5 +182,6 @@ optim_value=result.objbound;
 %update choice probability matrix and the rankings
 V_sub = [V_sub, optimizer];
 rankings = [rankings; ranking];
+%}
 
 end
