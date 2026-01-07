@@ -194,7 +194,7 @@ params=[];
 if isempty(lb)==0
     params.BestObjStop=lb;
 end
-params.OutputFlag=0;
+params.OutputFlag=1;
 model.obj = obj;
 model.modelsense = 'max';  
 result = gurobi(model,params);
@@ -204,10 +204,9 @@ ranking=zeros(1,n);
 counter=1;
 ranking_x=result.x(1:n^2);
 for i=1:n
-    
-    %counter:(counter+n-1)
-    %counter+i-1
-    rank_temp= n-sum(ranking_x( counter:(counter+n-1)))+ranking_x(counter+i-1);
+    counter:(counter+n-1)
+    counter+i-1
+    rank_temp= n-sum(ranking_x( counter:(counter+n-1)))+ranking_x(counter+i-1)
     
     ranking(rank_temp)=i;
 
@@ -219,6 +218,7 @@ end
 %optimizer
 optim_value=result.objbound;
 [optimizer, ~, ~]=C_gen_one_ranking(price,choice_sets,chosen_alts,n,'deterministic',ranking);
+optimizer'*price
 
 %update choice probability matrix and the rankings
 V_sub = [V_sub, optimizer];

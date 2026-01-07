@@ -18,7 +18,6 @@ function [V_sub, rankings, subset_idx] = C_gen_one_ranking(p_obs,choice_sets,cho
     rankings = zeros(1, n);
     subset_idx = zeros(1, 1);
     
-
     % Generate a random ranking
     if strcmp(mode,'random')
         ranking_temp = randperm(n);
@@ -33,6 +32,7 @@ function [V_sub, rankings, subset_idx] = C_gen_one_ranking(p_obs,choice_sets,cho
 
     %create  choice_vector
     for s = 1:length(choice_sets)
+     
         set_alts = choice_sets{s};
             
         % Find positions of each alternative in random_ranking
