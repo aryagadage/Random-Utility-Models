@@ -11,7 +11,7 @@ tol = 1e-4;  % tolerance for CGA
 results = struct();
 
 %% generate choice probabilities
-n=20;
+n=24;
 [p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary(n);
 %[p_obs,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary_incomplete(n);
 %[p_obs2,choice_sets,chosen_alts,choice_set_list]=B_generate_fake_data_binarytenary_incomplete(n);

@@ -194,7 +194,7 @@ params=[];
 if isempty(lb)==0
     params.BestObjStop=lb;
 end
-params.OutputFlag=0;
+params.OutputFlag=1;
 model.obj = obj;
 model.modelsense = 'max';  
 result = gurobi(model,params);
