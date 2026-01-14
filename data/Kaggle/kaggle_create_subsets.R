@@ -3,7 +3,7 @@ args <- commandArgs(trailingOnly = TRUE)
 this_index=as.integer(args[1])
 
 #load data
-data=read.csv("clicks_train.csv")
+data=read.csv("C:/Users/hgcha/OneDrive/Documents/clicks_train.csv")
 
 #counts data
 counts=data %>%  group_by(display_id) %>% count()
@@ -23,7 +23,7 @@ find_contained_subsets=function(target_ads){
   target_len <- length(target_ads)
   
   # 1) filter contained display_ids WITHOUT constructing set_id
-  contained_ids <- data %>%
+  contained_subsets <- data %>%
     group_by(display_id) %>%
     summarise(
       n    = n(),
@@ -34,16 +34,22 @@ find_contained_subsets=function(target_ads){
     pull(display_id)
   
   
-  contained_distinct_patterns <- data %>%
-    filter(display_id %in% contained_ids) %>%
-    group_by(display_id) %>%
-    summarise(
-      set_id = paste(sort(unique(ad_id)), collapse = "_"),
-      .groups = "drop"
-    )%>%
-    distinct(set_id) 
   
-  return(contained_distinct_patterns)
+  #2) map ad_ids to 
+  ad_map <- data %>%
+    distinct(ad_id) %>%
+    arrange(ad_id) %>%
+    mutate(ad_idx = row_number())
+  
+  # 2)
+  #
+  map_tbl <- patterns %>%
+    mutate(set_idx = match(set_id, unique(set_id))) %>%
+    select(set_idx, set_id)
+  
+  contained_distinct_patterns <- map_tbl %>% select(set_idx)
+  
+  return(list(patterns = contained_distinct_patterns, map = map_tbl))
 }
 
 ############################################################################
