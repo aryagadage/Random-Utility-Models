@@ -259,6 +259,7 @@ for label, upc_file, mov_zip, n_upcs in all_cats:
         })
         store_results.append({
             "Category": label,
+            "N_UPCs": n_upcs,
             "N_Stores": n_stores,
             "Avg_Products_Per_Store": round(avg_products_store, 2) if not math.isnan(avg_products_store) else "NA",
             "SD_Products_Per_Store": round(sd_products_store, 2) if not math.isnan(sd_products_store) else "NA",
@@ -275,6 +276,7 @@ for label, upc_file, mov_zip, n_upcs in all_cats:
         })
         store_results.append({
             "Category": label,
+            "N_UPCs": n_upcs,
             "N_Stores": "ERROR",
             "Avg_Products_Per_Store": "ERROR",
             "SD_Products_Per_Store": "ERROR",
@@ -308,19 +310,19 @@ print(f"\nSaved comprehensive overview to {out_path}\n")
 store_results.sort(key=lambda x: x["N_Stores"] if isinstance(x["N_Stores"], int) else 0, reverse=True)
 
 print("\n=== Store-Level Product Statistics ===\n")
-store_hdr = f"{'Category':<20} {'N_Stores':>9} {'Avg_Products/Store':>18} {'SD_Products/Store':>18}"
+store_hdr = f"{'Category':<20} {'N_UPCs':>8} {'N_Stores':>9} {'Avg_Products/Store':>18} {'SD_Products/Store':>18}"
 print(store_hdr)
 print("-" * len(store_hdr))
 for r in store_results:
     print(
-        f"{r['Category']:<20} {str(r['N_Stores']):>9} "
+        f"{r['Category']:<20} {str(r['N_UPCs']):>8} {str(r['N_Stores']):>9} "
         f"{str(r['Avg_Products_Per_Store']):>18} {str(r['SD_Products_Per_Store']):>18}"
     )
 
 store_out_path = "store_product_variation.csv"
 with open(store_out_path, "w", newline="") as f:
     writer = csv.DictWriter(
-        f, fieldnames=["Category", "N_Stores", "Avg_Products_Per_Store", "SD_Products_Per_Store"]
+        f, fieldnames=["Category", "N_UPCs", "N_Stores", "Avg_Products_Per_Store", "SD_Products_Per_Store"]
     )
     writer.writeheader()
     writer.writerows(store_results)
