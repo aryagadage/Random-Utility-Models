@@ -98,6 +98,8 @@ def movement_stats(rows):
         return None
 
     prices, zero_count, stores, weeks = [], 0, set(), set()
+    store_upcs = {}  # Track UPCs per store
+    
     for r in rows:
         move_s = col(r, "MOVE", "move") or "0"
         try:
@@ -117,8 +119,16 @@ def movement_stats(rows):
 
         store = col(r, "STORE", "store") or ""
         week  = col(r, "WEEK", "week") or ""
+        upc = col(r, "UPC", "upc") or ""
+        
         if store:
             stores.add(store)
+            # Track UPCs per store
+            if store not in store_upcs:
+                store_upcs[store] = set()
+            if upc:
+                store_upcs[store].add(upc)
+                
         if week:
             weeks.add(week)
 
@@ -130,7 +140,20 @@ def movement_stats(rows):
 
     total = len(rows)
     pct_zero = zero_count / total if total else float("nan")
-    return sd, pct_zero, len(stores), len(weeks)
+    
+    # Calculate products per store statistics
+    if store_upcs:
+        products_per_store = [len(upcs) for upcs in store_upcs.values()]
+        avg_products_per_store = sum(products_per_store) / len(products_per_store)
+        if len(products_per_store) >= 2:
+            sd_products = math.sqrt(sum((p - avg_products_per_store) ** 2 for p in products_per_store) / (len(products_per_store) - 1))
+        else:
+            sd_products = float("nan")
+    else:
+        avg_products_per_store = float("nan")
+        sd_products = float("nan")
+    
+    return sd, pct_zero, len(stores), len(weeks), avg_products_per_store, sd_products
 
 # ── Step 1: UPC counts ────────────────────────────────────────────────────────
 print("\n=== Step 1: Downloading UPC files ===\n")
@@ -154,12 +177,70 @@ print("-" * 38)
 for rank, (label, _, _, n) in enumerate(upc_counts, 1):
     print(f"{rank:<5} {label:<20} {n:>10,}")
 
-# ── Step 2: Movement stats for all categories ────────────────────────────────
+# ── Step 2: Movement stats for top 8 (ORIGINAL CODE - COMMENTED OUT) ──────────
+# top8 = [x for x in upc_counts if x[3] > 0][:8]
+# print(f"\n=== Top 8: {[x[0] for x in top8]} ===\n")
+# print("=== Step 2: Downloading movement ZIPs (sampling 100k rows each) ===\n")
+#
+# results = []
+# for label, upc_file, mov_zip, n_upcs in top8:
+#     url = MOV_BASE + mov_zip
+#     try:
+#         zip_bytes = fetch_bytes(url, f"{label} movement ({mov_zip})")
+#         csv_bytes = extract_csv_from_zip(zip_bytes)
+#         rows = sample_movement(csv_bytes)
+#         print(f"    -> {len(rows):,} rows sampled")
+#         sd, pct_zero, n_stores, n_weeks, avg_products_store, sd_products_store = movement_stats(rows)
+#         results.append({
+#             "Category": label,
+#             "N_UPCs": n_upcs,
+#             "Price_SD": round(sd, 4) if not math.isnan(sd) else "NA",
+#             "Pct_Zero_Sales": round(pct_zero, 4),
+#             "N_Stores": n_stores,
+#             "N_Weeks": n_weeks,
+#         })
+#     except Exception as e:
+#         print(f"    ERROR: {e}")
+#         results.append({
+#             "Category": label,
+#             "N_UPCs": n_upcs,
+#             "Price_SD": "ERROR",
+#             "Pct_Zero_Sales": "ERROR",
+#             "N_Stores": "ERROR",
+#             "N_Weeks": "ERROR",
+#         })
+#
+# # ── Step 3: Print and save final table ───────────────────────────────────────
+# results.sort(key=lambda x: x["N_UPCs"] if isinstance(x["N_UPCs"], int) else 0, reverse=True)
+#
+# print("\n=== Final Ranked Table ===\n")
+# hdr = f"{'Category':<20} {'N_UPCs':>8} {'Price_SD':>10} {'Pct_Zero_Sales':>15} {'N_Stores':>9} {'N_Weeks':>8}"
+# print(hdr)
+# print("-" * len(hdr))
+# for r in results:
+#     print(
+#         f"{r['Category']:<20} {r['N_UPCs']:>8,} "
+#         f"{str(r['Price_SD']):>10} {str(r['Pct_Zero_Sales']):>15} "
+#         f"{str(r['N_Stores']):>9} {str(r['N_Weeks']):>8}"
+#     )
+#
+# out_path = "category_comparison.csv"
+# with open(out_path, "w", newline="") as f:
+#     writer = csv.DictWriter(
+#         f, fieldnames=["Category", "N_UPCs", "Price_SD", "Pct_Zero_Sales", "N_Stores", "N_Weeks"]
+#     )
+#     writer.writeheader()
+#     writer.writerows(results)
+#
+# print(f"\nSaved to {out_path}\n")
+
+# ── Step 3: Movement stats for all categories ────────────────────────────────
 all_cats = [x for x in upc_counts if x[3] > 0]
 print(f"\n=== Processing all {len(all_cats)} categories ===\n")
-print("=== Step 2: Downloading movement ZIPs (sampling 100k rows each) ===\n")
+print("=== Step 3: Downloading movement ZIPs (sampling 100k rows each) ===\n")
 
 results = []
+store_results = []
 for label, upc_file, mov_zip, n_upcs in all_cats:
     url = MOV_BASE + mov_zip
     try:
@@ -167,7 +248,7 @@ for label, upc_file, mov_zip, n_upcs in all_cats:
         csv_bytes = extract_csv_from_zip(zip_bytes)
         rows = sample_movement(csv_bytes)
         print(f"    -> {len(rows):,} rows sampled")
-        sd, pct_zero, n_stores, n_weeks = movement_stats(rows)
+        sd, pct_zero, n_stores, n_weeks, avg_products_store, sd_products_store = movement_stats(rows)
         results.append({
             "Category": label,
             "N_UPCs": n_upcs,
@@ -175,6 +256,12 @@ for label, upc_file, mov_zip, n_upcs in all_cats:
             "Pct_Zero_Sales": round(pct_zero, 4),
             "N_Stores": n_stores,
             "N_Weeks": n_weeks,
+        })
+        store_results.append({
+            "Category": label,
+            "N_Stores": n_stores,
+            "Avg_Products_Per_Store": round(avg_products_store, 2) if not math.isnan(avg_products_store) else "NA",
+            "SD_Products_Per_Store": round(sd_products_store, 2) if not math.isnan(sd_products_store) else "NA",
         })
     except Exception as e:
         print(f"    ERROR: {e}")
@@ -186,8 +273,14 @@ for label, upc_file, mov_zip, n_upcs in all_cats:
             "N_Stores": "ERROR",
             "N_Weeks": "ERROR",
         })
+        store_results.append({
+            "Category": label,
+            "N_Stores": "ERROR",
+            "Avg_Products_Per_Store": "ERROR",
+            "SD_Products_Per_Store": "ERROR",
+        })
 
-# ── Step 3: Print and save final table ───────────────────────────────────────
+# ── Step 4: Print and save final table ───────────────────────────────────────
 results.sort(key=lambda x: x["N_UPCs"] if isinstance(x["N_UPCs"], int) else 0, reverse=True)
 
 print("\n=== Final Ranked Table ===\n")
@@ -210,3 +303,26 @@ with open(out_path, "w", newline="") as f:
     writer.writerows(results)
 
 print(f"\nSaved comprehensive overview to {out_path}\n")
+
+# ── Step 5: Save store-level product statistics ──────────────────────────────
+store_results.sort(key=lambda x: x["N_Stores"] if isinstance(x["N_Stores"], int) else 0, reverse=True)
+
+print("\n=== Store-Level Product Statistics ===\n")
+store_hdr = f"{'Category':<20} {'N_Stores':>9} {'Avg_Products/Store':>18} {'SD_Products/Store':>18}"
+print(store_hdr)
+print("-" * len(store_hdr))
+for r in store_results:
+    print(
+        f"{r['Category']:<20} {str(r['N_Stores']):>9} "
+        f"{str(r['Avg_Products_Per_Store']):>18} {str(r['SD_Products_Per_Store']):>18}"
+    )
+
+store_out_path = "store_product_variation.csv"
+with open(store_out_path, "w", newline="") as f:
+    writer = csv.DictWriter(
+        f, fieldnames=["Category", "N_Stores", "Avg_Products_Per_Store", "SD_Products_Per_Store"]
+    )
+    writer.writeheader()
+    writer.writerows(store_results)
+
+print(f"\nSaved store-level statistics to {store_out_path}\n")
