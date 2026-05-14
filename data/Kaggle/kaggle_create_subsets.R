@@ -3,7 +3,7 @@ args <- commandArgs(trailingOnly = TRUE)
 this_index=as.integer(args[1])
 
 #load data
-data=read.csv("C:/Users/hgcha/OneDrive/Documents/clicks_train.csv")
+data=read.csv("/Users/haoge/Desktop/clicks_train.csv")
 
 #counts data
 counts=data %>%  group_by(display_id) %>% count()
@@ -22,7 +22,7 @@ find_contained_subsets=function(target_ads){
   target_ads <- unique(target_ads)
   target_len <- length(target_ads)
   
-  # 1) filter contained display_ids WITHOUT constructing set_id
+  # 1) filter contained display_ids
   contained_subsets <- data %>%
     group_by(display_id) %>%
     summarise(
@@ -33,23 +33,43 @@ find_contained_subsets=function(target_ads){
     filter(n == n_in, n < target_len) %>%
     pull(display_id)
   
+  # 2) subset data based on the filtered id
+  data_subset <- data %>%
+    filter(display_id %in% contained_subsets)
   
-  
-  #2) map ad_ids to 
-  ad_map <- data %>%
+  # 3) map ad_ids to index 
+  ad_map <- data_subset %>%
     distinct(ad_id) %>%
     arrange(ad_id) %>%
     mutate(ad_idx = row_number())
   
-  # 2)
-  #
-  map_tbl <- patterns %>%
-    mutate(set_idx = match(set_id, unique(set_id))) %>%
-    select(set_idx, set_id)
+  data_subset <- data_subset %>%
+    left_join(ad_map, by = "ad_id")
   
-  contained_distinct_patterns <- map_tbl %>% select(set_idx)
+  # 4) distinct choice set patterns
+  set_id_by_display <- data_subset %>%
+    filter(display_id %in% contained_subsets) %>%
+    group_by(display_id) %>%
+    summarise(
+      set_id = paste(sort(unique(ad_idx)), collapse = "_"),
+      .groups = "drop"
+    )
   
-  return(list(patterns = contained_distinct_patterns, map = map_tbl))
+  # 5) Merge data with choice set patterns
+  data_subset <- data_subset %>%
+    left_join(set_id_by_display,by='display_id')
+  
+  # 6) choice probabilities
+  choice_set_probabilities <- data_subset %>%
+    filter(!is.na(set_id)) %>%
+    group_by(set_id, ad_idx) %>%
+    summarise(
+      freq_rows   = n(),                        # total observations (rows) for (set_id, ad_idx)
+      avg_clicked = mean(clicked, na.rm = TRUE),# optional: example average
+      .groups = "drop"
+    )
+  
+  return(list(data = choice_set_probabilities, map = ad_map,choice_set=set_id_by_display))
 }
 
 ############################################################################
@@ -57,7 +77,6 @@ find_contained_subsets=function(target_ads){
 ############################################################################
 alt_13405649_15976803=unique(data[which(data$display_id %in% c(13405649,15976803)),2])
 pattern_13405649_15976803=find_contained_subsets(alt_13405649_15976803)
-
 
 
 ############################################################################
