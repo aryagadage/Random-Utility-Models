@@ -1,0 +1,5 @@
+SLURM_JOBID:  58254196
+SLURM_ARRAY_TASK_ID:  22
+SLURM_ARRAY_JOB_ID:  58254188
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
