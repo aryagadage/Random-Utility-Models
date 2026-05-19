@@ -1,9 +1,18 @@
-function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol, time_limit_s)
+function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol, time_limit_s, iptimes_path, seed_id)
 % Optional 11th arg time_limit_s: wall-time budget in seconds for the
 % entire CG run (Inf = no cap). Checked at iteration boundaries; the
 % remaining budget is also passed to B_IP_pricing as Gurobi TimeLimit
 % so individual IP solves cannot exceed it either.
+%
+% Optional 12th/13th args iptimes_path, seed_id: if iptimes_path is a
+% non-empty char/string, this function appends one CSV row per IP
+% pricing call to that file (columns: n,seed,iter,ip_total_s,
+% ip_solve_s,gurobi_runtime_s). Each row is fclosed before the next
+% gurobi() call, so a hard kill anywhere after B_IP_pricing returns
+% still leaves a durable record of the IP cost up to that point.
 if nargin < 11 || isempty(time_limit_s), time_limit_s = Inf; end
+if nargin < 12, iptimes_path = ''; end
+if nargin < 13 || isempty(seed_id), seed_id = -1; end
 % B_solve_rum_CG
 % -------------------------------------------------------------------------
 % Column generation solver for discrete choice RUM problem.
@@ -141,6 +150,7 @@ while and(exit==0, iter <= max_iters)
         ip_gurobi_runtimes(end+1) = gr;      %#ok<AGROW>
         fprintf('  IP pricing time: %.4f s (solve %.4f s, gurobi.runtime %.4f s)\n', ...
             ip_time, sw, gr);
+        append_iptimes_row(iptimes_path, n, seed_id, iter, ip_time, sw, gr);
         best_score = optim_value - result.QP.inner_product;
     end
 
@@ -167,6 +177,7 @@ while and(exit==0, iter <= max_iters)
             ip_gurobi_runtimes(end+1) = gr;      %#ok<AGROW>
             fprintf('  IP-exit pricing time: %.4f s (solve %.4f s, gurobi.runtime %.4f s)\n', ...
                 ip_time, sw, gr);
+            append_iptimes_row(iptimes_path, n, seed_id, iter, ip_time, sw, gr);
             %optim_value
 
             if optim_value<result.QP.inner_product+tol
@@ -204,4 +215,19 @@ result_CG.ip_gurobi_runtimes = ip_gurobi_runtimes;   % per-call result.runtime (
 result_CG.n_iters            = iter - 1;
 result_CG.timed_out          = timed_out;
 residual=result.QP.residual;
+end
+
+
+% =========================================================================
+%  Streaming per-IP-call CSV writer (durable across SLURM kill)
+% =========================================================================
+function append_iptimes_row(iptimes_path, n, seed_id, iter, ip_total, ip_solve, gurobi_runtime)
+if isempty(iptimes_path), return; end
+fid = fopen(iptimes_path, 'a');
+if fid < 0
+    warning('append_iptimes_row: could not open %s for append', iptimes_path);
+    return;
+end
+fprintf(fid, '%d,%d,%d,%.6f,%.6f,%.6f\n', n, seed_id, iter, ip_total, ip_solve, gurobi_runtime);
+fclose(fid);   % flush to disk before returning
 end

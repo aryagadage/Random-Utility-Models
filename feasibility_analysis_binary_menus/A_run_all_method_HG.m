@@ -27,8 +27,18 @@ assert(isfinite(n) && n == round(n) && n >= 2, ...
 
 fprintf('RUM estimation on all-binary-menu synthetic data (n = %d)\n', n);
 
-%% ---- Dependencies (C_gen_V_full, B_QP, ...) ---------------------------
-addpath('/Users/haoge/Dropbox/Research/admm-random-utility-model/Code_CGFW_0114');
+script_dir = fileparts(mfilename('fullpath'));
+
+%% ---- Gurobi MATLAB interface (cluster: set by `module load Gurobi/...`) -
+gurobi_home = getenv('GUROBI_HOME');
+if ~isempty(gurobi_home)
+    addpath(fullfile(gurobi_home, 'matlab'));
+end
+if ~exist('gurobi', 'file')
+    error('A_run_all_method_HG:NoGurobi', ...
+        ['gurobi() not on MATLAB path. On the cluster make sure ' ...
+         '`module load Gurobi/...` ran before MATLAB started.']);
+end
 
 %% ---- Configuration ----------------------------------------------------
 n_seeds      = 5;
@@ -37,18 +47,24 @@ n_seeds      = 5;
 init_k       = 1;
 max_iters    = Inf;
 tol          = 1e-4;
-csv_budget_s = 3600;
+csv_budget_s = 86400 * 7;   % per-seed wall-time cap (7 days)
 pricing_mode = 'IP';
 
 %% ---- Paths ------------------------------------------------------------
-script_dir = fileparts(mfilename('fullpath'));
 out_dir    = fullfile(script_dir, 'results_runs');
 if ~exist(out_dir, 'dir'), mkdir(out_dir); end
 
 tag          = sprintf('n%03d', n);
-summary_path = fullfile(out_dir, ['run_summary_' tag '.csv']);
-log_path     = fullfile(out_dir, ['run_log_'     tag '.txt']);
-details_path = fullfile(out_dir, ['run_details_' tag '.mat']);
+summary_path = fullfile(out_dir, ['run_summary_'  tag '.csv']);
+log_path     = fullfile(out_dir, ['run_log_'      tag '.txt']);
+details_path = fullfile(out_dir, ['run_details_'  tag '.mat']);
+iptimes_path = fullfile(out_dir, ['run_iptimes_'  tag '.csv']);
+
+% Initialise streaming per-IP-call CSV (one row per gurobi() call, flushed
+% immediately so a SLURM kill leaves a durable record of IP cost).
+fid = fopen(iptimes_path, 'w');
+fprintf(fid, 'n,seed,iter,ip_total_s,ip_solve_s,gurobi_runtime_s\n');
+fclose(fid);
 
 % Diary (per-n, no shared file)
 if exist(log_path, 'file'), delete(log_path); end
@@ -56,8 +72,8 @@ diary(log_path);
 diary on;
 cleanup = onCleanup(@() diary('off'));
 
-fprintf('Running %d seeds. Outputs:\n  %s\n  %s\n  %s\n\n', ...
-    n_seeds, summary_path, log_path, details_path);
+fprintf('Running %d seeds. Outputs:\n  %s\n  %s\n  %s\n  %s\n\n', ...
+    n_seeds, summary_path, log_path, details_path, iptimes_path);
 
 %% ---- Environment info (constant across seeds) -------------------------
 env_info = get_env_info();
@@ -158,7 +174,7 @@ for seed = 1:n_seeds
     try
         [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
             choice_sets, pricing_mode, chosen_alts, choice_set_list, ...
-            true, tol, csv_budget_s);
+            true, tol, csv_budget_s, iptimes_path, seed);
 
         total_time(row)   = toc(t0);
         err_col(row)      = res.QP.error;

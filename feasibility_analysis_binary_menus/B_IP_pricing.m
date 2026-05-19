@@ -42,9 +42,16 @@ ip_model.modelsense = 'max';
 
 %% Solve ----------------------------------------------------------------
 params = [];
-params.OutputFlag = 1;
+params.OutputFlag = 0;   % suppress per-call Gurobi log on cluster
 if isfinite(time_limit_s)
     params.TimeLimit = time_limit_s;
+end
+
+% Pin Gurobi to the cores actually allocated to this SLURM task (else
+% Gurobi defaults to all visible cores and may oversubscribe the cgroup).
+cpt = getenv('SLURM_CPUS_PER_TASK');
+if ~isempty(cpt)
+    params.Threads = str2double(cpt);
 end
 t_solve = tic;
 result         = gurobi(ip_model, params);
