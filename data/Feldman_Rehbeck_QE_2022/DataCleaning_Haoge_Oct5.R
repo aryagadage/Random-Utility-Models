@@ -1,6 +1,6 @@
 library(dplyr)
 
-path='/Users/haoge/Dropbox/Research/RUM_Testing/Dataset/FeldmanRehbeck_QE_2022/'
+path='/Users/haoge/Dropbox/Research/Random-Utility-Models/data/Feldman_Rehbeck_QE_2022/'
 setwd(path)
 
 #import dataaset
