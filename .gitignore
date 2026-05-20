@@ -1,1 +1,8 @@
-*.csv
+# Raw Dominick's data dumps (each file >100 MB — exceeds GitHub's hard limit)
+Dominicks/data/**/*.csv
+
+# Bulk choice-frequency intermediates (some >100 MB)
+Dominicks/scripts/results_choice_freq/*.csv
+
+# Large legacy oatmeal analysis (woat.csv ~78 MB)
+Dominicks/oatmeal_old_analysis/*.csv
