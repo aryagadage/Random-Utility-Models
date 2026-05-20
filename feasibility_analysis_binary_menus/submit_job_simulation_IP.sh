@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=sample
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #SBATCH --nodes=1
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=haoge.chang@yale.edu
 #SBATCH --partition=week
 #SBATCH --time=7-00:00:00
-#SBATCH --array=15-100
-#SBATCH --mem=32G
+#SBATCH --array=15-50
+#SBATCH --mem=64G
 echo "SLURM_JOBID: " $SLURM_JOBID
 echo "SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
 echo "SLURM_ARRAY_JOB_ID: " $SLURM_ARRAY_JOB_ID

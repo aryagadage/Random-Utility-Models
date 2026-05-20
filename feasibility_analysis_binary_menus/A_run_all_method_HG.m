@@ -46,7 +46,7 @@ n_seeds      = 5;
 % Algorithm parameters
 init_k       = 1;
 max_iters    = Inf;
-tol          = 1e-4;
+tol          = 1e-2;   % Frank-Wolfe relative distance gap tolerance
 csv_budget_s = 86400 * 7;   % per-seed wall-time cap (7 days)
 pricing_mode = 'IP';
 

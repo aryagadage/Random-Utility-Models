@@ -1,0 +1,2985 @@
+Found CSV: group013_PaperTowels_store142.csv  (category=PaperTowels, store=142)
+Outputs:
+  /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g013.csv
+  /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g013.txt
+  /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g013.mat
+  /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g013.csv
+
+Host: Haoges-iMac.local
+CPU:  Apple M1
+OS:   MACI64 | logical cores: 8 | MATLAB: 23.2.0.2365128 (R2023b)
+
+n = 35 alternatives | 271 observations | 9 unique menus | menu sizes 28..32
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 271 provided choice sets
+✓ 271 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.05s (nvars=1496, ncons=21600)
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86397.555582626
+Set parameter BestBdStop to value -8.6186739336346943e+00
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86397.555582626
+BestBdStop  -8.6186739336346943e+00
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xe31b084d
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 1689 rows and 668 columns
+Presolve time: 0.19s
+Presolved: 19911 rows, 828 columns, 53127 nonzeros
+Variable types: 0 continuous, 828 integer (828 binary)
+Root relaxation presolved: 13366 rows, 7373 columns, 40037 nonzeros
+
+
+Root relaxation: objective 1.191162e+00, 200 iterations, 0.05 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    1.19116    0   75    0.24868    1.19116   379%     -    0s
+H    0     0                       0.7140897    1.19116  66.8%     -    0s
+H    0     0                       0.7644494    1.19116  55.8%     -    0s
+     0     0    0.92664    0   39    0.76445    0.92664  21.2%     -    0s
+     0     0    0.90721    0   43    0.76445    0.90721  18.7%     -    0s
+     0     0    0.88485    0   73    0.76445    0.88485  15.8%     -    0s
+     0     0    0.86493    0   90    0.76445    0.86493  13.1%     -    0s
+     0     0    0.85072    0  109    0.76445    0.85072  11.3%     -    0s
+     0     0     cutoff    0         0.76445    0.76445  0.00%     -    0s
+
+Cutting planes:
+  Clique: 4
+  MIR: 2
+  Zero half: 1
+
+Explored 1 nodes (1001 simplex iterations) in 0.52 seconds (0.60 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.764449 0.71409 0.248682 
+No other solutions better than 0.764449
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 7.644493987113e-01, best bound 7.644493987113e-01, gap 0.0000%
+  IP pricing time: 0.8442 s (solve 0.8209 s, gurobi.runtime 0.5341 s)
+Iter 1 | error = 9.120147 | best_score = 9.4730e+00 | FW gap = Inf | min = 9.4730e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86396.643980917
+Set parameter BestBdStop to value -3.9313026007282343e+00
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86396.643980917
+BestBdStop  -3.9313026007282343e+00
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x11cdc012
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 5e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 1950 rows and 677 columns
+Presolve time: 0.20s
+Presolved: 19650 rows, 819 columns, 52596 nonzeros
+Variable types: 0 continuous, 819 integer (819 binary)
+Root relaxation presolved: 13105 rows, 7364 columns, 39506 nonzeros
+
+
+Root relaxation: objective 1.150774e+00, 180 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    1.15077    0   56    0.24868    1.15077   363%     -    0s
+H    0     0                       0.6218553    1.15077  85.1%     -    0s
+H    0     0                       0.6799919    1.15077  69.2%     -    0s
+H    0     0                       0.6830916    1.15077  68.5%     -    0s
+     0     0    0.97205    0   52    0.68309    0.97205  42.3%     -    0s
+     0     0    0.97205    0   46    0.68309    0.97205  42.3%     -    0s
+     0     0    0.97205    0   51    0.68309    0.97205  42.3%     -    0s
+     0     0    0.97205    0   51    0.68309    0.97205  42.3%     -    0s
+     0     0    0.97205    0   46    0.68309    0.97205  42.3%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 17
+  MIR: 7
+  Zero half: 19
+
+Explored 1 nodes (542 simplex iterations) in 0.51 seconds (0.58 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.683092 0.679992 0.621855 0.248682 
+No other solutions better than 0.683092
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.830915698956e-01, best bound 6.830915698956e-01, gap 0.0000%
+  IP pricing time: 0.5682 s (solve 0.5608 s, gurobi.runtime 0.5216 s)
+Iter 2 | error = 4.134744 | best_score = 4.6551e+00 | FW gap = Inf | min = 4.6551e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6396052359041991e+04
+Set parameter BestBdStop to value -2.3954071576747697e+00
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6396052359041991e+04
+BestBdStop  -2.3954071576747697e+00
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xcbd3b2e6
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 3e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 2182 rows and 685 columns
+Presolve time: 0.54s
+Presolved: 19418 rows, 811 columns, 52124 nonzeros
+Variable types: 0 continuous, 811 integer (811 binary)
+Root relaxation presolved: 12873 rows, 7356 columns, 39034 nonzeros
+
+
+Root relaxation: objective 1.014982e+00, 156 iterations, 0.05 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    1.01498    0   46    0.24868    1.01498   308%     -    0s
+H    0     0                       0.6580488    1.01498  54.2%     -    0s
+H    0     0                       0.6799919    1.01498  49.3%     -    0s
+     0     0    0.84375    0   43    0.67999    0.84375  24.1%     -    0s
+     0     0    0.81096    0   39    0.67999    0.81096  19.3%     -    0s
+     0     0    0.78912    0   38    0.67999    0.78912  16.0%     -    0s
+     0     0    0.77390    0   46    0.67999    0.77390  13.8%     -    0s
+     0     0    0.76919    0   41    0.67999    0.76919  13.1%     -    0s
+     0     0    0.76835    0   38    0.67999    0.76835  13.0%     -    0s
+     0     0    0.76687    0   31    0.67999    0.76687  12.8%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Clique: 9
+  Zero half: 5
+
+Explored 1 nodes (601 simplex iterations) in 0.91 seconds (0.61 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.679992 0.658049 0.248682 
+No other solutions better than 0.679992
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.799919163037e-01, best bound 6.799919163037e-01, gap 0.0000%
+  IP pricing time: 0.9703 s (solve 0.9561 s, gurobi.runtime 0.9174 s)
+Iter 3 | error = 2.529542 | best_score = 3.1003e+00 | FW gap = Inf | min = 3.1003e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86394.946778667
+Set parameter BestBdStop to value -1.6282185621923184e+00
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86394.946778667
+BestBdStop  -1.6282185621923184e+00
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x12743c48
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 3e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 2444 rows and 694 columns
+Presolve time: 0.29s
+Presolved: 19156 rows, 802 columns, 51591 nonzeros
+Variable types: 0 continuous, 802 integer (802 binary)
+Root relaxation presolved: 12611 rows, 7347 columns, 38501 nonzeros
+
+
+Root relaxation: objective 9.027665e-01, 198 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.90277    0   57    0.24868    0.90277   263%     -    0s
+     0     0    0.89633    0   49    0.24868    0.89633   260%     -    0s
+H    0     0                       0.6218553    0.89633  44.1%     -    0s
+H    0     0                       0.6580488    0.89633  36.2%     -    0s
+H    0     0                       0.6727924    0.89633  33.2%     -    0s
+     0     0    0.73660    0   37    0.67279    0.73660  9.48%     -    0s
+     0     0    0.73660    0   57    0.67279    0.73660  9.48%     -    0s
+     0     0    0.73660    0  108    0.67279    0.73660  9.48%     -    0s
+     0     0    0.73357    0   91    0.67279    0.73357  9.03%     -    0s
+     0     0    0.72722    0   29    0.67279    0.72722  8.09%     -    0s
+     0     0     cutoff    0         0.67279    0.67279  0.00%     -    0s
+
+Cutting planes:
+  Clique: 7
+  Zero half: 4
+
+Explored 1 nodes (862 simplex iterations) in 0.72 seconds (0.59 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.672792 0.658049 0.621855 0.248682 
+No other solutions better than 0.672792
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.727923625603e-01, best bound 6.727923625603e-01, gap 0.0000%
+  IP pricing time: 0.7958 s (solve 0.7851 s, gurobi.runtime 0.7275 s)
+Iter 4 | error = 1.728543 | best_score = 2.3180e+00 | FW gap = Inf | min = 2.3180e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86394.056037459
+Set parameter BestBdStop to value -1.1693160403314620e+00
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86394.056037459
+BestBdStop  -1.1693160403314620e+00
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x3d3cd7fe
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 2523 rows and 697 columns
+Presolve time: 0.30s
+Presolved: 19077 rows, 799 columns, 51430 nonzeros
+Variable types: 0 continuous, 799 integer (799 binary)
+Root relaxation presolved: 12532 rows, 7344 columns, 38340 nonzeros
+
+
+Root relaxation: objective 8.007223e-01, 165 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.80072    0   46    0.24868    0.80072   222%     -    0s
+H    0     0                       0.6580488    0.80072  21.7%     -    0s
+     0     0    0.69362    0   25    0.65805    0.69362  5.41%     -    0s
+     0     0     cutoff    0         0.65805    0.65805  0.00%     -    0s
+
+Cutting planes:
+  Clique: 7
+  Zero half: 1
+
+Explored 1 nodes (528 simplex iterations) in 0.51 seconds (0.52 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.658049 0.248682 
+No other solutions better than 0.658049
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.580488259801e-01, best bound 6.580488259801e-01, gap 0.0000%
+  IP pricing time: 0.5718 s (solve 0.5573 s, gurobi.runtime 0.5183 s)
+Iter 5 | error = 1.250916 | best_score = 1.8397e+00 | FW gap = Inf | min = 1.8397e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86393.455861667
+Set parameter BestBdStop to value -8.6578859829022159e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86393.455861667
+BestBdStop  -8.6578859829022159e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xcd6dbc00
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 2970 rows and 712 columns
+Presolve time: 0.25s
+Presolved: 18630 rows, 784 columns, 50521 nonzeros
+Variable types: 0 continuous, 784 integer (784 binary)
+Root relaxation presolved: 12085 rows, 7329 columns, 37431 nonzeros
+
+
+Root relaxation: objective 7.650737e-01, 145 iterations, 0.03 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.76507    0   46    0.24868    0.76507   208%     -    0s
+H    0     0                       0.6218553    0.76507  23.0%     -    0s
+     0     0     cutoff    0         0.62186    0.62186  0.00%     -    0s
+
+Cutting planes:
+  Clique: 3
+  Zero half: 4
+
+Explored 1 nodes (583 simplex iterations) in 0.50 seconds (0.56 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.621855 0.248682 
+No other solutions better than 0.621855
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.218553345483e-01, best bound 6.218553345483e-01, gap 0.0000%
+  IP pricing time: 0.5452 s (solve 0.5386 s, gurobi.runtime 0.5095 s)
+Iter 6 | error = 0.937540 | best_score = 1.4969e+00 | FW gap = Inf | min = 1.4969e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86392.903926626
+Set parameter BestBdStop to value -6.5405088474338857e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86392.903926626
+BestBdStop  -6.5405088474338857e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xa645efaf
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 2869 rows and 709 columns
+Presolve time: 0.50s
+Presolved: 18731 rows, 787 columns, 50726 nonzeros
+Variable types: 0 continuous, 787 integer (787 binary)
+Root relaxation presolved: 12186 rows, 7332 columns, 37636 nonzeros
+
+
+Root relaxation: objective 7.314517e-01, 128 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.73145    0   45    0.24868    0.73145   194%     -    0s
+     0     0    0.71025    0   54    0.24868    0.71025   186%     -    0s
+H    0     0                       0.5308033    0.71025  33.8%     -    0s
+     0     0 infeasible    0         0.53080    0.53080  0.00%     -    0s
+
+Cutting planes:
+  Clique: 11
+  Zero half: 4
+
+Explored 1 nodes (785 simplex iterations) in 0.77 seconds (0.57 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.530803 0.248682 
+No other solutions better than 0.530803
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.308032551708e-01, best bound 5.308032551708e-01, gap 0.0000%
+  IP pricing time: 0.8228 s (solve 0.8178 s, gurobi.runtime 0.7772 s)
+Iter 7 | error = 0.724145 | best_score = 1.1920e+00 | FW gap = Inf | min = 1.1920e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86392.077377667
+Set parameter BestBdStop to value -5.0641325595829889e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86392.077377667
+BestBdStop  -5.0641325595829889e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x8ca50d4d
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 3634 rows and 735 columns
+Presolve time: 0.28s
+Presolved: 17966 rows, 761 columns, 49170 nonzeros
+Variable types: 0 continuous, 761 integer (761 binary)
+Root relaxation presolved: 11421 rows, 7306 columns, 36080 nonzeros
+
+
+Root relaxation: objective 7.189606e-01, 185 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.71896    0   71    0.24868    0.71896   189%     -    0s
+     0     0    0.63573    0   81    0.24868    0.63573   156%     -    0s
+H    0     0                       0.2871233    0.63573   121%     -    0s
+H    0     0                       0.3619316    0.63573  75.7%     -    0s
+H    0     0                       0.5299267    0.63573  20.0%     -    0s
+
+Cutting planes:
+  Clique: 10
+  Zero half: 1
+
+Explored 1 nodes (611 simplex iterations) in 0.56 seconds (0.62 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.529927 0.361932 0.287123 0.248682 
+No other solutions better than 0.529927
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.299266891963e-01, best bound 5.299266891963e-01, gap 0.0000%
+  IP pricing time: 0.6082 s (solve 0.6037 s, gurobi.runtime 0.5688 s)
+Iter 8 | error = 0.586008 | best_score = 1.0421e+00 | FW gap = Inf | min = 1.0421e+00 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86391.465168959
+Set parameter BestBdStop to value -0.391679606751615
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86391.465168959
+BestBdStop  -0.391679606751615
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x11198c03
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 3835 rows and 742 columns
+Presolve time: 0.28s
+Presolved: 17765 rows, 754 columns, 48761 nonzeros
+Variable types: 0 continuous, 754 integer (754 binary)
+Root relaxation presolved: 11220 rows, 7299 columns, 35671 nonzeros
+
+
+Root relaxation: objective 6.549457e-01, 241 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.65495    0   92    0.24868    0.65495   163%     -    0s
+     0     0    0.54913    0   71    0.24868    0.54913   121%     -    0s
+H    0     0                       0.2522786    0.54913   118%     -    0s
+H    0     0                       0.3747972    0.54913  46.5%     -    0s
+H    0     0                       0.3916126    0.54913  40.2%     -    0s
+     0     0     cutoff    0         0.39161    0.39161  0.00%     -    0s
+
+Cutting planes:
+  Clique: 8
+
+Explored 1 nodes (658 simplex iterations) in 0.51 seconds (0.62 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.391613 0.374797 0.252279 0.248682 
+No other solutions better than 0.391613
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.916126475685e-01, best bound 3.916126475685e-01, gap 0.0000%
+  IP pricing time: 0.5658 s (solve 0.5606 s, gurobi.runtime 0.5238 s)
+Iter 9 | error = 0.478749 | best_score = 7.8801e-01 | FW gap = Inf | min = 7.8801e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6390896515125991e+04
+Set parameter BestBdStop to value -3.1349048515975053e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6390896515125991e+04
+BestBdStop  -3.1349048515975053e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x09650254
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 3975 rows and 747 columns
+Presolve time: 0.26s
+Presolved: 17625 rows, 749 columns, 48476 nonzeros
+Variable types: 0 continuous, 749 integer (749 binary)
+Root relaxation presolved: 11080 rows, 7294 columns, 35386 nonzeros
+
+
+Root relaxation: objective 6.213069e-01, 234 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.62131    0  104    0.24868    0.62131   150%     -    0s
+     0     0    0.57927    0   82    0.24868    0.57927   133%     -    0s
+H    0     0                       0.3835529    0.57927  51.0%     -    0s
+
+Cutting planes:
+  Clique: 9
+
+Explored 1 nodes (587 simplex iterations) in 0.48 seconds (0.61 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.383553 0.248682 
+No other solutions better than 0.383553
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.835528530553e-01, best bound 3.835528530553e-01, gap 0.0000%
+  IP pricing time: 0.5286 s (solve 0.5234 s, gurobi.runtime 0.4886 s)
+Iter 10 | error = 0.416653 | best_score = 7.0115e-01 | FW gap = Inf | min = 7.0115e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86390.365563209
+Set parameter BestBdStop to value -2.5556598106298950e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86390.365563209
+BestBdStop  -2.5556598106298950e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x57d70716
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 4536 rows and 765 columns
+Presolve time: 0.25s
+Presolved: 17064 rows, 731 columns, 47336 nonzeros
+Variable types: 0 continuous, 731 integer (731 binary)
+Root relaxation presolved: 10519 rows, 7276 columns, 34246 nonzeros
+
+
+Root relaxation: objective 4.186666e-01, 229 iterations, 0.03 seconds (0.05 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.41867    0   71    0.24868    0.41867  68.4%     -    0s
+     0     0    0.36708    0   67    0.24868    0.36708  47.6%     -    0s
+     0     0    0.36144    0   49    0.24868    0.36144  45.3%     -    0s
+     0     0    0.35845    0   43    0.24868    0.35845  44.1%     -    0s
+H    0     0                       0.2871233    0.35845  24.8%     -    0s
+     0     0    0.32659    0   54    0.28712    0.32659  13.7%     -    0s
+     0     0    0.31159    0   54    0.28712    0.31159  8.52%     -    0s
+     0     0    0.29540    0   59    0.28712    0.29540  2.88%     -    0s
+     0     0     cutoff    0         0.28712    0.28712  0.00%     -    0s
+
+Cutting planes:
+  Clique: 5
+  MIR: 1
+  Zero half: 3
+
+Explored 1 nodes (790 simplex iterations) in 0.48 seconds (0.60 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.287123 0.248682 
+No other solutions better than 0.287123
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.871232823313e-01, best bound 2.871232823313e-01, gap 0.0000%
+  IP pricing time: 0.5252 s (solve 0.5209 s, gurobi.runtime 0.4900 s)
+Iter 11 | error = 0.365444 | best_score = 5.4629e-01 | FW gap = Inf | min = 5.4629e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86389.837923626
+Set parameter BestBdStop to value -2.0956924851545802e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86389.837923626
+BestBdStop  -2.0956924851545802e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xc0f6f01a
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 4619 rows and 768 columns
+Presolve time: 0.30s
+Presolved: 16981 rows, 728 columns, 47167 nonzeros
+Variable types: 0 continuous, 728 integer (728 binary)
+Root relaxation presolved: 10436 rows, 7273 columns, 34077 nonzeros
+
+
+Root relaxation: objective 4.053474e-01, 249 iterations, 0.04 seconds (0.05 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.40535    0   63    0.24868    0.40535  63.0%     -    0s
+     0     0    0.38620    0   52    0.24868    0.38620  55.3%     -    0s
+     0     0    0.37591    0   35    0.24868    0.37591  51.2%     -    0s
+     0     0    0.37396    0   47    0.24868    0.37396  50.4%     -    0s
+     0     0    0.37223    0   38    0.24868    0.37223  49.7%     -    0s
+     0     0    0.37111    0   38    0.24868    0.37111  49.2%     -    0s
+     0     0    0.37098    0   31    0.24868    0.37098  49.2%     -    0s
+H    0     0                       0.2561985    0.37098  44.8%     -    0s
+     0     0    0.25620    0   45    0.25620    0.25620  0.00%     -    0s
+
+Cutting planes:
+  Clique: 10
+  Zero half: 5
+  RLT: 1
+
+Explored 1 nodes (759 simplex iterations) in 0.55 seconds (0.58 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.256199 0.248682 
+No other solutions better than 0.256199
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.561985254756e-01, best bound 2.561985254756e-01, gap 0.0000%
+  IP pricing time: 0.5946 s (solve 0.5903 s, gurobi.runtime 0.5590 s)
+Iter 12 | error = 0.335095 | best_score = 4.6907e-01 | FW gap = Inf | min = 4.6907e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86389.240907751
+Set parameter BestBdStop to value -0.173145258821527
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86389.240907751
+BestBdStop  -0.173145258821527
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xa4c0d6f0
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.2486815
+Presolve removed 5049 rows and 783 columns
+Presolve time: 0.27s
+Presolved: 16551 rows, 713 columns, 46292 nonzeros
+Variable types: 0 continuous, 713 integer (713 binary)
+Root relaxation presolved: 10006 rows, 7258 columns, 33202 nonzeros
+
+
+Root relaxation: objective 3.380813e-01, 167 iterations, 0.03 seconds (0.05 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.33808    0   39    0.24868    0.33808  35.9%     -    0s
+     0     0    0.28330    0   46    0.24868    0.28330  13.9%     -    0s
+     0     0     cutoff    0         0.24868    0.24868  0.00%     -    0s
+
+Explored 1 nodes (517 simplex iterations) in 0.42 seconds (0.58 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 1: 0.248682 
+No other solutions better than 0.248682
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.486815239738e-01, best bound 2.486815239738e-01, gap 0.0000%
+  IP pricing time: 0.4710 s (solve 0.4665 s, gurobi.runtime 0.4339 s)
+Iter 13 | error = 0.312557 | best_score = 4.2491e-01 | FW gap = Inf | min = 4.2491e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86388.766114459
+Set parameter BestBdStop to value -1.4253827395820479e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86388.766114459
+BestBdStop  -1.4253827395820479e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x8a914d70
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.1454344
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.387618e-01, 229 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.63876    0   84   -0.14543    0.63876   539%     -    0s
+H    0     0                       0.2144654    0.63876   198%     -    0s
+H    0     0                       0.2229993    0.63876   186%     -    0s
+H    0     0                       0.2291949    0.63876   179%     -    0s
+     0     0    0.36782    0  136    0.22919    0.36782  60.5%     -    0s
+     0     0    0.31942    0  147    0.22919    0.31942  39.4%     -    0s
+     0     0    0.28231    0  158    0.22919    0.28231  23.2%     -    0s
+
+Explored 1 nodes (1599 simplex iterations) in 0.87 seconds (1.12 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.229195 0.229195 0.229195 ... -0.145434
+No other solutions better than 0.229195
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.291948930104e-01, best bound 2.291948930104e-01, gap 0.0000%
+  IP pricing time: 0.9203 s (solve 0.9155 s, gurobi.runtime 0.8837 s)
+Iter 14 | error = 0.293950 | best_score = 3.7463e-01 | FW gap = Inf | min = 3.7463e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6387843358625993e+04
+Set parameter BestBdStop to value -1.1959172554690840e-01
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6387843358625993e+04
+BestBdStop  -1.1959172554690840e-01
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x9fd5d0c8
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [6e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.1223407
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.11s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.331043e-01, 229 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.63310    0   84   -0.12234    0.63310   617%     -    0s
+H    0     0                       0.2144654    0.63310   195%     -    0s
+H    0     0                       0.2229993    0.63310   184%     -    0s
+H    0     0                       0.2241983    0.63310   182%     -    0s
+     0     0    0.28649    0   90    0.22420    0.28649  27.8%     -    0s
+     0     0    0.25443    0  134    0.22420    0.25443  13.5%     -    0s
+     0     0    0.24780    0  148    0.22420    0.24780  10.5%     -    0s
+
+Explored 1 nodes (1274 simplex iterations) in 0.72 seconds (0.95 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.224198 0.224198 0.224198 ... -0.122341
+No other solutions better than 0.224198
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.241983177249e-01, best bound 2.241983177249e-01, gap 0.0000%
+  IP pricing time: 0.7646 s (solve 0.7601 s, gurobi.runtime 0.7265 s)
+Iter 15 | error = 0.279026 | best_score = 3.4654e-01 | FW gap = Inf | min = 3.4654e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86387.075990042
+Set parameter BestBdStop to value -9.7500713713132445e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86387.075990042
+BestBdStop  -9.7500713713132445e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x777dbb03
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.1001267
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.255762e-01, 227 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.62558    0   84   -0.10013    0.62558   725%     -    0s
+H    0     0                       0.2144654    0.62558   192%     -    0s
+     0     0    0.26360    0   46    0.21447    0.26360  22.9%     -    0s
+     0     2    0.24935    0   46    0.21447    0.24935  16.3%     -    0s
+*    3     0               2       0.2211219    0.23577  6.63%  39.3    0s
+
+Explored 5 nodes (1104 simplex iterations) in 0.51 seconds (0.75 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.221122 0.214465 -0.100127 
+No other solutions better than 0.221122
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.211219110252e-01, best bound 2.211219110252e-01, gap 0.0000%
+  IP pricing time: 0.5619 s (solve 0.5577 s, gurobi.runtime 0.5243 s)
+Iter 16 | error = 0.266538 | best_score = 3.2125e-01 | FW gap = Inf | min = 3.2125e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86386.511724959
+Set parameter BestBdStop to value -0.078254551172569
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86386.511724959
+BestBdStop  -0.078254551172569
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x373d4bb9
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [5e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0807744
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.12s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.357899e-01, 227 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.63579    0   84   -0.08077    0.63579   887%     -    0s
+H    0     0                       0.2144654    0.63579   196%     -    0s
+     0     0    0.25694    0   46    0.21447    0.25694  19.8%     -    0s
+     0     2    0.23930    0   46    0.21447    0.23930  11.6%     -    0s
+
+Explored 2 nodes (1182 simplex iterations) in 0.89 seconds (1.18 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 5: 0.214465 0.214465 0.214465 ... -0.0807744
+No other solutions better than 0.214465
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.144654285464e-01, best bound 2.144654285464e-01, gap 0.0000%
+  IP pricing time: 0.9360 s (solve 0.9313 s, gurobi.runtime 0.8972 s)
+Iter 17 | error = 0.255762 | best_score = 2.9524e-01 | FW gap = Inf | min = 2.9524e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86385.573405292
+Set parameter BestBdStop to value -6.1569556806279138e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86385.573405292
+BestBdStop  -6.1569556806279138e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x52e071a1
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0639994
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.299970e-01, 282 iterations, 0.05 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.63000    0  113   -0.06400    0.63000  1084%     -    0s
+H    0     0                       0.1834511    0.63000   243%     -    0s
+     0     0    0.39964    0  134    0.18345    0.39964   118%     -    0s
+     0     0    0.37597    0   69    0.18345    0.37597   105%     -    0s
+H    0     0                       0.1981839    0.37597  89.7%     -    0s
+     0     0    0.28478    0   83    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  142    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  124    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  131    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  170    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  143    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  124    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  160    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  118    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0   95    0.19818    0.28478  43.7%     -    0s
+     0     0    0.28478    0  103    0.19818    0.28478  43.7%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Clique: 14
+  MIR: 13
+  Zero half: 14
+
+Explored 1 nodes (2261 simplex iterations) in 0.81 seconds (0.84 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.198184 0.183451 -0.0639994 
+No other solutions better than 0.198184
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.981839430338e-01, best bound 1.981839430338e-01, gap 0.0000%
+  IP pricing time: 0.8591 s (solve 0.8544 s, gurobi.runtime 0.8180 s)
+Iter 18 | error = 0.246628 | best_score = 2.6218e-01 | FW gap = Inf | min = 2.6218e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6384711863416989e+04
+Set parameter BestBdStop to value -0.0475448763194489
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6384711863416989e+04
+BestBdStop  -0.0475448763194489
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x28fe62a7
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0499035
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.215538e-01, 237 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.62155    0  106   -0.04990    0.62155  1346%     -    0s
+H    0     0                       0.1834511    0.62155   239%     -    0s
+     0     0    0.37180    0   56    0.18345    0.37180   103%     -    0s
+     0     0    0.35944    0   44    0.18345    0.35944  95.9%     -    0s
+     0     0    0.35910    0   28    0.18345    0.35910  95.7%     -    0s
+H    0     0                       0.1968767    0.35910  82.4%     -    0s
+     0     0    0.21893    0  124    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  141    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  185    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  176    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  120    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  111    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  100    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  126    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  172    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  127    0.19688    0.21893  11.2%     -    0s
+     0     0    0.21893    0  100    0.19688    0.21893  11.2%     -    0s
+
+Cutting planes:
+  Clique: 10
+  Zero half: 17
+
+Explored 1 nodes (2688 simplex iterations) in 0.82 seconds (0.88 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.196877 0.183451 -0.0499035 
+No other solutions better than 0.196877
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.968766580924e-01, best bound 1.968766580924e-01, gap 0.0000%
+  IP pricing time: 0.8716 s (solve 0.8671 s, gurobi.runtime 0.8303 s)
+Iter 19 | error = 0.239400 | best_score = 2.4678e-01 | FW gap = Inf | min = 2.4678e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6383837213833991e+04
+Set parameter BestBdStop to value -3.5017310933993996e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6383837213833991e+04
+BestBdStop  -3.5017310933993996e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x96a504f5
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0373127
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.11s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.264877e-01, 213 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.62649    0  108   -0.03731    0.62649  1779%     -    0s
+H    0     0                       0.1834511    0.62649   242%     -    0s
+     0     0    0.35268    0   70    0.18345    0.35268  92.2%     -    0s
+     0     0    0.33387    0  139    0.18345    0.33387  82.0%     -    0s
+     0     0    0.32803    0  190    0.18345    0.32803  78.8%     -    0s
+     0     0    0.32245    0  153    0.18345    0.32245  75.8%     -    0s
+     0     0    0.31363    0  164    0.18345    0.31363  71.0%     -    0s
+     0     0    0.31042    0  143    0.18345    0.31042  69.2%     -    0s
+     0     0    0.30422    0  182    0.18345    0.30422  65.8%     -    0s
+     0     0    0.29909    0  173    0.18345    0.29909  63.0%     -    0s
+     0     0    0.29545    0  137    0.18345    0.29545  61.1%     -    0s
+     0     0    0.29045    0  113    0.18345    0.29045  58.3%     -    0s
+     0     0    0.28875    0  115    0.18345    0.28875  57.4%     -    0s
+
+Cutting planes:
+  Clique: 8
+  Zero half: 54
+  RLT: 7
+  BQP: 1
+
+Explored 1 nodes (3340 simplex iterations) in 1.01 seconds (1.03 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.183451 -0.0373127 
+No other solutions better than 0.183451
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.834510857384e-01, best bound 1.834510857384e-01, gap 0.0000%
+  IP pricing time: 1.0645 s (solve 1.0602 s, gurobi.runtime 1.0227 s)
+Iter 20 | error = 0.232979 | best_score = 2.2076e-01 | FW gap = Inf | min = 2.2076e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86382.770247209
+Set parameter BestBdStop to value -2.4351376043798705e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86382.770247209
+BestBdStop  -2.4351376043798705e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x92cf35c6
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0265960
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.203703e-01, 191 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.62037    0   84   -0.02660    0.62037  2433%     -    0s
+H    0     0                       0.1694695    0.62037   266%     -    0s
+     0     0    0.40872    0  129    0.16947    0.40872   141%     -    0s
+     0     0    0.39266    0  155    0.16947    0.39266   132%     -    0s
+     0     0    0.38845    0  125    0.16947    0.38845   129%     -    0s
+     0     0    0.38554    0  151    0.16947    0.38554   127%     -    0s
+     0     0    0.37904    0  114    0.16947    0.37904   124%     -    0s
+     0     0    0.37588    0   93    0.16947    0.37588   122%     -    0s
+     0     0    0.37332    0  104    0.16947    0.37332   120%     -    0s
+     0     0    0.36869    0  132    0.16947    0.36869   118%     -    0s
+     0     0    0.36353    0   82    0.16947    0.36353   115%     -    0s
+     0     0    0.36119    0  132    0.16947    0.36119   113%     -    0s
+     0     0    0.35920    0  121    0.16947    0.35920   112%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 6
+  MIR: 5
+  Zero half: 16
+
+Explored 1 nodes (2139 simplex iterations) in 0.75 seconds (0.79 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 2: 0.16947 -0.026596 
+No other solutions better than 0.16947
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.694695461302e-01, best bound 1.694695461302e-01, gap 0.0000%
+  IP pricing time: 0.8047 s (solve 0.8003 s, gurobi.runtime 0.7599 s)
+Iter 21 | error = 0.227827 | best_score = 1.9607e-01 | FW gap = Inf | min = 1.9607e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6381962900250990e+04
+Set parameter BestBdStop to value -1.5314443650267006e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6381962900250990e+04
+BestBdStop  -1.5314443650267006e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xb3b213b1
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0175189
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.172329e-01, 206 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.61723    0  106   -0.01752    0.61723  3623%     -    0s
+H    0     0                       0.0441714    0.61723  1297%     -    0s
+H    0     0                       0.0518401    0.61723  1091%     -    0s
+H    0     0                       0.1217040    0.61723   407%     -    0s
+     0     0    0.38350    0  104    0.12170    0.38350   215%     -    0s
+     0     0    0.38350    0   69    0.12170    0.38350   215%     -    0s
+     0     0    0.38350    0   76    0.12170    0.38350   215%     -    0s
+     0     0    0.38350    0   52    0.12170    0.38350   215%     -    0s
+H    0     0                       0.1338151    0.38350   187%     -    0s
+     0     0    0.18773    0  113    0.13382    0.18773  40.3%     -    0s
+     0     0    0.18773    0  142    0.13382    0.18773  40.3%     -    0s
+     0     0    0.18773    0  100    0.13382    0.18773  40.3%     -    0s
+     0     0    0.18773    0   98    0.13382    0.18773  40.3%     -    0s
+     0     0    0.18773    0   85    0.13382    0.18773  40.3%     -    0s
+     0     0    0.18773    0   62    0.13382    0.18773  40.3%     -    0s
+H    0     0                       0.1394919    0.18773  34.6%     -    0s
+H    0     0                       0.1428560    0.18773  31.4%     -    0s
+     0     0    0.14286    0  120    0.14286    0.14286  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Clique: 13
+  MIR: 10
+  Zero half: 2
+
+Explored 1 nodes (1886 simplex iterations) in 0.71 seconds (0.73 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 7: 0.142856 0.139492 0.133815 ... -0.0175189
+No other solutions better than 0.142856
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.428560495947e-01, best bound 1.428560495947e-01, gap 0.0000%
+  IP pricing time: 0.7645 s (solve 0.7599 s, gurobi.runtime 0.7214 s)
+Iter 22 | error = 0.223753 | best_score = 1.6037e-01 | FW gap = Inf | min = 1.6037e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86381.189716667
+Set parameter BestBdStop to value -8.2451180454034979e-03
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86381.189716667
+BestBdStop  -8.2451180454034979e-03
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xf5346642
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0104226
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.14s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.191398e-01, 271 iterations, 0.06 seconds (0.07 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.61914    0  123   -0.01042    0.61914  6040%     -    0s
+H    0     0                      -0.0046621    0.61914      -     -    0s
+H    0     0                       0.1252521    0.61914   394%     -    0s
+     0     0    0.43309    0   94    0.12525    0.43309   246%     -    0s
+     0     0    0.43309    0   64    0.12525    0.43309   246%     -    0s
+     0     0    0.43309    0   54    0.12525    0.43309   246%     -    0s
+     0     0    0.43309    0   49    0.12525    0.43309   246%     -    0s
+     0     0    0.43309    0   33    0.12525    0.43309   246%     -    0s
+H    0     0                       0.1394919    0.43309   210%     -    0s
+     0     0    0.13949    0  114    0.13949    0.13949  0.00%     -    0s
+
+Cutting planes:
+  Clique: 8
+  Zero half: 10
+
+Explored 1 nodes (1550 simplex iterations) in 0.89 seconds (0.69 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.139492 0.125252 -0.00466214 -0.0104226 
+No other solutions better than 0.139492
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.394918540264e-01, best bound 1.394918540264e-01, gap 0.0000%
+  IP pricing time: 0.9472 s (solve 0.9428 s, gurobi.runtime 0.8978 s)
+Iter 23 | error = 0.221022 | best_score = 1.4991e-01 | FW gap = Inf | min = 1.4991e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6380240022250990e+04
+Set parameter BestBdStop to value -1.9163692395875124e-03
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6380240022250990e+04
+BestBdStop  -1.9163692395875124e-03
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xdb46313d
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [8e-06, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0040703
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.11s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.066621e-01, 299 iterations, 0.06 seconds (0.07 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60666    0  123   -0.00407    0.60666      -     -    0s
+H    0     0                       0.0009844    0.60666      -     -    0s
+H    0     0                       0.1284282    0.60666   372%     -    0s
+     0     0    0.42700    0  185    0.12843    0.42700   232%     -    0s
+     0     0    0.42310    0  144    0.12843    0.42310   229%     -    0s
+     0     0    0.41783    0  108    0.12843    0.41783   225%     -    0s
+     0     0    0.41385    0  147    0.12843    0.41385   222%     -    0s
+     0     0    0.41067    0  121    0.12843    0.41067   220%     -    0s
+     0     0    0.40902    0  107    0.12843    0.40902   218%     -    0s
+     0     0    0.40579    0  130    0.12843    0.40579   216%     -    0s
+     0     0    0.40460    0  123    0.12843    0.40460   215%     -    0s
+     0     0    0.40390    0  100    0.12843    0.40390   214%     -    0s
+     0     0    0.40370    0   89    0.12843    0.40370   214%     -    0s
+     0     0    0.40343    0  108    0.12843    0.40343   214%     -    0s
+H    0     0                       0.1338151    0.40343   201%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Clique: 11
+  MIR: 5
+  Zero half: 17
+
+Explored 1 nodes (2138 simplex iterations) in 0.98 seconds (0.81 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.133815 0.128428 0.000984358 -0.00407031 
+No other solutions better than 0.133815
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.338150505517e-01, best bound 1.338150505517e-01, gap 0.0000%
+  IP pricing time: 1.0356 s (solve 1.0310 s, gurobi.runtime 0.9868 s)
+Iter 24 | error = 0.218630 | best_score = 1.3789e-01 | FW gap = Inf | min = 1.3789e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86379.200418376
+Set parameter BestBdStop to value 3.6687606551531722e-03
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86379.200418376
+BestBdStop  3.6687606551531722e-03
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x59dd841b
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [8e-06, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0015348
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.15s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.121388e-01, 284 iterations, 0.05 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.61214    0  123    0.00153    0.61214      -     -    0s
+H    0     0                       0.0059667    0.61214      -     -    0s
+H    0     0                       0.1312308    0.61214   366%     -    0s
+     0     0    0.36595    0  110    0.13123    0.36595   179%     -    0s
+     0     0    0.36595    0  149    0.13123    0.36595   179%     -    0s
+     0     0    0.20196    0  155    0.13123    0.20196  53.9%     -    0s
+     0     0 infeasible    0         0.13123    0.13123  0.00%     -    0s
+
+Explored 1 nodes (1484 simplex iterations) in 1.00 seconds (1.20 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.131231 0.00596667 0.00153478 
+No other solutions better than 0.131231
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.312307896231e-01, best bound 1.312307896231e-01, gap 0.0000%
+  IP pricing time: 1.0537 s (solve 1.0491 s, gurobi.runtime 1.0129 s)
+Iter 25 | error = 0.216604 | best_score = 1.2970e-01 | FW gap = Inf | min = 1.2970e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86378.144265959
+Set parameter BestBdStop to value 6.6973336369059947e-03
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86378.144265959
+BestBdStop  6.6973336369059947e-03
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x10603248
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [4e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0045847
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.111052e-01, 284 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.61111    0  123    0.00458    0.61111      -     -    0s
+H    0     0                       0.0048949    0.61111      -     -    0s
+H    0     0                       0.0624150    0.61111   879%     -    0s
+H    0     0                       0.0926293    0.45333   389%     -    0s
+     0     0    0.38779    0  116    0.09263    0.38779   319%     -    0s
+     0     0    0.38779    0  108    0.09263    0.38779   319%     -    0s
+     0     0    0.38779    0  136    0.09263    0.38779   319%     -    0s
+     0     0    0.38779    0   85    0.09263    0.38779   319%     -    0s
+     0     0    0.38779    0   53    0.09263    0.38779   319%     -    0s
+H    0     0                       0.0964601    0.38779   302%     -    0s
+H    0     0                       0.1156568    0.38779   235%     -    0s
+     0     0    0.17772    0  265    0.11566    0.17772  53.7%     -    0s
+     0     0    0.17772    0  311    0.11566    0.17772  53.7%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 9
+  Zero half: 2
+
+Explored 1 nodes (2039 simplex iterations) in 0.61 seconds (0.75 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.115657 0.0964601 0.0926293 ... 0.00458466
+No other solutions better than 0.115657
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.156568050106e-01, best bound 1.156568050106e-01, gap 0.0000%
+  IP pricing time: 0.6540 s (solve 0.6496 s, gurobi.runtime 0.6183 s)
+Iter 26 | error = 0.214441 | best_score = 1.1107e-01 | FW gap = Inf | min = 1.1107e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6377487942041989e+04
+Set parameter BestBdStop to value 6.7693742517596928e-03
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6377487942041989e+04
+BestBdStop  6.7693742517596928e-03
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x769c38e5
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0046792
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.11s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.063281e-01, 284 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60633    0  123    0.00468    0.60633      -     -    0s
+H    0     0                       0.0049894    0.60633      -     -    0s
+H    0     0                       0.0421478    0.60633  1339%     -    0s
+H    0     0                       0.0897077    0.48359   439%     -    0s
+H    0     0                       0.0931936    0.48359   419%     -    0s
+     0     0    0.38092    0  100    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0  116    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   80    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   91    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   92    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   84    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   99    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   75    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   88    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0  111    0.09319    0.38092   309%     -    0s
+     0     0    0.38092    0   91    0.09319    0.38092   309%     -    0s
+H    0     0                       0.0964811    0.38092   295%     -    0s
+H    0     0                       0.1061924    0.38092   259%     -    0s
+     0     0    0.13364    0  114    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  179    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  180    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  122    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  164    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  131    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0  115    0.10619    0.13364  25.8%     -    0s
+     0     0    0.13364    0   63    0.10619    0.13364  25.8%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 24
+  MIR: 2
+  Zero half: 19
+  RLT: 1
+
+Explored 1 nodes (2567 simplex iterations) in 0.84 seconds (0.95 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 7: 0.106192 0.0964811 0.0931936 ... 0.00467916
+No other solutions better than 0.106192
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.061924040793e-01, best bound 1.061924040793e-01, gap 0.0000%
+  IP pricing time: 0.8859 s (solve 0.8816 s, gurobi.runtime 0.8494 s)
+Iter 27 | error = 0.212162 | best_score = 1.0151e-01 | FW gap = 3.8190e+00 | min = 1.0151e-01 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86376.598901001
+Set parameter BestBdStop to value 1.0679026813702060e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86376.598901001
+BestBdStop  1.0679026813702060e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xb745d46b
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0085997
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.080054e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60801    0  123    0.00860    0.60801  6970%     -    0s
+H    0     0                       0.0089099    0.60801  6724%     -    0s
+H    0     0                       0.0457014    0.60801  1230%     -    0s
+H    0     0                       0.0930814    0.48692   423%     -    0s
+H    0     0                       0.0955427    0.48692   410%     -    0s
+     0     0    0.37409    0  131    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  189    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  173    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  169    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  207    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  188    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  169    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  122    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  145    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  138    0.09554    0.37409   292%     -    0s
+     0     0    0.37409    0  136    0.09554    0.37409   292%     -    0s
+H    0     0                       0.0973524    0.37409   284%     -    0s
+
+Cutting planes:
+  Gomory: 3
+  Clique: 21
+  MIR: 18
+  Zero half: 24
+
+Explored 1 nodes (2794 simplex iterations) in 0.85 seconds (0.99 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.0973524 0.0955427 0.0930814 ... 0.00859965
+No other solutions better than 0.0973524
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.735235899293e-02, best bound 9.735235899293e-02, gap 0.0000%
+  IP pricing time: 0.9026 s (solve 0.8982 s, gurobi.runtime 0.8618 s)
+Iter 28 | error = 0.211062 | best_score = 8.8753e-02 | FW gap = 1.5079e+00 | min = 8.8753e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86375.693753042
+Set parameter BestBdStop to value 1.3407366670294166e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86375.693753042
+BestBdStop  1.3407366670294166e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x72f24852
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [9e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0113368
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.070793e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60708    0  123    0.01134    0.60708  5255%     -    0s
+H    0     0                       0.0116471    0.60708  5112%     -    0s
+H    0     0                       0.0481824    0.60708  1160%     -    0s
+H    0     0                       0.0954367    0.48146   404%     -    0s
+H    0     0                       0.0971827    0.48146   395%     -    0s
+     0     0    0.37573    0  103    0.09718    0.37573   287%     -    0s
+     0     0    0.37573    0  183    0.09718    0.37573   287%     -    0s
+     0     0 infeasible    0         0.09718    0.09718  0.00%     -    0s
+
+Explored 1 nodes (1491 simplex iterations) in 0.82 seconds (1.22 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 5: 0.0971827 0.0954367 0.0481824 ... 0.0113368
+No other solutions better than 0.0971827
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.718274323450e-02, best bound 9.718274323450e-02, gap 0.0000%
+  IP pricing time: 0.8741 s (solve 0.8699 s, gurobi.runtime 0.8352 s)
+Iter 29 | error = 0.210163 | best_score = 8.5846e-02 | FW gap = 1.3373e+00 | min = 8.5846e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86374.817127584
+Set parameter BestBdStop to value 1.5268858124333352e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86374.817127584
+BestBdStop  1.5268858124333352e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x6d8d2911
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0132100
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.065840e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60658    0  123    0.01321    0.60658  4492%     -    0s
+H    0     0                       0.0135202    0.60658  4386%     -    0s
+H    0     0                       0.0489967    0.60658  1138%     -    0s
+H    0     0                       0.0969182    0.48039   396%     -    0s
+     0     0    0.42337    0  117    0.09692    0.42337   337%     -    0s
+     0     0    0.41075    0  213    0.09692    0.41075   324%     -    0s
+     0     0    0.23509    0  136    0.09692    0.23509   143%     -    0s
+     0     0    0.23026    0   29    0.09692    0.23026   138%     -    0s
+     0     0     cutoff    0         0.09692    0.09692  0.00%     -    0s
+
+Explored 1 nodes (1717 simplex iterations) in 0.83 seconds (1.23 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0969182 0.0489967 0.0135202 0.01321 
+No other solutions better than 0.0969182
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.691824232510e-02, best bound 9.691824232510e-02, gap 0.0000%
+  IP pricing time: 0.8808 s (solve 0.8763 s, gurobi.runtime 0.8397 s)
+Iter 30 | error = 0.208980 | best_score = 8.3708e-02 | FW gap = 1.2423e+00 | min = 8.3708e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86373.932623959
+Set parameter BestBdStop to value 1.6282705634478849e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86373.932623959
+BestBdStop  1.6282705634478849e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x8c52304a
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0142421
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.990056e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59901    0  123    0.01424    0.59901  4106%     -    0s
+H    0     0                       0.0145523    0.59901  4016%     -    0s
+     0     0    0.46519    0  140    0.01455    0.46519  3097%     -    0s
+H    0     0                       0.0363715    0.46519  1179%     -    0s
+H    0     0                       0.0750675    0.46519   520%     -    0s
+H    0     0                       0.0919326    0.46519   406%     -    0s
+     0     0    0.14847    0  150    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  247    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  124    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  152    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  131    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  110    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0  165    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0   95    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0   84    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0   99    0.09193    0.14847  61.5%     -    0s
+     0     0    0.14847    0   90    0.09193    0.14847  61.5%     -    0s
+H    0     0                       0.0928151    0.14847  60.0%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 36
+  MIR: 4
+  Zero half: 31
+  RLT: 1
+
+Explored 1 nodes (3111 simplex iterations) in 0.90 seconds (1.06 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.0928151 0.0919326 0.0750675 ... 0.0142421
+No other solutions better than 0.0928151
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.281510773585e-02, best bound 9.281510773585e-02, gap 0.0000%
+  IP pricing time: 0.9462 s (solve 0.9418 s, gurobi.runtime 0.9114 s)
+Iter 31 | error = 0.207131 | best_score = 7.8573e-02 | FW gap = 1.0357e+00 | min = 7.8573e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86372.983146042
+Set parameter BestBdStop to value 1.9101615128838390e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86372.983146042
+BestBdStop  1.9101615128838390e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xdfedc71d
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-06, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0170675
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.022899e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60229    0  123    0.01707    0.60229  3429%     -    0s
+H    0     0                       0.0173777    0.60229  3366%     -    0s
+     0     0    0.46618    0  155    0.01738    0.46618  2583%     -    0s
+H    0     0                       0.0388830    0.46618  1099%     -    0s
+H    0     0                       0.0775658    0.46618   501%     -    0s
+H    0     0                       0.0937953    0.28086   199%     -    0s
+     0     0    0.22119    0  154    0.09380    0.22119   136%     -    0s
+     0     0    0.22119    0  173    0.09380    0.22119   136%     -    0s
+     0     0    0.13775    0  173    0.09380    0.13775  46.9%     -    0s
+     0     0    0.13775    0   21    0.09380    0.13775  46.9%     -    0s
+     0     0    0.09662    0   29    0.09380    0.09662  3.02%     -    0s
+
+Explored 1 nodes (1985 simplex iterations) in 0.99 seconds (1.34 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 5: 0.0937953 0.0775658 0.038883 ... 0.0170675
+No other solutions better than 0.0937953
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.379529613731e-02, best bound 9.379529613731e-02, gap 0.0000%
+  IP pricing time: 1.0458 s (solve 1.0415 s, gurobi.runtime 1.0070 s)
+Iter 32 | error = 0.206469 | best_score = 7.6728e-02 | FW gap = 9.7349e-01 | min = 7.6728e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6371933970083992e+04
+Set parameter BestBdStop to value 2.0886609788214112e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6371933970083992e+04
+BestBdStop  2.0886609788214112e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x11c48e9a
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0188648
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.007273e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60073    0  123    0.01886    0.60073  3084%     -    0s
+H    0     0                       0.0191750    0.60073  3033%     -    0s
+     0     0    0.46520    0  156    0.01918    0.46520  2326%     -    0s
+H    0     0                       0.0404806    0.46520  1049%     -    0s
+H    0     0                       0.0769435    0.46520   505%     -    0s
+     0     0    0.19155    0  192    0.07694    0.19155   149%     -    0s
+     0     0    0.19155    0  280    0.07694    0.19155   149%     -    0s
+     0     0    0.10912    0  240    0.07694    0.10912  41.8%     -    0s
+     0     0    0.10593    0   23    0.07694    0.10593  37.7%     -    1s
+     0     0     cutoff    0         0.07694    0.07694  0.00%     -    1s
+
+Explored 1 nodes (3572 simplex iterations) in 1.23 seconds (1.74 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0769435 0.0404806 0.019175 0.0188648 
+No other solutions better than 0.0769435
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 7.694348001073e-02, best bound 7.694348001073e-02, gap 0.0000%
+  IP pricing time: 1.2834 s (solve 1.2789 s, gurobi.runtime 1.2442 s)
+Iter 33 | error = 0.205219 | best_score = 5.8079e-02 | FW gap = 5.1797e-01 | min = 5.8079e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86370.647738834
+Set parameter BestBdStop to value 2.0892643285000952e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86370.647738834
+BestBdStop  2.0892643285000952e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xc69f846c
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-04, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0188806
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.992173e-01, 273 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59922    0  109    0.01888    0.59922  3074%     -    0s
+H    0     0                       0.0404946    0.59922  1380%     -    0s
+     0     0    0.36624    0  124    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0  150    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0  124    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0  137    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0  126    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0  108    0.04049    0.36624   804%     -    0s
+     0     0    0.36624    0   92    0.04049    0.36624   804%     -    0s
+H    0     0                       0.0578947    0.36624   533%     -    0s
+     0     0    0.14005    0  149    0.05789    0.14005   142%     -    0s
+     0     0    0.14005    0  170    0.05789    0.14005   142%     -    0s
+     0     0    0.14005    0   83    0.05789    0.14005   142%     -    0s
+     0     0    0.14005    0  128    0.05789    0.14005   142%     -    0s
+     0     0    0.14005    0  106    0.05789    0.14005   142%     -    0s
+     0     0    0.14005    0   58    0.05789    0.14005   142%     -    0s
+     0     0    0.10077    0   70    0.05789    0.10077  74.1%     -    0s
+     0     0    0.10077    0   45    0.05789    0.10077  74.1%     -    0s
+     0     0    0.09255    0  145    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  165    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  147    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  146    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  111    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  116    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  121    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0  115    0.05789    0.09255  59.9%     -    0s
+     0     0    0.09255    0   91    0.05789    0.09255  59.9%     -    0s
+H    0     0                       0.0672662    0.09255  37.6%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 39
+  Zero half: 44
+  RLT: 1
+  BQP: 1
+
+Explored 1 nodes (2860 simplex iterations) in 0.93 seconds (1.04 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0672662 0.0578947 0.0404946 0.0188806 
+No other solutions better than 0.0672662
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.726616334637e-02, best bound 6.726616334637e-02, gap 0.0000%
+  IP pricing time: 0.9744 s (solve 0.9697 s, gurobi.runtime 0.9355 s)
+Iter 34 | error = 0.204231 | best_score = 4.8386e-02 | FW gap = 3.7860e-01 | min = 4.8386e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86369.670834334
+Set parameter BestBdStop to value 2.2556741310048964e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86369.670834334
+BestBdStop  2.2556741310048964e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x3f8020a9
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [6e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0205471
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 6.011819e-01, 273 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.60118    0  112    0.02055    0.60118  2826%     -    0s
+H    0     0                       0.0419760    0.60118  1332%     -    0s
+     0     0    0.46112    0  130    0.04198    0.46112   999%     -    0s
+     0     0    0.45623    0  139    0.04198    0.45623   987%     -    0s
+     0     0    0.45429    0  148    0.04198    0.45429   982%     -    0s
+     0     0    0.45428    0  142    0.04198    0.45428   982%     -    0s
+     0     0    0.45309    0  128    0.04198    0.45309   979%     -    0s
+     0     0    0.45283    0  103    0.04198    0.45283   979%     -    0s
+     0     0    0.45140    0  132    0.04198    0.45140   975%     -    0s
+     0     0    0.45125    0  123    0.04198    0.45125   975%     -    0s
+H    0     0                       0.0594411    0.45125   659%     -    0s
+     0     0    0.12344    0  153    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  283    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  255    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  295    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  244    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  255    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  251    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  194    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  204    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  183    0.05944    0.12344   108%     -    0s
+     0     0    0.12344    0  161    0.05944    0.12344   108%     -    0s
+     0     0    0.05944    0  162    0.05944    0.05944  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 16
+  MIR: 2
+  Zero half: 11
+
+Explored 1 nodes (3499 simplex iterations) in 0.98 seconds (1.10 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 3: 0.0594411 0.041976 0.0205471 
+No other solutions better than 0.0594411
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.944110602492e-02, best bound 5.944110602492e-02, gap 0.0000%
+  IP pricing time: 1.0312 s (solve 1.0270 s, gurobi.runtime 0.9945 s)
+Iter 35 | error = 0.203979 | best_score = 3.8894e-02 | FW gap = 2.7139e-01 | min = 3.8894e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86368.637104417
+Set parameter BestBdStop to value 2.2966146205095343e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86368.637104417
+BestBdStop  2.2966146205095343e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x340bdd05
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [9e-06, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0209637
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.987081e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59871    0  123    0.02096    0.59871  2756%     -    0s
+H    0     0                       0.0423463    0.59871  1314%     -    0s
+     0     0    0.43875    0  185    0.04235    0.43875   936%     -    0s
+     0     0    0.43680    0  145    0.04235    0.43680   932%     -    0s
+     0     0    0.43679    0  148    0.04235    0.43679   931%     -    0s
+     0     0    0.43560    0  136    0.04235    0.43560   929%     -    0s
+     0     0    0.43534    0  116    0.04235    0.43534   928%     -    0s
+     0     0    0.43391    0  140    0.04235    0.43391   925%     -    0s
+     0     0    0.43381    0  122    0.04235    0.43381   924%     -    0s
+H    0     0                       0.0489209    0.43381   787%     -    0s
+H    0     0                       0.0498034    0.43381   771%     -    0s
+     0     0    0.15906    0  118    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0  105    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0  131    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0  116    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   93    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   93    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   79    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   79    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   78    0.04980    0.15906   219%     -    0s
+     0     0    0.15906    0   60    0.04980    0.15906   219%     -    0s
+H    0     0                       0.0553026    0.15906   188%     -    0s
+     0     0    0.12151    0  111    0.05530    0.12151   120%     -    0s
+     0     0    0.12151    0  127    0.05530    0.12151   120%     -    0s
+     0     0    0.12151    0  116    0.05530    0.12151   120%     -    0s
+     0     0    0.12151    0  109    0.05530    0.12151   120%     -    0s
+     0     0    0.12151    0  134    0.05530    0.12151   120%     -    0s
+     0     0    0.12151    0   98    0.05530    0.12151   120%     -    0s
+
+Cutting planes:
+  Gomory: 1
+  Clique: 35
+  MIR: 10
+  Zero half: 24
+  RLT: 2
+
+Explored 1 nodes (2732 simplex iterations) in 0.95 seconds (1.02 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 5: 0.0553026 0.0498034 0.0489209 ... 0.0209637
+No other solutions better than 0.0553026
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.530264744845e-02, best bound 5.530264744845e-02, gap 0.0000%
+  IP pricing time: 1.0011 s (solve 0.9961 s, gurobi.runtime 0.9602 s)
+Iter 36 | error = 0.203254 | best_score = 3.4339e-02 | FW gap = 2.2895e-01 | min = 3.4339e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6367633212791989e+04
+Set parameter BestBdStop to value 2.3642266754336078e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6367633212791989e+04
+BestBdStop  2.3642266754336078e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x3f290bd8
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0216469
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.981362e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59814    0  123    0.02165    0.59814  2663%     -    0s
+H    0     0                       0.0235549    0.59814  2439%     -    0s
+     0     0    0.46597    0  152    0.02355    0.46597  1878%     -    0s
+H    0     0                       0.0429535    0.46597   985%     -    0s
+     0     0    0.30136    0  147    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0  129    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0  113    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0  111    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0   75    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0  101    0.04295    0.30136   602%     -    0s
+     0     0    0.30136    0   95    0.04295    0.30136   602%     -    0s
+H    0     0                       0.0467642    0.30136   544%     -    0s
+     0     0    0.14962    0  171    0.04676    0.14962   220%     -    0s
+     0     0    0.14962    0  181    0.04676    0.14962   220%     -    0s
+     0     0    0.14962    0  154    0.04676    0.14962   220%     -    0s
+     0     0    0.14962    0   83    0.04676    0.14962   220%     -    0s
+     0     0    0.11230    0  157    0.04676    0.11230   140%     -    0s
+     0     0    0.11230    0  110    0.04676    0.11230   140%     -    0s
+     0     0    0.08269    0  209    0.04676    0.08269  76.8%     -    0s
+     0     0    0.08269    0  213    0.04676    0.08269  76.8%     -    0s
+     0     0    0.08269    0  195    0.04676    0.08269  76.8%     -    0s
+     0     0    0.08269    0  159    0.04676    0.08269  76.8%     -    0s
+     0     0    0.08269    0  199    0.04676    0.08269  76.8%     -    1s
+     0     0    0.08269    0  170    0.04676    0.08269  76.8%     -    1s
+     0     0    0.08269    0  130    0.04676    0.08269  76.8%     -    1s
+
+Cutting planes:
+  Clique: 71
+  MIR: 3
+  Zero half: 16
+  RLT: 2
+  BQP: 1
+
+Explored 1 nodes (3434 simplex iterations) in 1.16 seconds (1.26 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0467642 0.0429535 0.0235549 0.0216469 
+No other solutions better than 0.0467642
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 4.676415296771e-02, best bound 4.676415296771e-02, gap 0.0000%
+  IP pricing time: 1.2020 s (solve 1.1977 s, gurobi.runtime 1.1679 s)
+Iter 37 | error = 0.202538 | best_score = 2.5117e-02 | FW gap = 1.5318e-01 | min = 2.5117e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86366.428613042
+Set parameter BestBdStop to value 2.3963162103831967e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86366.428613042
+BestBdStop  2.3963162103831967e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x7ba3e24b
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0219699
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.12s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.981864e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59819    0  123    0.02197    0.59819  2623%     -    0s
+H    0     0                       0.0247905    0.59819  2313%     -    0s
+     0     0    0.46517    0  153    0.02479    0.46517  1776%     -    0s
+H    0     0                       0.0374084    0.46517  1143%     -    0s
+     0     0    0.29831    0  124    0.03741    0.29831   697%     -    0s
+     0     0    0.29831    0  125    0.03741    0.29831   697%     -    0s
+     0     0    0.29831    0  110    0.03741    0.29831   697%     -    0s
+     0     0    0.29831    0   95    0.03741    0.29831   697%     -    0s
+     0     0    0.29831    0   77    0.03741    0.29831   697%     -    0s
+     0     0    0.16804    0  140    0.03741    0.16804   349%     -    0s
+     0     0    0.16804    0  189    0.03741    0.16804   349%     -    0s
+     0     0    0.16804    0  151    0.03741    0.16804   349%     -    0s
+     0     0    0.16804    0   72    0.03741    0.16804   349%     -    0s
+     0     0    0.12344    0  208    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  178    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  150    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  163    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  148    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  157    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  185    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  199    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  189    0.03741    0.12344   230%     -    0s
+     0     0    0.12344    0  165    0.03741    0.12344   230%     -    1s
+     0     0    0.12344    0  145    0.03741    0.12344   230%     -    1s
+     0     0    0.06227    0  129    0.03741    0.06227  66.5%     -    1s
+     0     0    0.06227    0  129    0.03741    0.06227  66.5%     -    1s
+H    0     0                       0.0397418    0.04872  22.6%     -    1s
+     0     0    0.04493    0  133    0.03974    0.04493  13.0%     -    1s
+     0     0    0.04493    0  199    0.03974    0.04493  13.0%     -    1s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 100
+  MIR: 3
+  Zero half: 68
+
+Explored 1 nodes (3635 simplex iterations) in 1.36 seconds (1.36 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0397418 0.0374084 0.0247905 0.0219699 
+No other solutions better than 0.0397418
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.974181434400e-02, best bound 3.974181434400e-02, gap 0.0000%
+  IP pricing time: 1.4069 s (solve 1.4023 s, gurobi.runtime 1.3692 s)
+Iter 38 | error = 0.202318 | best_score = 1.7772e-02 | FW gap = 1.0142e-01 | min = 1.7772e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 8.6365018435833990e+04
+Set parameter BestBdStop to value 2.4008003503611913e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  8.6365018435833990e+04
+BestBdStop  2.4008003503611913e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x86abda02
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [6e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0220169
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.984077e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59841    0  123    0.02202    0.59841  2618%     -    0s
+H    0     0                       0.0245351    0.59841  2339%     -    0s
+     0     0    0.46544    0  153    0.02454    0.46544  1797%     -    0s
+H    0     0                       0.0369972    0.46544  1158%     -    0s
+     0     0    0.34384    0  118    0.03700    0.34384   829%     -    0s
+     0     0    0.34384    0  125    0.03700    0.34384   829%     -    0s
+     0     0    0.34384    0  109    0.03700    0.34384   829%     -    0s
+     0     0    0.34384    0   92    0.03700    0.34384   829%     -    0s
+     0     0    0.34384    0   73    0.03700    0.34384   829%     -    0s
+     0     0    0.19054    0  142    0.03700    0.19054   415%     -    0s
+     0     0    0.19054    0  184    0.03700    0.19054   415%     -    0s
+     0     0    0.19054    0  177    0.03700    0.19054   415%     -    0s
+     0     0    0.19054    0  128    0.03700    0.19054   415%     -    0s
+H    0     0                       0.0410527    0.13874   238%     -    0s
+     0     0    0.13874    0  147    0.04105    0.13874   238%     -    0s
+     0     0    0.12326    0  213    0.04105    0.12326   200%     -    0s
+     0     0    0.12326    0  193    0.04105    0.12326   200%     -    0s
+     0     0    0.12326    0  147    0.04105    0.12326   200%     -    0s
+     0     0    0.12326    0  140    0.04105    0.12326   200%     -    0s
+     0     0    0.12326    0  109    0.04105    0.12326   200%     -    0s
+     0     0    0.06678    0   97    0.04105    0.06678  62.7%     -    1s
+     0     0    0.06678    0  142    0.04105    0.06678  62.7%     -    1s
+     0     0    0.06678    0  190    0.04105    0.06678  62.7%     -    1s
+     0     0    0.04105    0  123    0.04105    0.04105  0.00%     -    1s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 95
+  MIR: 13
+  Zero half: 78
+  RLT: 1
+
+Explored 1 nodes (3758 simplex iterations) in 1.22 seconds (1.30 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0410527 0.0369972 0.0245351 0.0220169 
+No other solutions better than 0.0410527
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 4.105272556973e-02, best bound 4.105272556973e-02, gap 0.0000%
+  IP pricing time: 1.2796 s (solve 1.2753 s, gurobi.runtime 1.2350 s)
+Iter 39 | error = 0.202098 | best_score = 1.9036e-02 | FW gap = 1.1000e-01 | min = 1.9036e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86363.735200834
+Set parameter BestBdStop to value 2.4056170492232045e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86363.735200834
+BestBdStop  2.4056170492232045e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x3f4b622c
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [6e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0220672
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.985313e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59853    0  123    0.02207    0.59853  2612%     -    0s
+H    0     0                       0.0256499    0.59853  2233%     -    0s
+     0     0    0.46496    0  151    0.02565    0.46496  1713%     -    0s
+     0     0    0.46384    0  120    0.02565    0.46384  1708%     -    0s
+     0     0    0.29788    0  185    0.02565    0.29788  1061%     -    0s
+H    0     0                       0.0281015    0.29788   960%     -    0s
+H    0     0                       0.0387171    0.29788   669%     -    0s
+     0     0    0.11764    0  203    0.03872    0.11764   204%     -    0s
+     0     0    0.11764    0  195    0.03872    0.11764   204%     -    0s
+     0     0    0.11764    0  144    0.03872    0.11764   204%     -    0s
+     0     0    0.11764    0  166    0.03872    0.11764   204%     -    0s
+     0     0    0.07256    0  154    0.03872    0.07256  87.4%     -    0s
+     0     0    0.07256    0  174    0.03872    0.07256  87.4%     -    0s
+     0     0    0.07256    0  163    0.03872    0.07256  87.4%     -    0s
+     0     0    0.07256    0  130    0.03872    0.07256  87.4%     -    0s
+     0     0    0.07256    0  144    0.03872    0.07256  87.4%     -    1s
+     0     0    0.07256    0  122    0.03872    0.07256  87.4%     -    1s
+     0     0    0.03872    0  143    0.03872    0.03872  0.00%     -    1s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 83
+  MIR: 7
+  Zero half: 34
+
+Explored 1 nodes (3490 simplex iterations) in 1.11 seconds (1.24 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0387171 0.0281015 0.0256499 0.0220672 
+No other solutions better than 0.0387171
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.871708360627e-02, best bound 3.871708360627e-02, gap 0.0000%
+  IP pricing time: 1.1616 s (solve 1.1574 s, gurobi.runtime 1.1255 s)
+Iter 40 | error = 0.201885 | best_score = 1.6650e-02 | FW gap = 9.4315e-02 | min = 1.6650e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86362.571100042
+Set parameter BestBdStop to value 2.4305164076638467e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86362.571100042
+BestBdStop  2.4305164076638467e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x11bc31ca
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0223178
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.983776e-01, 304 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59838    0  123    0.02232    0.59838  2581%     -    0s
+H    0     0                       0.0257564    0.59838  2223%     -    0s
+     0     0    0.46500    0  151    0.02576    0.46500  1705%     -    0s
+     0     0    0.46388    0  120    0.02576    0.46388  1701%     -    0s
+     0     0    0.39769    0  185    0.02576    0.39769  1444%     -    0s
+H    0     0                       0.0282080    0.39769  1310%     -    0s
+H    0     0                       0.0336678    0.39769  1081%     -    0s
+     0     0    0.16889    0  221    0.03367    0.16889   402%     -    0s
+     0     0    0.16889    0  194    0.03367    0.16889   402%     -    0s
+     0     0    0.16889    0  154    0.03367    0.16889   402%     -    0s
+     0     0    0.10549    0  230    0.03367    0.10549   213%     -    0s
+     0     0    0.10549    0  222    0.03367    0.10549   213%     -    0s
+     0     0    0.10549    0  164    0.03367    0.10549   213%     -    0s
+     0     0    0.09695    0  152    0.03367    0.09695   188%     -    0s
+     0     0    0.07815    0  212    0.03367    0.07815   132%     -    1s
+     0     0    0.07815    0  156    0.03367    0.07815   132%     -    1s
+     0     0    0.07815    0  128    0.03367    0.07815   132%     -    1s
+H    0     0                       0.0364104    0.05938  63.1%     -    1s
+     0     0    0.05938    0  195    0.03641    0.05938  63.1%     -    1s
+     0     0    0.05938    0  210    0.03641    0.05938  63.1%     -    1s
+     0     0    0.05938    0  182    0.03641    0.05938  63.1%     -    1s
+H    0     0                       0.0379096    0.04315  13.8%     -    1s
+
+Cutting planes:
+  Gomory: 2
+  Clique: 100
+  MIR: 5
+  Zero half: 23
+  RLT: 1
+
+Explored 1 nodes (3736 simplex iterations) in 1.31 seconds (1.41 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.0379096 0.0364104 0.0336678 ... 0.0223178
+No other solutions better than 0.0379096
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.790964568862e-02, best bound 3.790964568862e-02, gap 0.0000%
+  IP pricing time: 1.3634 s (solve 1.3590 s, gurobi.runtime 1.3224 s)
+Iter 41 | error = 0.201724 | best_score = 1.5592e-02 | FW gap = 8.7590e-02 | min = 1.5592e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86361.205190917
+Set parameter BestBdStop to value 2.4499364369776816e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86361.205190917
+BestBdStop  2.4499364369776816e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xb7467f28
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [9e-06, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0225128
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.980857e-01, 310 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59809    0  138    0.02251    0.59809  2557%     -    0s
+H    0     0                       0.0259751    0.59809  2203%     -    0s
+     0     0    0.45955    0  178    0.02598    0.45955  1669%     -    0s
+H    0     0                       0.0338906    0.45955  1256%     -    0s
+     0     0    0.14969    0  123    0.03389    0.14969   342%     -    0s
+     0     0    0.14969    0  107    0.03389    0.14969   342%     -    0s
+     0     0    0.14969    0  117    0.03389    0.14969   342%     -    0s
+     0     0    0.14969    0  107    0.03389    0.14969   342%     -    0s
+     0     0    0.14969    0   83    0.03389    0.14969   342%     -    0s
+     0     0    0.10470    0   74    0.03389    0.10470   209%     -    0s
+     0     0    0.09891    0  173    0.03389    0.09891   192%     -    0s
+     0     0    0.09891    0  127    0.03389    0.09891   192%     -    0s
+     0     0    0.07797    0  297    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  266    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  228    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  215    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  234    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  216    0.03389    0.07797   130%     -    0s
+     0     0    0.07797    0  218    0.03389    0.07797   130%     -    0s
+     0     0    0.05528    0  214    0.03389    0.05528  63.1%     -    1s
+     0     0    0.05528    0  188    0.03389    0.05528  63.1%     -    1s
+     0     0    0.04318    0  240    0.03389    0.04318  27.4%     -    1s
+     0     0    0.04318    0  277    0.03389    0.04318  27.4%     -    1s
+     0     0    0.04318    0  245    0.03389    0.04318  27.4%     -    1s
+H    0     0                       0.0365714    0.04318  18.1%     -    1s
+
+Cutting planes:
+  Clique: 114
+  MIR: 1
+  Zero half: 44
+  RLT: 3
+  BQP: 2
+
+Explored 1 nodes (2837 simplex iterations) in 1.31 seconds (1.38 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0365714 0.0338906 0.0259751 0.0225128 
+No other solutions better than 0.0365714
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.657135120955e-02, best bound 3.657135120955e-02, gap 0.0000%
+  IP pricing time: 1.3522 s (solve 1.3478 s, gurobi.runtime 1.3159 s)
+Iter 42 | error = 0.201638 | best_score = 1.4059e-02 | FW gap = 7.7979e-02 | min = 1.4059e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86359.850368042
+Set parameter BestBdStop to value 2.4574695307909053e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86359.850368042
+BestBdStop  2.4574695307909053e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0xc43fa4fb
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [3e-07, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0225902
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.980981e-01, 305 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59810    0  138    0.02259    0.59810  2548%     -    0s
+H    0     0                       0.0263399    0.59810  2171%     -    0s
+     0     0    0.45981    0  183    0.02634    0.45981  1646%     -    0s
+H    0     0                       0.0287916    0.45981  1497%     -    0s
+H    0     0                       0.0342569    0.45981  1242%     -    0s
+     0     0    0.15069    0  135    0.03426    0.15069   340%     -    0s
+     0     0    0.15069    0  131    0.03426    0.15069   340%     -    0s
+     0     0    0.15069    0  147    0.03426    0.15069   340%     -    0s
+     0     0    0.15069    0  151    0.03426    0.15069   340%     -    0s
+     0     0    0.15069    0  103    0.03426    0.15069   340%     -    0s
+     0     0    0.09755    0  245    0.03426    0.09755   185%     -    0s
+     0     0    0.09755    0  202    0.03426    0.09755   185%     -    0s
+     0     0    0.09755    0  166    0.03426    0.09755   185%     -    0s
+     0     0    0.08225    0  158    0.03426    0.08225   140%     -    0s
+     0     0    0.06909    0  211    0.03426    0.06909   102%     -    0s
+     0     0    0.06909    0  166    0.03426    0.06909   102%     -    1s
+     0     0    0.06909    0  155    0.03426    0.06909   102%     -    1s
+     0     0    0.06909    0  136    0.03426    0.06909   102%     -    1s
+     0     0    0.05582    0  137    0.03426    0.05582  63.0%     -    1s
+     0     0    0.05582    0  145    0.03426    0.05582  63.0%     -    1s
+     0     0    0.05582    0  160    0.03426    0.05582  63.0%     -    1s
+     0     0    0.05582    0  160    0.03426    0.05582  63.0%     -    1s
+     0     0    0.05582    0  139    0.03426    0.05582  63.0%     -    1s
+     0     0    0.04169    0  162    0.03426    0.04169  21.7%     -    1s
+     0     0    0.04169    0  191    0.03426    0.04169  21.7%     -    1s
+     0     0    0.04159    0  235    0.03426    0.04159  21.4%     -    1s
+     0     0    0.04159    0  227    0.03426    0.04159  21.4%     -    1s
+
+Cutting planes:
+  Clique: 98
+  Zero half: 50
+  RLT: 1
+
+Explored 1 nodes (3542 simplex iterations) in 1.32 seconds (1.44 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 4: 0.0342569 0.0287916 0.0263399 0.0225902 
+No other solutions better than 0.0342569
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.425687521364e-02, best bound 3.425687521364e-02, gap 0.0000%
+  IP pricing time: 1.3652 s (solve 1.3609 s, gurobi.runtime 1.3296 s)
+Iter 43 | error = 0.201435 | best_score = 1.1667e-02 | FW gap = 6.3490e-02 | min = 1.1667e-02 |
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2629928
+Set parameter TimeLimit to value 86358.482624834
+Set parameter BestBdStop to value 2.4690709123509066e-02
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Gurobi Optimizer version 12.0.2 build v12.0.2rc0 (mac64[rosetta2] - Darwin 23.5.0 23F79)
+
+CPU model: Apple M1
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  86358.482624834
+BestBdStop  2.4690709123509066e-02
+LogToConsole  0
+
+Academic license 2629928 - for non-commercial use only - registered to hc___@columbia.edu
+Optimize a model with 21600 rows, 1496 columns and 56543 nonzeros
+Model fingerprint: 0x85427440
+Variable types: 0 continuous, 1496 integer (1496 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-05, 2e-01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective 0.0227072
+Presolve removed 595 rows and 630 columns
+Presolve time: 0.10s
+Presolved: 21005 rows, 866 columns, 55353 nonzeros
+Variable types: 0 continuous, 866 integer (866 binary)
+Root relaxation presolved: 14460 rows, 7411 columns, 42263 nonzeros
+
+
+Root relaxation: objective 5.980741e-01, 310 iterations, 0.04 seconds (0.06 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    0.59807    0  138    0.02271    0.59807  2534%     -    0s
+     0     0    0.41209    0  180    0.02271    0.41209  1715%     -    0s
+H    0     0                       0.0251552    0.41209  1538%     -    0s
+     0     0    0.14639    0  111    0.02516    0.14639   482%     -    0s
+     0     0    0.12883    0  261    0.02516    0.12883   412%     -    0s
+     0     0    0.12883    0  214    0.02516    0.12883   412%     -    0s
+H    0     0                       0.0251876    0.12883   411%     -    0s
+H    0     0                       0.0285059    0.12883   352%     -    0s
+H    0     0                       0.0296388    0.10028   238%     -    0s
+H    0     0                       0.0307618    0.10028   226%     -    0s
+     0     0    0.10028    0  252    0.03076    0.10028   226%     -    0s
+     0     0    0.07564    0  150    0.03076    0.07564   146%     -    0s
+     0     0    0.07564    0  163    0.03076    0.07564   146%     -    0s
+     0     0    0.07564    0  152    0.03076    0.07564   146%     -    0s
+     0     0    0.07564    0  107    0.03076    0.07564   146%     -    0s
+     0     0    0.07564    0  104    0.03076    0.07564   146%     -    0s
+     0     0    0.06677    0  119    0.03076    0.06677   117%     -    1s
+     0     0    0.05878    0  187    0.03076    0.05878  91.1%     -    1s
+     0     0    0.05878    0  255    0.03076    0.05878  91.1%     -    1s
+     0     0    0.05878    0  235    0.03076    0.05878  91.1%     -    1s
+     0     0    0.05878    0  239    0.03076    0.05878  91.1%     -    1s
+     0     0    0.05878    0  210    0.03076    0.05878  91.1%     -    1s
+
+Cutting planes:
+  Clique: 107
+  Zero half: 40
+  RLT: 3
+  BQP: 1
+
+Explored 1 nodes (3593 simplex iterations) in 1.32 seconds (1.45 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 6: 0.0307618 0.0296388 0.0285059 ... 0.0227072
+No other solutions better than 0.0307618
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 3.076176387558e-02, best bound 3.076176387558e-02, gap 0.0000%
+  IP pricing time: 1.3661 s (solve 1.3617 s, gurobi.runtime 1.3272 s)
+Iter 44 | error = 0.201331 | best_score = 8.0546e-03 | FW gap = 4.2580e-02 | min = 8.0546e-03 |
+Convergence Criterion Achieved (min(best_score, FW gap) = 8.0546e-03 < tol 1.0000e-02)
+  CG_IP  status=ok  error=2.013307e-01  total=42.97s  iters=44  IP_calls=44  solve_tot=39.72s  gur_tot=37.90s
+
+========================================================
+  -- CG_heurIP --  (budget left: 86356.8 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: bestinsertion_rand
+Generating choice sets only (rankings built on-demand)...
+Using 271 provided choice sets
+✓ 271 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.01s (nvars=1496, ncons=21600)
+  CG_heurIP failed: Undefined function 'B_CG_heuristic_best_rand_cmex' for input arguments of type 'cell'.
+
+========================================================
+Done. group 13 (PaperTowels, store 142).
+Summary: /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g013.csv
+Details: /Users/haoge/Dropbox/Research/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g013.mat
+========================================================

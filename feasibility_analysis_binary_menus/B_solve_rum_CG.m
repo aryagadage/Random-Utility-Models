@@ -158,16 +158,37 @@ while and(exit==0, iter <= max_iters)
     %%%%%%%%%%%%%%%Print Progres %%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    fprintf('Iter %d | error = %.6f | best_score = %.4f |\n ', ...
-    iter, error_val, best_score);
-    % --- Termination Criterion: best_score < tol
-    if best_score < tol
+    % --- Termination Criterion: hybrid (raw RC) AND (FW relative gap) ---
+    % F(p) = ||p_obs - p||^2 is the master objective.
+    %   UB  = sqrt(F_current)
+    %   LB  = sqrt(max(F_current - 2*best_score, 0))   (convexity bound on F*)
+    %   gap = (UB - LB)/LB                              (relative distance gap)
+    % LB is clamped to 0 (instead of using sqrt of a possibly negative
+    % argument); when LB == 0 we treat the relative gap as infinite. We
+    % stop whenever the EITHER the raw best_score OR the relative gap is
+    % below tol, whichever happens first.
+    F_current = error_val;
+    UB        = sqrt(max(F_current, 0));
+    LB        = sqrt(max(F_current - 2*best_score, 0));
+    if LB > 0
+        fw_gap = (UB - LB) / LB;
+    else
+        fw_gap = Inf;
+    end
+    term_metric = min(best_score, fw_gap);
+    fprintf(['Iter %d | error = %.6f | best_score = %.4e | FW gap = %.4e | ' ...
+             'min = %.4e |\n'], iter, error_val, best_score, fw_gap, term_metric);
+
+    if term_metric < tol
         if strcmp(pricing_mode, 'IP')
-            % IP pricing already ran this iteration; reduced cost is exact
+            % IP pricing already ran this iteration; best_score is an upper
+            % bound on the exact reduced cost, so the gap above is honest.
             exit = 1;
-            fprintf('Convergence Criterion Achieved (reduced_cost %.4e < tol)\n', best_score);
+            fprintf(['Convergence Criterion Achieved ' ...
+                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
+                    term_metric, tol);
         elseif IP==true
-            fprintf('IP Pricing\n')
+            fprintf('IP Pricing (verification)\n')
             ip_tic = tic;
             ip_budget = max(1, time_limit_s - toc(solver_start));
             [optim_value,optimizer,V_sub,rankings,sw,gr]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings,result.QP.inner_product,ip_budget,ip_model); %#ok<ASGLU>
@@ -178,22 +199,32 @@ while and(exit==0, iter <= max_iters)
             fprintf('  IP-exit pricing time: %.4f s (solve %.4f s, gurobi.runtime %.4f s)\n', ...
                 ip_time, sw, gr);
             append_iptimes_row(iptimes_path, n, seed_id, iter, ip_time, sw, gr);
-            %optim_value
 
-            if optim_value<result.QP.inner_product+tol
-                exit=1;
-                fprintf('best_score: %.4f',sqrt(optim_value-result.QP.inner_product) );
-                fprintf('Convergence Criterion Achieved (best_score < tol)\n');
-
+            best_score_ip = optim_value - result.QP.inner_product;
+            LB_ip = sqrt(max(F_current - 2*best_score_ip, 0));
+            if LB_ip > 0
+                fw_gap_ip = (sqrt(F_current) - LB_ip) / LB_ip;
             else
-                fprintf('best_score: %.4f\n',optim_value-result.QP.inner_product );
-                exit=0;
+                fw_gap_ip = Inf;
+            end
+            term_metric_ip = min(best_score_ip, fw_gap_ip);
+
+            if term_metric_ip < tol
+                exit = 1;
+                fprintf('best_score: %.4e | FW gap: %.4e | min: %.4e\n', ...
+                    best_score_ip, fw_gap_ip, term_metric_ip);
+                fprintf('Convergence Criterion Achieved (min < tol)\n');
+            else
+                fprintf(['best_score: %.4e | FW gap: %.4e | min: %.4e ' ...
+                         '-- continuing\n'], best_score_ip, fw_gap_ip, term_metric_ip);
+                exit = 0;
             end
         else
-            fprintf('Convergence Criterion Achieved (best_score < tol)\n');
-            exit =1;
+            fprintf(['Convergence Criterion Achieved ' ...
+                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
+                    term_metric, tol);
+            exit = 1;
         end
-            
     end
 
     

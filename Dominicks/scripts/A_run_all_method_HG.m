@@ -20,7 +20,7 @@ fprintf('RUM estimation across all draws in results_choice_freq/\n');
 % --- Algorithm parameters (same for all methods) ---
 init_k        = 1;
 max_iters     = 100;
-tol           = 1e-4;
+tol           = 1e-2;   % Frank-Wolfe relative distance gap tolerance
 csv_budget_s  = 3600;   % wall-time cap per CSV (total across both methods)
 
 % --- Paths -----------------------------------------------------------

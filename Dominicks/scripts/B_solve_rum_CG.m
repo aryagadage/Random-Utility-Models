@@ -1,9 +1,18 @@
-function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol, time_limit_s)
+function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol, time_limit_s, iptimes_path, run_tag)
 % Optional 11th arg time_limit_s: wall-time budget in seconds for the
 % entire CG run (Inf = no cap). Checked at iteration boundaries; the
 % remaining budget is also passed to B_IP_pricing as Gurobi TimeLimit
 % so individual IP solves cannot exceed it either.
+%
+% Optional 12th arg iptimes_path: path to a per-IP-call CSV. When provided,
+% one row is appended after every IP pricing call (file is fclose'd between
+% rows so a SLURM kill leaves a durable record). Columns:
+%   run_tag, iter, ip_total_s, ip_solve_s, gurobi_runtime_s
+% Optional 13th arg run_tag: string label written as the first column of
+% iptimes CSV (e.g. 'group013_PaperTowels_store142__CG_IP'). Defaults to ''.
 if nargin < 11 || isempty(time_limit_s), time_limit_s = Inf; end
+if nargin < 12, iptimes_path = ''; end
+if nargin < 13, run_tag = ''; end
 % B_solve_rum_CG
 % -------------------------------------------------------------------------
 % Column generation solver for discrete choice RUM problem.
@@ -62,7 +71,24 @@ prev_error = inf;
 iter=1;
 exit=0;
 timed_out = false;
-ip_times = [];   % per-iteration IP-pricing wall times (s); appended in IP branches
+ip_times           = [];   % per-call wall time around B_IP_pricing (s)
+ip_solve_times     = [];   % per-call wall time of just gurobi() (s)
+ip_gurobi_runtimes = [];   % per-call result.runtime (Gurobi-internal s)
+
+% Build the IP pricing model once (structural part only — same across
+% iterations). Only needed if we will actually call B_IP_pricing.
+need_ip_model = strcmp(pricing_mode, 'IP') || IP == true;
+if need_ip_model
+    t_build = tic;
+    ip_model = B_IP_pricing_build(n, choice_set_list);
+    ip_build_time = toc(t_build);
+    fprintf('B_IP_pricing_build: %.2fs (nvars=%d, ncons=%d)\n', ...
+        ip_build_time, size(ip_model.A, 2), size(ip_model.A, 1));
+else
+    ip_model      = [];
+    ip_build_time = 0;
+end
+
 solver_start = tic;
 while and(exit==0, iter <= max_iters)
     if toc(solver_start) > time_limit_s
@@ -116,11 +142,15 @@ while and(exit==0, iter <= max_iters)
         % ===================================================================
         ip_tic = tic;
         ip_budget = max(1, time_limit_s - toc(solver_start));
-        [optim_value,~,V_sub,rankings] = B_IP_pricing(result.QP.residual, ...
-            choice_sets, chosen_alts, choice_set_list, V_sub, rankings, result.QP.inner_product, ip_budget);
+        [optim_value,~,V_sub,rankings,sw,gr] = B_IP_pricing(result.QP.residual, ...
+            choice_sets, chosen_alts, choice_set_list, V_sub, rankings, result.QP.inner_product, ip_budget, ip_model);
         ip_time = toc(ip_tic);
-        ip_times(end+1) = ip_time;                                       %#ok<AGROW>
-        fprintf('  IP pricing time: %.4f s\n', ip_time);
+        ip_times(end+1)           = ip_time;     %#ok<AGROW>
+        ip_solve_times(end+1)     = sw;          %#ok<AGROW>
+        ip_gurobi_runtimes(end+1) = gr;          %#ok<AGROW>
+        fprintf('  IP pricing time: %.4f s (solve %.4f s, gurobi.runtime %.4f s)\n', ...
+            ip_time, sw, gr);
+        append_iptimes_row(iptimes_path, run_tag, iter, ip_time, sw, gr);
         best_score = optim_value - result.QP.inner_product;
     end
 
@@ -128,38 +158,73 @@ while and(exit==0, iter <= max_iters)
     %%%%%%%%%%%%%%%Print Progres %%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    fprintf('Iter %d | error = %.6f | best_score = %.4f |\n ', ...
-    iter, error_val, best_score);
-    % --- Termination Criterion: best_score < tol
-    if best_score < tol
+    % --- Termination Criterion: hybrid (raw RC) AND (FW relative gap) ---
+    % F(p) = ||p_obs - p||^2 is the master objective.
+    %   UB  = sqrt(F_current)
+    %   LB  = sqrt(max(F_current - 2*best_score, 0))   (convexity bound on F*)
+    %   gap = (UB - LB)/LB                              (relative distance gap)
+    % LB is clamped to 0 (instead of using sqrt of a possibly negative
+    % argument); when LB == 0 we treat the relative gap as infinite. We
+    % stop whenever the EITHER the raw best_score OR the relative gap is
+    % below tol, whichever happens first.
+    F_current = error_val;
+    UB        = sqrt(max(F_current, 0));
+    LB        = sqrt(max(F_current - 2*best_score, 0));
+    if LB > 0
+        fw_gap = (UB - LB) / LB;
+    else
+        fw_gap = Inf;
+    end
+    term_metric = min(best_score, fw_gap);
+    fprintf(['Iter %d | error = %.6f | best_score = %.4e | FW gap = %.4e | ' ...
+             'min = %.4e |\n'], iter, error_val, best_score, fw_gap, term_metric);
+
+    if term_metric < tol
         if strcmp(pricing_mode, 'IP')
-            % IP pricing already ran this iteration; reduced cost is exact
+            % IP pricing already ran this iteration; best_score is an upper
+            % bound on the exact reduced cost, so the gap above is honest.
             exit = 1;
-            fprintf('Convergence Criterion Achieved (reduced_cost %.4e < tol)\n', best_score);
+            fprintf(['Convergence Criterion Achieved ' ...
+                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
+                    term_metric, tol);
         elseif IP==true
-            fprintf('IP Pricing\n')
+            fprintf('IP Pricing (verification)\n')
             ip_tic = tic;
             ip_budget = max(1, time_limit_s - toc(solver_start));
-            [optim_value,optimizer,V_sub,rankings]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings,result.QP.inner_product,ip_budget); %#ok<ASGLU>
+            [optim_value,optimizer,V_sub,rankings,sw,gr]=B_IP_pricing(result.QP.residual,choice_sets,chosen_alts,choice_set_list,V_sub,rankings,result.QP.inner_product,ip_budget,ip_model); %#ok<ASGLU>
             ip_time = toc(ip_tic);
-            ip_times(end+1) = ip_time;                                   %#ok<AGROW>
-            fprintf('  IP-exit pricing time: %.4f s\n', ip_time);
-            %optim_value
+            ip_times(end+1)           = ip_time;     %#ok<AGROW>
+            ip_solve_times(end+1)     = sw;          %#ok<AGROW>
+            ip_gurobi_runtimes(end+1) = gr;          %#ok<AGROW>
+            fprintf('  IP-exit pricing time: %.4f s (solve %.4f s, gurobi.runtime %.4f s)\n', ...
+                ip_time, sw, gr);
+            append_iptimes_row(iptimes_path, run_tag, iter, ip_time, sw, gr);
 
-            if optim_value<result.QP.inner_product+tol
-                exit=1;
-                fprintf('best_score: %.4f',sqrt(optim_value-result.QP.inner_product) );
-                fprintf('Convergence Criterion Achieved (best_score < tol)\n');
-
+            best_score_ip = optim_value - result.QP.inner_product;
+            LB_ip = sqrt(max(F_current - 2*best_score_ip, 0));
+            if LB_ip > 0
+                fw_gap_ip = (sqrt(F_current) - LB_ip) / LB_ip;
             else
-                fprintf('best_score: %.4f\n',optim_value-result.QP.inner_product );
-                exit=0;
+                fw_gap_ip = Inf;
+            end
+            term_metric_ip = min(best_score_ip, fw_gap_ip);
+
+            if term_metric_ip < tol
+                exit = 1;
+                fprintf('best_score: %.4e | FW gap: %.4e | min: %.4e\n', ...
+                    best_score_ip, fw_gap_ip, term_metric_ip);
+                fprintf('Convergence Criterion Achieved (min < tol)\n');
+            else
+                fprintf(['best_score: %.4e | FW gap: %.4e | min: %.4e ' ...
+                         '-- continuing\n'], best_score_ip, fw_gap_ip, term_metric_ip);
+                exit = 0;
             end
         else
-            fprintf('Convergence Criterion Achieved (best_score < tol)\n');
-            exit =1;
+            fprintf(['Convergence Criterion Achieved ' ...
+                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
+                    term_metric, tol);
+            exit = 1;
         end
-            
     end
 
     
@@ -174,8 +239,27 @@ end
 % -------------------------------------------------------------------------
 
 result_CG=result;
-result_CG.ip_times  = ip_times;   % per-IP-call wall times (one entry per IP solve)
-result_CG.n_iters   = iter - 1;
-result_CG.timed_out = timed_out;
+result_CG.ip_build_time      = ip_build_time;       % one-shot structural build (s)
+result_CG.ip_times           = ip_times;            % wall around B_IP_pricing (s)
+result_CG.ip_solve_times     = ip_solve_times;      % wall around gurobi() only (s)
+result_CG.ip_gurobi_runtimes = ip_gurobi_runtimes;  % result.runtime (s)
+result_CG.n_iters            = iter - 1;
+result_CG.timed_out          = timed_out;
 residual=result.QP.residual;
+end
+
+
+% =========================================================================
+% Append one per-IP-call row to the streaming CSV. Opens/closes the file
+% for each row so that a SLURM kill leaves a durable record.
+% =========================================================================
+function append_iptimes_row(iptimes_path, run_tag, iter, ip_total, ip_solve, gurobi_runtime)
+if isempty(iptimes_path), return; end
+fid = fopen(iptimes_path, 'a');
+if fid < 0
+    warning('append_iptimes_row: could not open %s for append.', iptimes_path);
+    return;
+end
+fprintf(fid, '%s,%d,%.6f,%.6f,%.6f\n', run_tag, iter, ip_total, ip_solve, gurobi_runtime);
+fclose(fid);
 end
