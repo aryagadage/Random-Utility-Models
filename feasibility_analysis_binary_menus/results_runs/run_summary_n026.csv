@@ -1,0 +1,2 @@
+n,seed,n_obs,n_menus,min_menu_size,max_menu_size,method,total_time_s,error,n_iters,n_ip_calls,ip_build_s,ip_total_s,ip_mean_s,ip_max_s,ip_solve_total_s,ip_solve_mean_s,ip_solve_max_s,ip_gurobi_total_s,status,hostname,cpu_model,n_logical_cores
+26,1,650,325,2,2,CG_IP,65725.16355,14.7244382562372,245,245,0.030188,65711.895377,268.211817865306,653.761895,65711.318557,268.209463497959,653.759612,65700.4095311165,ok,r816u23n06.grace.ycrc.yale.edu,Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz,4

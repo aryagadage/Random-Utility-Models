@@ -1,0 +1,2 @@
+n,seed,iter,ip_total_s,ip_solve_s,gurobi_runtime_s
+57,1,1,0.629021,0.591066,0.485109

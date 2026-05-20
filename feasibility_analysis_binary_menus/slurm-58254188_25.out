@@ -1556,4 +1556,8 @@ Iter 75 | error = 14.400409 | best_score = 0.4150 |
 Iter 76 | error = 14.393670 | best_score = 0.3511 |
    IP pricing time: 100.8407 s (solve 100.8385 s, gurobi.runtime 100.7996 s)
 Iter 77 | error = 14.389500 | best_score = 0.3197 |
+   IP pricing time: 92.1457 s (solve 92.1435 s, gurobi.runtime 92.1202 s)
+Iter 78 | error = 14.386171 | best_score = 0.2998 |
+   IP pricing time: 99.7474 s (solve 99.7452 s, gurobi.runtime 99.7180 s)
+Iter 79 | error = 14.383940 | best_score = 0.3010 |
  
