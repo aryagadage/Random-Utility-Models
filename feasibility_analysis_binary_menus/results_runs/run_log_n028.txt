@@ -312,4 +312,6 @@ Iter 140 | error = 18.566978 | best_score = 0.1238 |
 Iter 141 | error = 18.566151 | best_score = 0.1228 |
    IP pricing time: 1131.6906 s (solve 1131.6881 s, gurobi.runtime 1131.6457 s)
 Iter 142 | error = 18.564908 | best_score = 0.1364 |
+   IP pricing time: 1164.8939 s (solve 1164.8914 s, gurobi.runtime 1164.8583 s)
+Iter 143 | error = 18.564249 | best_score = 0.1165 |
  

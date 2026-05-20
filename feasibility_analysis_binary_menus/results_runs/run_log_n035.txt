@@ -84,4 +84,6 @@ Iter 26 | error = 32.675088 | best_score = 5.6409 |
 Iter 27 | error = 32.529838 | best_score = 5.9525 |
    IP pricing time: 7768.1991 s (solve 7768.1957 s, gurobi.runtime 7768.1197 s)
 Iter 28 | error = 32.347640 | best_score = 5.1390 |
+   IP pricing time: 22699.1419 s (solve 22699.1386 s, gurobi.runtime 22699.0296 s)
+Iter 29 | error = 32.220098 | best_score = 4.3948 |
  

@@ -178,4 +178,6 @@ Iter 73 | error = 23.505201 | best_score = 1.2189 |
 Iter 74 | error = 23.488084 | best_score = 1.0008 |
    IP pricing time: 2237.8513 s (solve 2237.8485 s, gurobi.runtime 2237.7660 s)
 Iter 75 | error = 23.468400 | best_score = 1.0385 |
+   IP pricing time: 3608.6173 s (solve 3608.6145 s, gurobi.runtime 3608.5358 s)
+Iter 76 | error = 23.455293 | best_score = 0.8456 |
  

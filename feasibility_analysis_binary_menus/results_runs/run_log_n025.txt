@@ -1540,4 +1540,14 @@ Iter 70 | error = 14.432956 | best_score = 0.4464 |
 Iter 71 | error = 14.428330 | best_score = 0.3986 |
    IP pricing time: 51.8536 s (solve 51.8513 s, gurobi.runtime 51.8162 s)
 Iter 72 | error = 14.421827 | best_score = 0.4408 |
+   IP pricing time: 58.7636 s (solve 58.7614 s, gurobi.runtime 58.7333 s)
+Iter 73 | error = 14.414766 | best_score = 0.4694 |
+   IP pricing time: 80.4305 s (solve 80.4283 s, gurobi.runtime 80.3781 s)
+Iter 74 | error = 14.409914 | best_score = 0.3951 |
+   IP pricing time: 58.4805 s (solve 58.4783 s, gurobi.runtime 58.4639 s)
+Iter 75 | error = 14.400409 | best_score = 0.4150 |
+   IP pricing time: 82.6302 s (solve 82.6280 s, gurobi.runtime 82.6053 s)
+Iter 76 | error = 14.393670 | best_score = 0.3511 |
+   IP pricing time: 100.8407 s (solve 100.8385 s, gurobi.runtime 100.7996 s)
+Iter 77 | error = 14.389500 | best_score = 0.3197 |
  
