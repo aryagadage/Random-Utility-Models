@@ -1,0 +1,279 @@
+SLURM_JOBID:  58262727
+SLURM_ARRAY_TASK_ID:  63
+SLURM_ARRAY_JOB_ID:  58254188
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+RUM estimation on all-binary-menu synthetic data (n = 63)
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n063.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n063.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n063.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n063.csv
+
+Host: r816u35n06.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 4 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 63, seed = 1  (all binary menus)
+========================================================
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 3.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 6.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 12.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 21.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 35.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 54.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 79.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 109.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 140.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 169.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 191.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 203.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 203.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 191.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 169.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 140.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 109.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 79.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 54.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 35.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 21.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 12.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 6.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 3.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 88)
+In A_run_all_method_HG (line 131)] 
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1953 menus).
+Generating fake data for n=63 alternatives, 1953 menus (Dirichlet probs)...
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 3.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 6.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 12.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 21.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 35.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 54.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 79.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 109.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 140.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 169.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 191.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 203.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 203.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 191.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 169.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 140.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 109.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 79.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 54.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 35.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 21.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 12.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 6.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+[Warning: Result may not be exact. Coefficient has a maximum relative error of
+2.2204e-16, corresponding to absolute error 3.] 
+[> In nchoosek (line 121)
+In B_generate_fake_data_all_menus_outside (line 104)
+In A_run_all_method_HG (line 131)] 
+Generated 3906 rows from 1953 menus (1953 unique).
+Menu size distribution actually drawn:
+  size 2: 1953 menus (100.0%)
+
+n = 63 | 3906 observations | 1953 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 3906 provided choice sets
+✓ 3906 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.06s (nvars=3969, ncons=81375)
+  IP pricing time: 0.9561 s (solve 0.9132 s, gurobi.runtime 0.8173 s)
+Iter 1 | error = 1294.677166 | best_score = 1943.2304 |
+ 

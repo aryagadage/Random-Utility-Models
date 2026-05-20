@@ -1,0 +1,41 @@
+SLURM_JOBID:  58254289
+SLURM_ARRAY_TASK_ID:  48
+SLURM_ARRAY_JOB_ID:  58254188
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+RUM estimation on all-binary-menu synthetic data (n = 48)
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n048.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n048.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n048.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n048.csv
+
+Host: r816u29n04.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 4 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 48, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1128 menus).
+Generating fake data for n=48 alternatives, 1128 menus (Dirichlet probs)...
+Generated 2256 rows from 1128 menus (1128 unique).
+Menu size distribution actually drawn:
+  size 2: 1128 menus (100.0%)
+
+n = 48 | 2256 observations | 1128 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 2256 provided choice sets
+✓ 2256 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.04s (nvars=2304, ncons=35720)
+  IP pricing time: 0.3168 s (solve 0.2926 s, gurobi.runtime 0.2644 s)
+Iter 1 | error = 739.675215 | best_score = 1112.0507 |
+   IP pricing time: 54293.2992 s (solve 54293.2832 s, gurobi.runtime 54293.2388 s)
+Iter 2 | error = 191.511744 | best_score = 105.0142 |
+ 

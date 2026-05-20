@@ -1,0 +1,33 @@
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n052.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n052.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n052.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n052.csv
+
+Host: r816u29n03.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 4 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 52, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1326 menus).
+Generating fake data for n=52 alternatives, 1326 menus (Dirichlet probs)...
+Generated 2652 rows from 1326 menus (1326 unique).
+Menu size distribution actually drawn:
+  size 2: 1326 menus (100.0%)
+
+n = 52 | 2652 observations | 1326 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 2652 provided choice sets
+✓ 2652 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.04s (nvars=2704, ncons=45526)
+  IP pricing time: 0.3770 s (solve 0.3538 s, gurobi.runtime 0.3053 s)
+Iter 1 | error = 893.061046 | best_score = 1341.7280 |
+ 

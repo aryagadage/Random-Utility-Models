@@ -1,0 +1,39 @@
+SLURM_JOBID:  58254394
+SLURM_ARRAY_TASK_ID:  50
+SLURM_ARRAY_JOB_ID:  58254188
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+RUM estimation on all-binary-menu synthetic data (n = 50)
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n050.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n050.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n050.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n050.csv
+
+Host: r816u35n05.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 4 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 50, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1225 menus).
+Generating fake data for n=50 alternatives, 1225 menus (Dirichlet probs)...
+Generated 2450 rows from 1225 menus (1225 unique).
+Menu size distribution actually drawn:
+  size 2: 1225 menus (100.0%)
+
+n = 50 | 2450 observations | 1225 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 2450 provided choice sets
+✓ 2450 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.04s (nvars=2500, ncons=40425)
+  IP pricing time: 0.3483 s (solve 0.3254 s, gurobi.runtime 0.2828 s)
+Iter 1 | error = 823.167413 | best_score = 1232.6191 |
+ 
