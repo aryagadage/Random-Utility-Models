@@ -714,4 +714,6 @@ Iter 85 | error = 16.724623 | best_score = 0.3920 |
 Iter 86 | error = 16.720583 | best_score = 0.3903 |
    IP pricing time: 269.4561 s (solve 269.4539 s, gurobi.runtime 269.4173 s)
 Iter 87 | error = 16.717105 | best_score = 0.4285 |
+   IP pricing time: 243.7826 s (solve 243.7804 s, gurobi.runtime 243.7088 s)
+Iter 88 | error = 16.710978 | best_score = 0.4199 |
  

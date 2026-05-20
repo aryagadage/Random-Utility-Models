@@ -196,4 +196,6 @@ Iter 82 | error = 21.382433 | best_score = 0.7487 |
 Iter 83 | error = 21.371967 | best_score = 0.6851 |
    IP pricing time: 2387.9649 s (solve 2387.9622 s, gurobi.runtime 2387.8635 s)
 Iter 84 | error = 21.365388 | best_score = 0.7954 |
+   IP pricing time: 2881.8934 s (solve 2881.8908 s, gurobi.runtime 2881.8133 s)
+Iter 85 | error = 21.355982 | best_score = 0.6884 |
  
