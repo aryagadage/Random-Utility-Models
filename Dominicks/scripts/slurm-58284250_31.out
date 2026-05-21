@@ -1,0 +1,11 @@
+SLURM_JOBID:            58284269
+SLURM_ARRAY_TASK_ID:    31
+SLURM_ARRAY_JOB_ID:     58284250
+SLURM_CPUS_PER_TASK:    8
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+Dominick's CG run — group 31
+{Error using A_run_one_group
+No choice-freq CSV matching
+/vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_choice_freq/group031_*_store*.csv
+} 

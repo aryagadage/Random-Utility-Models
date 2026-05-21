@@ -49,7 +49,7 @@ ip_model.modelsense = 'max';
 
 %% Solve ----------------------------------------------------------------
 params = [];
-params.OutputFlag = 1;
+params.OutputFlag = 0;
 if isfinite(time_limit_s)
     params.TimeLimit = time_limit_s;
 end

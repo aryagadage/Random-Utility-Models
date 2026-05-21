@@ -1,0 +1,30 @@
+SLURM_JOBID:            58284267
+SLURM_ARRAY_TASK_ID:    29
+SLURM_ARRAY_JOB_ID:     58284250
+SLURM_CPUS_PER_TASK:    8
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+Dominick's CG run — group 29
+Found CSV: group029_Cereal_store133.csv  (category=Cereal, store=133)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g029.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g029.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g029.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g029.csv
+
+Host: r918u36n03.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 349 alternatives | 37019 observations | 227 unique menus | menu sizes 145..176
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 37019 provided choice sets
+✓ 37019 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 4.83s (nvars=158820, ncons=20127599)

@@ -1,0 +1,64 @@
+SLURM_JOBID:  58282661
+SLURM_ARRAY_TASK_ID:  39
+SLURM_ARRAY_JOB_ID:  58281987
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+RUM estimation on all-binary-menu synthetic data (n = 39)
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n039.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n039.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n039.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n039.csv
+
+Host: r816u35n05.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 39, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 741 menus).
+Generating fake data for n=39 alternatives, 741 menus (Dirichlet probs)...
+Generated 1482 rows from 741 menus (741 unique).
+Menu size distribution actually drawn:
+  size 2: 741 menus (100.0%)
+
+n = 39 | 1482 observations | 741 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 1482 provided choice sets
+✓ 1482 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.04s (nvars=1521, ncons=19019)
+  IP pricing time: 0.1423 s (solve 0.1198 s, gurobi.runtime 0.0996 s)
+Iter 1 | error = 499.240321 | best_score = 7.4446e+02 | FW gap = Inf | min = 7.4446e+02 |
+  IP pricing time: 87.3102 s (solve 87.3021 s, gurobi.runtime 87.2089 s)
+Iter 2 | error = 125.273506 | best_score = 7.8022e+01 | FW gap = Inf | min = 7.8022e+01 |
+  IP pricing time: 289.5328 s (solve 289.5274 s, gurobi.runtime 289.4254 s)
+Iter 3 | error = 108.782301 | best_score = 6.6824e+01 | FW gap = Inf | min = 6.6824e+01 |
+  IP pricing time: 24.8388 s (solve 24.8313 s, gurobi.runtime 24.7356 s)
+Iter 4 | error = 96.128679 | best_score = 6.8644e+01 | FW gap = Inf | min = 6.8644e+01 |
+  IP pricing time: 13.2200 s (solve 13.2077 s, gurobi.runtime 13.1741 s)
+Iter 5 | error = 81.517715 | best_score = 6.5264e+01 | FW gap = Inf | min = 6.5264e+01 |
+  IP pricing time: 3.7703 s (solve 3.7665 s, gurobi.runtime 3.7402 s)
+Iter 6 | error = 69.322898 | best_score = 5.6834e+01 | FW gap = Inf | min = 5.6834e+01 |
+  IP pricing time: 16.3938 s (solve 16.3879 s, gurobi.runtime 16.3707 s)
+Iter 7 | error = 62.117404 | best_score = 3.7009e+01 | FW gap = Inf | min = 3.7009e+01 |
+  IP pricing time: 788.2478 s (solve 788.2438 s, gurobi.runtime 788.1984 s)
+Iter 8 | error = 58.747895 | best_score = 2.6225e+01 | FW gap = 2.0540e+00 | min = 2.0540e+00 |
+  IP pricing time: 751.3262 s (solve 751.3221 s, gurobi.runtime 751.2725 s)
+Iter 9 | error = 56.685215 | best_score = 2.5044e+01 | FW gap = 1.9313e+00 | min = 1.9313e+00 |
+  IP pricing time: 1494.4921 s (solve 1494.4880 s, gurobi.runtime 1494.4293 s)
+Iter 10 | error = 54.970539 | best_score = 2.1099e+01 | FW gap = 1.0746e+00 | min = 1.0746e+00 |
+  IP pricing time: 3704.8830 s (solve 3704.8786 s, gurobi.runtime 3704.8305 s)
+Iter 11 | error = 53.668171 | best_score = 1.7901e+01 | FW gap = 7.3315e-01 | min = 7.3315e-01 |
+  IP pricing time: 16626.9346 s (solve 16626.9305 s, gurobi.runtime 16626.8732 s)
+Iter 12 | error = 52.751169 | best_score = 1.4823e+01 | FW gap = 5.1098e-01 | min = 5.1098e-01 |
+  IP pricing time: 5069.7946 s (solve 5069.7905 s, gurobi.runtime 5069.7276 s)
+Iter 13 | error = 51.985129 | best_score = 1.4918e+01 | FW gap = 5.3199e-01 | min = 5.3199e-01 |
+  IP pricing time: 36377.6353 s (solve 36377.6311 s, gurobi.runtime 36377.5486 s)
+Iter 14 | error = 51.315486 | best_score = 1.2012e+01 | FW gap = 3.7125e-01 | min = 3.7125e-01 |

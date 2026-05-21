@@ -1,0 +1,48 @@
+SLURM_JOBID:  58302805
+SLURM_ARRAY_TASK_ID:  46
+SLURM_ARRAY_JOB_ID:  58281987
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+RUM estimation on all-binary-menu synthetic data (n = 46)
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n046.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n046.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n046.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n046.csv
+
+Host: r816u29n02.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 46, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1035 menus).
+Generating fake data for n=46 alternatives, 1035 menus (Dirichlet probs)...
+Generated 2070 rows from 1035 menus (1035 unique).
+Menu size distribution actually drawn:
+  size 2: 1035 menus (100.0%)
+
+n = 46 | 2070 observations | 1035 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 2070 provided choice sets
+✓ 2070 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.04s (nvars=2116, ncons=31395)
+  IP pricing time: 0.3128 s (solve 0.2878 s, gurobi.runtime 0.2286 s)
+Iter 1 | error = 675.406822 | best_score = 1.0179e+03 | FW gap = Inf | min = 1.0179e+03 |
+  IP pricing time: 34328.7935 s (solve 34328.7841 s, gurobi.runtime 34328.7031 s)
+Iter 2 | error = 174.895991 | best_score = 9.8902e+01 | FW gap = Inf | min = 9.8902e+01 |
+  IP pricing time: 15147.4932 s (solve 15147.4864 s, gurobi.runtime 15147.4080 s)
+Iter 3 | error = 155.955202 | best_score = 9.2558e+01 | FW gap = Inf | min = 9.2558e+01 |
+  IP pricing time: 87.7776 s (solve 87.7683 s, gurobi.runtime 87.7226 s)
+Iter 4 | error = 138.246623 | best_score = 9.7097e+01 | FW gap = Inf | min = 9.7097e+01 |
+  IP pricing time: 148.0195 s (solve 148.0049 s, gurobi.runtime 147.9673 s)
+Iter 5 | error = 115.390094 | best_score = 8.5640e+01 | FW gap = Inf | min = 8.5640e+01 |
+  IP pricing time: 1023.5378 s (solve 1023.5321 s, gurobi.runtime 1023.4714 s)
+Iter 6 | error = 101.505334 | best_score = 6.4610e+01 | FW gap = Inf | min = 6.4610e+01 |

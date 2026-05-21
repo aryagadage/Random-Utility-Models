@@ -1,0 +1,23 @@
+Found CSV: group028_CannedSoup_store139.csv  (category=CannedSoup, store=139)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g028.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g028.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g028.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g028.csv
+
+Host: r918u09n04.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 317 alternatives | 39759 observations | 214 unique menus | menu sizes 66..222
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 39759 provided choice sets
+✓ 39759 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 4.27s (nvars=140248, ncons=18239116)

@@ -1,0 +1,23 @@
+Found CSV: group021_SoftDrinks_store142.csv  (category=SoftDrinks, store=142)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g021.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g021.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g021.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g021.csv
+
+Host: r909u13n04.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 696 alternatives | 15142 observations | 32 unique menus | menu sizes 355..513
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 15142 provided choice sets
+✓ 15142 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 37.03s (nvars=499558, ncons=119317592)

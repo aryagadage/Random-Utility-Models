@@ -1,0 +1,23 @@
+Found CSV: group017_Cigarettes_store142.csv  (category=Cigarettes, store=142)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g017.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g017.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g017.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g017.csv
+
+Host: r909u04n03.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 287 alternatives | 3115 observations | 35 unique menus | menu sizes 30..145
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 3115 provided choice sets
+✓ 3115 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 1.47s (nvars=85484, ncons=8165182)

@@ -1,0 +1,25 @@
+Found CSV: group025_BathroomTissues_store002.csv  (category=BathroomTissues, store=2)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g025.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g025.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g025.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g025.csv
+
+Host: r918u05n01.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 115 alternatives | 6442 observations | 170 unique menus | menu sizes 23..48
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 6442 provided choice sets
+✓ 6442 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.16s (nvars=19667, ncons=741523)
+  IP pricing time: 381.9912 s (solve 381.8355 s, gurobi.runtime 381.4626 s)
+Iter 1 | error = 183.087996 | best_score = 1.9200e+02 | FW gap = Inf | min = 1.9200e+02 |

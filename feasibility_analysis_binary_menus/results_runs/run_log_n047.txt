@@ -1,0 +1,42 @@
+Running 5 seeds. Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_summary_n047.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_log_n047.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_details_n047.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/feasibility_analysis_binary_menus/results_runs/run_iptimes_n047.csv
+
+Host: r816u29n02.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+
+========================================================
+[1/5] n = 47, seed = 1  (all binary menus)
+========================================================
+[fractions mode] counts(s) = round(frac(s) * C(n,s))  (total 1081 menus).
+Generating fake data for n=47 alternatives, 1081 menus (Dirichlet probs)...
+Generated 2162 rows from 1081 menus (1081 unique).
+Menu size distribution actually drawn:
+  size 2: 1081 menus (100.0%)
+
+n = 47 | 2162 observations | 1081 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 2162 provided choice sets
+✓ 2162 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.05s (nvars=2209, ncons=33511)
+  IP pricing time: 0.3421 s (solve 0.3153 s, gurobi.runtime 0.2725 s)
+Iter 1 | error = 722.884707 | best_score = 1.0860e+03 | FW gap = Inf | min = 1.0860e+03 |
+  IP pricing time: 1578.0574 s (solve 1578.0470 s, gurobi.runtime 1577.9789 s)
+Iter 2 | error = 177.394862 | best_score = 1.1016e+02 | FW gap = Inf | min = 1.1016e+02 |
+  IP pricing time: 12768.8068 s (solve 12768.7993 s, gurobi.runtime 12768.7118 s)
+Iter 3 | error = 154.903751 | best_score = 9.6298e+01 | FW gap = Inf | min = 9.6298e+01 |
+  IP pricing time: 556.1085 s (solve 556.0989 s, gurobi.runtime 556.0031 s)
+Iter 4 | error = 135.225158 | best_score = 9.4761e+01 | FW gap = Inf | min = 9.4761e+01 |
+  IP pricing time: 22226.7204 s (solve 22226.7054 s, gurobi.runtime 22226.6089 s)
+Iter 5 | error = 115.494937 | best_score = 8.3051e+01 | FW gap = Inf | min = 8.3051e+01 |
+  IP pricing time: 592.7856 s (solve 592.7795 s, gurobi.runtime 592.7254 s)
+Iter 6 | error = 102.298684 | best_score = 6.9813e+01 | FW gap = Inf | min = 6.9813e+01 |

@@ -1,0 +1,31 @@
+SLURM_JOBID:            58284260
+SLURM_ARRAY_TASK_ID:    22
+SLURM_ARRAY_JOB_ID:     58284250
+SLURM_CPUS_PER_TASK:    8
+Gurobi shell based on Python 3.12.3 can be launched with command `gurobi.sh`
+Gurobi Python Interface can be loaded in Python 3.12.3 with 'import gurobipy'
+Dominick's CG run — group 22
+Found CSV: group022_Shampoos_store142.csv  (category=Shampoos, store=142)
+Outputs:
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_summary_g022.csv
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_log_g022.txt
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_details_g022.mat
+  /vast/palmer/home.grace/hc654/Random-Utility-Models/Dominicks/scripts/results_runs/run_iptimes_g022.csv
+
+Host: r909u29n02.grace.ycrc.yale.edu
+CPU:  Intel(R) Xeon(R) Platinum 8268 CPU @ 2.90GHz
+OS:   GLNXA64 | logical cores: 8 | MATLAB: 23.2.0.2428915 (R2023b) Update 4
+
+n = 1075 alternatives | 13757 observations | 33 unique menus | menu sizes 274..550
+
+========================================================
+  -- CG_IP --  (budget left: 86400.0 s)
+========================================================
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 13757 provided choice sets
+✓ 13757 choice sets generated (no ranking enumeration needed)
+
+/var/spool/slurmd/job58284260/slurm_script: line 27: 871816 Killed                  matlab -batch "addpath('/home/hc654/Random-Utility-Models/feasibility_analysis_binary_menus'); addpath(pwd); A_run_one_group($SLURM_ARRAY_TASK_ID)"
+slurmstepd: error: Detected 1 oom_kill event in StepId=58284260.batch. Some of the step tasks have been OOM Killed.
