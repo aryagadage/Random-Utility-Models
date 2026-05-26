@@ -1,0 +1,16 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Sun Dec 29 10:09:34 2019
+\begin{table}[ht]
+\centering
+\caption{Treatment Effect by Outcome Variable} 
+\begin{tabular}{llll}
+  \hline
+  & Estimate & SE & CI \\ 
+  \hline
+Overall & -0.117 & 0.009 & (-0.135, -0.099) \\ 
+  Voters only & -0.132 & 0.010 & (-0.150, -0.112) \\ 
+  Difference & 0.014 & 0.005 & (0.004, 0.024) \\ 
+   \hline
+\end{tabular}
+\end{table}
+

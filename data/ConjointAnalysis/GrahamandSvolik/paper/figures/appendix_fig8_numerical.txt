@@ -1,0 +1,42 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Fri Dec 20 07:04:22 2019
+\begin{table}[ht]
+\centering
+\caption{Marginal means by party} 
+\begingroup\fontsize{10pt}{11pt}\selectfont
+\begin{tabular}{lllrrl}
+  \hline
+Category & Position & Party & Estimate & Bootstrap SE & CI \\ 
+  \hline
+Undemocratic & D- Gerrymander by 2 & Overall & 0.407 & 0.014 & (0.381, 0.433) \\ 
+  Undemocratic & D- Gerrymander by 2 & Democrat & 0.411 & 0.020 & (0.373, 0.451) \\ 
+  Undemocratic & D- Gerrymander by 2 & Republican & 0.393 & 0.021 & (0.355, 0.433) \\ 
+  Undemocratic & D- Gerrymander by 10 & Overall & 0.382 & 0.013 & (0.357, 0.408) \\ 
+  Undemocratic & D- Gerrymander by 10 & Democrat & 0.408 & 0.020 & (0.366, 0.445) \\ 
+  Undemocratic & D- Gerrymander by 10 & Republican & 0.358 & 0.021 & (0.318, 0.400) \\ 
+  Undemocratic & D- Close Polling Stations & Overall & 0.379 & 0.014 & (0.351, 0.407) \\ 
+  Undemocratic & D- Close Polling Stations & Democrat & 0.379 & 0.020 & (0.338, 0.418) \\ 
+  Undemocratic & D- Close Polling Stations & Republican & 0.378 & 0.021 & (0.337, 0.419) \\ 
+  Undemocratic & D- Executive Order & Overall & 0.403 & 0.013 & (0.377, 0.428) \\ 
+  Undemocratic & D- Executive Order & Democrat & 0.429 & 0.020 & (0.389, 0.466) \\ 
+  Undemocratic & D- Executive Order & Republican & 0.398 & 0.021 & (0.356, 0.434) \\ 
+  Undemocratic & D- Ignore Courts & Overall & 0.365 & 0.013 & (0.339, 0.389) \\ 
+  Undemocratic & D- Ignore Courts & Democrat & 0.351 & 0.020 & (0.310, 0.390) \\ 
+  Undemocratic & D- Ignore Courts & Republican & 0.381 & 0.020 & (0.343, 0.421) \\ 
+  Undemocratic & D- Prosecute Journalists & Overall & 0.346 & 0.014 & (0.319, 0.373) \\ 
+  Undemocratic & D- Prosecute Journalists & Democrat & 0.333 & 0.020 & (0.290, 0.372) \\ 
+  Undemocratic & D- Prosecute Journalists & Republican & 0.359 & 0.021 & (0.320, 0.402) \\ 
+  Undemocratic & D- Ban Protests & Overall & 0.397 & 0.013 & (0.370, 0.424) \\ 
+  Undemocratic & D- Ban Protests & Democrat & 0.435 & 0.019 & (0.397, 0.472) \\ 
+  Undemocratic & D- Ban Protests & Republican & 0.358 & 0.021 & (0.317, 0.399) \\ 
+  Negative Valence & V- Extramarital Affairs & Overall & 0.336 & 0.013 & (0.312, 0.363) \\ 
+  Negative Valence & V- Extramarital Affairs & Democrat & 0.332 & 0.020 & (0.294, 0.373) \\ 
+  Negative Valence & V- Extramarital Affairs & Republican & 0.336 & 0.020 & (0.299, 0.374) \\ 
+  Negative Valence & V- Underpaid Taxes & Overall & 0.288 & 0.013 & (0.263, 0.314) \\ 
+  Negative Valence & V- Underpaid Taxes & Democrat & 0.282 & 0.019 & (0.247, 0.320) \\ 
+  Negative Valence & V- Underpaid Taxes & Republican & 0.280 & 0.019 & (0.243, 0.315) \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+

@@ -6,7 +6,7 @@ setwd(path)
 all_categories_data=read.csv("./Dominicks/store_summary_all_categories.csv")
 
 #create quantiles in terms of number of UPCs and number of distinct menus
-num_upcs=quantile(all_categories_data$n_upcs,probs=seq(0,1,by=0.001))
+num_upcs=quantile(all_categories_data$n_upcs,probs=seq(0,1,by=0.1))
 num_menus=quantile(all_categories_data$n_menus,probs=seq(0,1,by=0.1))
 
 

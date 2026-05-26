@@ -1,0 +1,57 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Dec 13, 2019 - 4:53:22 PM
+\begin{table}[!htbp] \centering 
+  \caption{Montana placebo diff-in-diff} 
+  \label{tab:mt_placebo_ctrl} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{Republican two-party vote share} \\ 
+ & D-in-D & Interacted & D-in-D & Interacted \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ 2016 & $-$0.016 & $-$0.074 & 0.030 & $-$0.042 \\ 
+  & (0.016) & (0.040) & (0.022) & (0.041) \\ 
+  & & & & \\ 
+ Election Day & 0.049 & $-$0.105 & 0.101$^{***}$ & 0.251$^{**}$ \\ 
+  & (0.025) & (0.116) & (0.028) & (0.079) \\ 
+  & & & & \\ 
+ 2016 x Elect Day & 0.018 & 0.301$^{**}$ & 0.010 & 0.038 \\ 
+  & (0.012) & (0.095) & (0.007) & (0.042) \\ 
+  & & & & \\ 
+ \% R 2014 &  & 0.892$^{***}$ &  & 1.101$^{***}$ \\ 
+  &  & (0.081) &  & (0.068) \\ 
+  & & & & \\ 
+ 2016 x \% R 2014 &  & 0.113 &  & 0.069 \\ 
+  &  & (0.058) &  & (0.060) \\ 
+  & & & & \\ 
+ Elect Day x \% R 2014 &  & 0.233 &  & $-$0.256$^{*}$ \\ 
+  &  & (0.165) &  & (0.115) \\ 
+  & & & & \\ 
+ 2016 x Elect Day x \% R 2014 &  & $-$0.417$^{**}$ &  & $-$0.049 \\ 
+  &  & (0.136) &  & (0.062) \\ 
+  & & & & \\ 
+ Mean birth year & 0.001 & 0.001 & $-$0.005 & 0.001 \\ 
+  & (0.004) & (0.001) & (0.005) & (0.001) \\ 
+  & & & & \\ 
+ \% voting absentee & $-$0.177$^{***}$ & $-$0.208$^{**}$ & $-$0.183 & $-$0.120 \\ 
+  & (0.052) & (0.068) & (0.095) & (0.092) \\ 
+  & & & & \\ 
+ \% in city limits & $-$0.161$^{***}$ & $-$0.005 & $-$0.110$^{**}$ & $-$0.007 \\ 
+  & (0.034) & (0.008) & (0.037) & (0.008) \\ 
+  & & & & \\ 
+ Constant & $-$0.416 & $-$1.049 & 10.264 & $-$1.440 \\ 
+  & (7.172) & (2.357) & (9.646) & (2.168) \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 308 & 268 & 164 & 164 \\ 
+Adjusted R$^{2}$ & 0.307 & 0.862 & 0.395 & 0.877 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
+ & \multicolumn{4}{r}{Standard errors clustered by precinct.} \\ 
+\end{tabular} 
+\end{table} 

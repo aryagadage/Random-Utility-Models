@@ -1,0 +1,37 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Fri Dec 20 06:07:06 2019
+\begin{table}[ht]
+\centering
+\caption{Numerical results for Figure 5} 
+\begingroup\small
+\begin{tabular}{lllll}
+  \hline
+Respondent & Candidates & D- vote share & Bootstrap SE & Bootstrap CI \\ 
+  \hline
+Strong
+Dem & Dem D- vs. Dem D+ & 0.438 & 0.022 & (0.394, 0.479) \\ 
+  Strong
+Dem & Rep D- vs. Rep D+ & 0.345 & 0.023 & (0.302, 0.388) \\ 
+  Dem & Dem D- vs. Dem D+ & 0.407 & 0.028 & (0.351, 0.461) \\ 
+  Dem & Rep D- vs. Rep D+ & 0.323 & 0.026 & (0.276, 0.378) \\ 
+  Lean
+Dem & Dem D- vs. Dem D+ & 0.425 & 0.041 & (0.343, 0.502) \\ 
+  Lean
+Dem & Rep D- vs. Rep D+ & 0.298 & 0.033 & (0.234, 0.366) \\ 
+  Indep & Dem D- vs. Dem D+ & 0.363 & 0.029 & (0.305, 0.416) \\ 
+  Indep & Rep D- vs. Rep D+ & 0.331 & 0.029 & (0.277, 0.392) \\ 
+  Lean
+Rep & Dem D- vs. Dem D+ & 0.325 & 0.038 & (0.253, 0.407) \\ 
+  Lean
+Rep & Rep D- vs. Rep D+ & 0.398 & 0.038 & (0.325, 0.477) \\ 
+  Rep & Dem D- vs. Dem D+ & 0.322 & 0.025 & (0.274, 0.373) \\ 
+  Rep & Rep D- vs. Rep D+ & 0.392 & 0.028 & (0.336, 0.446) \\ 
+  Strong
+Rep & Dem D- vs. Dem D+ & 0.315 & 0.025 & (0.268, 0.366) \\ 
+  Strong
+Rep & Rep D- vs. Rep D+ & 0.411 & 0.024 & (0.365, 0.458) \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+

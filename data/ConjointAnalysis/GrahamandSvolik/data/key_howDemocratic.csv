@@ -1,0 +1,40 @@
+variable,scale,description,wording
+dem_better,"[0, 1]","""Democracy may have problems, but it is better than any other form of government.""
+
+To what extent do you agree or disagree with this statement?",
+dem_satisfied,"[0, 1]","On the whole, are you satisfied with the way democracy works in the United States? ",
+dem_gerry,"[0, 1]",How strongly do you support or oppose gerrymandering?,
+dem_ess_taxRich,"[0, 1]",[essential for dem?] Governments tax the rich and subsidize the poor. (N),
+dem_ess_religLaw,"[0, 1]",[essential for dem?] Religious authorities ultimately interpret the laws. (D-),
+dem_ess_elections,"[0, 1]",[essential for dem?] People choose their leaders in free elections. (D+),
+dem_ess_unempAid,"[0, 1]",[essential for dem?] People receive state aid for unemployment. (N),
+dem_ess_coups,"[0, 1]",[essential for dem?] The army takes over when government is incompetent. (D-),
+dem_ess_civilRights,"[0, 1]",[essential for dem?] Civil rights protect people from state oppression. (D+),
+dem_ess_incomeEqual,"[0, 1]",[essential for dem?] The state makes people's incomes equal. (N),
+dem_ess_obeyRuler,"[0, 1]",[essential for dem?] People obey their rulers. (N),
+dem_ess_womenEqual,"[0, 1]",[essential for dem?] Women have the same rights as men. (D+),
+dem_UStoday,"[0, 1]","How democratically is the United States being governed today? 
+
+
+
+Please choose on a scale from 1 to 10, where 1 means it is “not at all democratic” and 10 means “completely democratic.""",
+dem_sys_strongman,"[0, 1]",[systems of government] Having a strong leader who does not have to bother with Congress or elections,
+dem_sys_experts,"[0, 1]","[systems of government] Having experts, not government, make decisions for the country",
+dem_sys_army,"[0, 1]",[systems of government] Having the army rule,
+dem_sys_democracy,"[0, 1]",[systems of government] Having a democratic political system,
+dem_world_pressDisagree,"[0, 1]",[around the world] Journalists frequently disagree with the president's policies. (D+),
+dem_world_propToMaj,"[0, 1]",[around the world] The legislature changed the electoral system from proportional to majoritarian representation. (N),
+dem_world_welfare,"[0, 1]",[around the world] A candidate promised an increase in welfare benefits to attract voters. (N),
+dem_world_coup,"[0, 1]",[around the world] The military overthrew a corrupt government. (D-),
+dem_world_halfVote,"[0, 1]",[around the world] About half of the country's registered voters do not turn out to vote in legislative elections. (N),
+dem_world_govCampaign,"[0, 1]",[around the world] Candidates from the incumbent party use government resources when campaigning for re-election. (D-),
+dem_world_termLimit,"[0, 1]",[around the world] The country's legislature passed a law that bans sitting presidents from running for re-election. (N),
+dem_world_eVote,"[0, 1]",[around the world] The government switched from paper ballots to electronic voting machines. (N),
+dem_treat_journalists,"[0, 1]",[treat check embedded in around the world] The government prosecutes journalists who criticize the president and refuse to reveal sources. (D-),
+dem_treat_banProtest,"[0, 1]",[treat check embedded in around the world] Far-${e://Field/demBatteryIdeo} groups are banned from holding public rallies. (D-),
+dem_treat_execRule,"[0, 1]",[treat check embedded in around the world] The president began ruling by executive order after legislators from opposition parties refused to cooperate with his administration. (D-),
+dem_treat_ignoreCourt,"[0, 1]",[treat check embedded in around the world] The government ignores unfavorable court rulings. (D-),
+dem_treat_redistrict,"[0, 1]",[treat check embedded in around the world] The largest party redrew legislative districts in order to secure its control of the legislature for the next term. (D-),
+dem_treat_limitVote,"[0, 1]",[treat check embedded in around the world] The government cut the number of polling stations in areas that support the opposition. (D-),
+dem_treat_banLeftProtest,"[0, 1]",[treat check embedded in around the world] Far-left groups are banned from holding public rallies. (D-),
+dem_treat_banRightProtest,"[0, 1]",[treat check embedded in around the world] Far-right groups are banned from holding public rallies. (D-),

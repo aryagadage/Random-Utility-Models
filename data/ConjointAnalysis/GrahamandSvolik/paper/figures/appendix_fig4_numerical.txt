@@ -1,0 +1,28 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Fri Dec 20 05:53:18 2019
+\begin{table}[ht]
+\centering
+\caption{Numerical results for Figure 4} 
+\begingroup\small
+\begin{tabular}{llll}
+  \hline
+Party & Estimate & Bootstrap SE & Bootstrap CI \\ 
+  \hline
+Strong
+opposite & -0.115 & 0.023 & (-0.160, -0.074) \\ 
+  Weak
+opposite & -0.121 & 0.031 & (-0.181, -0.057) \\ 
+  Lean
+opposite & -0.157 & 0.041 & (-0.241, -0.080) \\ 
+  Independent & -0.105 & 0.032 & (-0.169, -0.041) \\ 
+  Lean
+same & -0.115 & 0.039 & (-0.195, -0.038) \\ 
+  Weak
+same & -0.088 & 0.032 & (-0.149, -0.026) \\ 
+  Strong
+same & -0.066 & 0.023 & (-0.112, -0.020) \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+

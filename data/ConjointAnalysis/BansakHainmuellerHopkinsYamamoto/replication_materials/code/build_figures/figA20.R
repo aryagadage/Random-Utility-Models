@@ -1,0 +1,80 @@
+library(lmtest)
+library(sandwich)
+library(ggplot2)
+library(ggthemes)
+
+
+# Load and pre-process data -----------------------------------------------
+
+d <- read.csv("../../data/hotel_s1.csv")
+filler <- c("pillows","channels","lamps","service","closet","hallway",
+            "office","kitchen","call","towels","linens","elevators",
+            "bar","sinks","fan","thermo","menu","chocolate")
+fixed <- c("cfloor","cview","cfurniture","cinternet")
+
+d$cfloor <- as.character(d$cfloor)
+d$cview <- as.character(d$cview)
+d$cfurniture <- as.character(d$cfurniture)
+d$cinternet <- as.character(d$cinternet)
+
+
+# Estimation --------------------------------------------------------------
+
+store <- matrix(NA,0,2)
+for (k in 1:length(filler)){
+  
+  fn <- filler[k]
+
+  # formula: predict filler based on fixed attributes, respondent characteristics, and first order interactions 
+  form1 <- as.formula(paste(fn,"~","cfloor*cview+cfloor*cfurniture+cfloor*cinternet+",
+                                   "cview*cfurniture+cview*cinternet+",
+                                   "cfurniture*cinternet"))
+  
+  # formula: predict filler based on fixed attributes, respondent characteristics, and no interactions
+  form2 <- as.formula(paste(fn,"~",paste(fixed,collapse="+")))
+  
+  # fit both models
+  t1 <- try(lm(form1,data=d))
+  t2 <- try(lm(form2,data=d))
+  
+  # wald test for interactions jointly zero (if both models fit)
+  if(class(t1) != "try_error" & class(t2) != "try_error" ){
+    
+    wout <- try(waldtest(t1, t2))
+    cat(fn,"\n") 
+    cat(wout$`Pr(>F)`[2],"\n")
+    
+    # store p-value and N
+    temp <- matrix(c(wout$`Pr(>F)`[2],nobs(t2)),1,ncol=2)
+    rownames(temp) <- fn
+    store <- rbind(store,temp)
+    
+  }
+}
+
+
+# Package for plotting ----------------------------------------------------
+
+store <- data.frame(store)
+for(i in 1:nrow(store)){
+  store$name[i] <- paste(rownames(store)[i],"\n(N=",store$X2[i],")",sep="") 
+}
+
+store <- store[order(store$X1),]
+store$group <- factor(store$name,labels=store$name,levels=store$name)
+
+
+# Plotting ----------------------------------------------------------------
+
+the.color <- "dodgerblue"
+p <- ggplot(store,aes(x=X1,y=group)) +
+  geom_point(size=1.75,colour=the.color) + xlim(0,1) + ylab("") + 
+  xlab("choice of filler attributes: p-value from joint test of\n pairwise interactions between fixed attributes") +
+  theme_economist(dkpanel = T) + 
+  theme(axis.text.x = element_text(size=10,face='bold'), axis.title.x = element_text(size=10)) +
+  theme(axis.text.y = element_text(size=10), axis.title.y = element_text(size=10)) +
+  theme(legend.text = element_text(size=10), legend.title = element_text(size=10))
+
+pdf("../../results/figures/figA20.pdf",width=9,height=8)
+p
+dev.off()

@@ -1,0 +1,38 @@
+Which,label,label2,marginalmean,amce,category
+g_boardElect,,Board of elections,D+ Board of Elections,D+ Board of Elections (baseline),g
+g_committee,,Committee structure,D+ Committee Structure,D+ Committee Structure,g
+g_officestructure,,Office structure,D+ Legislative Staff,D+ Legislative Staff,g
+g_procedure,,Legislative procedure,D+ Legislative Procedure,D+ Legislative Procedure,g
+g_progEval,,Program evaluation,D+ Program Evaluation,D+ Program Evaluation,g
+g_record,,Record-keeping,D+ Record-keeping Practices,D+ Record-keeping Practices,g
+g_schedule,,Scheduling,D+ Legislative Schedule,D+ Legislative Schedule,g
+u_gerry2,Supported a redistricting plan that gives [party] 2 extra seats despite a decline in the polls.,Gerrymander (2 seats),D- Gerrymander by 2,D- Gerrymander by 2,u
+u_gerry10,Supported a redistricting plan that gives [party] 10 extra seats despite a decline in the polls.,Gerrymander (10 seats),D- Gerrymander by 10,D- Gerrymander by 10,u
+u_limitVote,Supported a proposal to reduce the number of polling stations in areas that support [other]s.,Cut polling stations,D- Close Polling Stations,D- Close Polling Stations,u
+u_execRule,Said the [party] governor should rule by executive order if [other] legislators don't cooperate.,Executive rule,D- Executive Order,D- Executive Order,u
+u_court,Said the [party] governor should ignore unfavorable court rulings by [other]-appointed judges.,Ignore court rulings,D- Ignore Courts,D- Ignore Courts,u
+u_journalists,Said the [party] governor should prosecute journalists who accuse him of misconduct without revealing sources.,Prosecute journalists,D- Prosecute Journalists,D- Prosecute Journalists,u
+u_banProtest,Said the [party] governor should ban far-[other] group rallies in the state capital.,Ban extremist rallies,D- Ban Protests,D- Ban Protests,u
+u_banLeftProtest,Said the [party] governor should ban far-left group rallies in the state capital.,Ban extreme left rallies,D- Ban Left Protests,D- Ban Left Protests,u
+u_banRightProtest,Said the [party] governor should ban far-right group rallies in the state capital.,Ban extreme right rallies,D- Ban Right Protests,D- Ban Right Protests,u
+v_affair,Was reported to have had multiple extramarital affairs.,Extramarital affairs,V- Extramarital Affairs,V- Extramarital Affairs,v
+v_tax,Was convicted of underpaying federal income taxes.,Underpaid taxes,V- Underpaid Taxes,V- Underpaid Taxes,v
+Female,,,Female,Female,sex
+Male,,,Male,Male (baseline),sex
+Asian,,,Asian,Asian,race
+Black,,,Black,Black,race
+Hispanic,,,Hispanic,Hispanic,race
+White,,,White,White (baseline),race
+Business_executive,,,Business Executive,Business Executive (baseline),pro
+Farmer,,,Farmer,Farmer,pro
+Lawyer,,,Lawyer,Lawyer,pro
+Legislative_staffer,,,Legislative Staffer,Legislative Staffer,pro
+Police_officer,,,Police Officer,Police Officer,pro
+Served_in_the_army,,,Served in the Army,Served in the Army,pro
+Served_in_the_navy,,,Served in the Navy,Served in the Navy,pro
+Small_business_owner,,,Small Business Owner,Small Business Owner,pro
+Teacher,,,Teacher,Teacher,pro
+respPartySame,,,Same Party,Same Party (baseline),p
+respParty,,,Different Party,Different Party,p
+p1_rate,,,Economic Policy,Economic Policy,p
+p2_rate,,,Social Policy,Social Policy,p

@@ -1,0 +1,40 @@
+
+\begin{table}[ht]
+\centering
+\caption{Bivariate regression coefficients for individual-level characteristics on county vote share} 
+\begin{tabular}{llrrrrrr}
+  \hline
+Party & Measure & Coefficient & SE & t & p & 2.5\% & 97.5\% \\ 
+  \hline
+Democrat & Liberal/conservative
+scale & 0.045 & 0.008 & 5.636 & 0.000 & 0.029 & 0.060 \\ 
+ & 7-point party
+scale & 0.052 & 0.004 & 11.693 & 0.000 & 0.043 & 0.060 \\ 
+ & Obama approval
+rating & -0.172 & 0.009 & -18.160 & 0.000 & -0.190 & -0.153 \\ 
+ & IRT ideal point
+from issue Qs & 0.053 & 0.004 & 12.853 & 0.000 & 0.045 & 0.061 \\ 
+ & Additive ideal point
+from issue Qs & 0.061 & 0.004 & 14.507 & 0.000 & 0.053 & 0.069 \\ 
+  Independent & Liberal/conservative
+scale & 0.108 & 0.010 & 10.729 & 0.000 & 0.088 & 0.127 \\ 
+ & Obama approval
+rating & -0.370 & 0.019 & -19.693 & 0.000 & -0.407 & -0.334 \\ 
+ & IRT ideal point
+from issue Qs & 0.120 & 0.006 & 18.496 & 0.000 & 0.107 & 0.133 \\ 
+ & Additive ideal point
+from issue Qs & 0.141 & 0.008 & 17.301 & 0.000 & 0.125 & 0.157 \\ 
+  Republican & Liberal/conservative
+scale & 0.102 & 0.009 & 11.845 & 0.000 & 0.085 & 0.118 \\ 
+ & 7-point party
+scale & 0.029 & 0.006 & 5.002 & 0.000 & 0.017 & 0.040 \\ 
+ & Obama approval
+rating & -0.251 & 0.012 & -20.859 & 0.000 & -0.275 & -0.228 \\ 
+ & IRT ideal point
+from issue Qs & 0.073 & 0.005 & 15.292 & 0.000 & 0.064 & 0.082 \\ 
+ & Additive ideal point
+from issue Qs & 0.101 & 0.006 & 15.804 & 0.000 & 0.088 & 0.113 \\ 
+   \hline
+\end{tabular}
+\end{table}
+

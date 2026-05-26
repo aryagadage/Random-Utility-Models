@@ -1,0 +1,51 @@
+% latex table generated in R 3.6.0 by xtable 1.8-4 package
+% Fri Dec 20 06:55:00 2019
+\begin{table}[ht]
+\centering
+\caption{Average marginal effect, numerical results} 
+\label{tab:AMCE}
+\begingroup\fontsize{10pt}{11pt}\selectfont
+\begin{tabular}{lrrr}
+  \hline
+Term & Estimate & Bootstrap SE & Clustered SE \\ 
+  \hline
+Male (baseline) &  &  &  \\ 
+  Female & 0.0120 & 0.0049 & 0.0051 \\ 
+  White (baseline) &  &  &  \\ 
+  Asian & -0.0153 & 0.0115 & 0.0114 \\ 
+  Black & -0.0033 & 0.0071 & 0.0073 \\ 
+  Hispanic & -0.0132 & 0.0071 & 0.0072 \\ 
+  Business Executive (baseline) &  &  &  \\ 
+  Farmer & 0.0111 & 0.0105 & 0.0104 \\ 
+  Lawyer & 0.0105 & 0.0081 & 0.0082 \\ 
+  Legislative Staffer & 0.0142 & 0.0100 & 0.0099 \\ 
+  Police Officer & 0.0123 & 0.0099 & 0.0104 \\ 
+  Served in the Army & 0.0304 & 0.0120 & 0.0123 \\ 
+  Served in the Navy & 0.0149 & 0.0134 & 0.0133 \\ 
+  Small Business Owner & 0.0120 & 0.0089 & 0.0088 \\ 
+  Teacher & 0.0254 & 0.0106 & 0.0104 \\ 
+  Same Party (baseline) &  &  &  \\ 
+  Different Party & -0.1377 & 0.0066 & 0.0066 \\ 
+  Economic Policy & -0.2335 & 0.0086 & 0.0089 \\ 
+  Social Policy & -0.2664 & 0.0085 & 0.0086 \\ 
+  D+ Board of Elections (baseline) &  &  &  \\ 
+  D+ Committee Structure & 0.0042 & 0.0106 & 0.0108 \\ 
+  D+ Legislative Staff & -0.0013 & 0.0112 & 0.0113 \\ 
+  D+ Legislative Procedure & 0.0022 & 0.0104 & 0.0105 \\ 
+  D+ Program Evaluation & -0.0019 & 0.0108 & 0.0110 \\ 
+  D+ Record-keeping Practices & -0.0200 & 0.0114 & 0.0114 \\ 
+  D+ Legislative Schedule & -0.0106 & 0.0109 & 0.0110 \\ 
+  D- Gerrymander by 2 & -0.1057 & 0.0158 & 0.0139 \\ 
+  D- Gerrymander by 10 & -0.1248 & 0.0163 & 0.0148 \\ 
+  D- Close Polling Stations & -0.1283 & 0.0160 & 0.0145 \\ 
+  D- Executive Order & -0.1045 & 0.0154 & 0.0145 \\ 
+  D- Ignore Courts & -0.1407 & 0.0153 & 0.0144 \\ 
+  D- Prosecute Journalists & -0.1607 & 0.0159 & 0.0140 \\ 
+  D- Ban Protests & -0.1022 & 0.0154 & 0.0142 \\ 
+  V- Extramarital Affairs & -0.1705 & 0.0153 & 0.0141 \\ 
+  V- Underpaid Taxes & -0.2113 & 0.0152 & 0.0138 \\ 
+   \hline
+\end{tabular}
+\endgroup
+\end{table}
+

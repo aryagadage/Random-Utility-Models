@@ -1,0 +1,48 @@
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Fri, Dec 13, 2019 - 4:53:21 PM
+\begin{table}[!htbp] \centering 
+  \caption{Montana diff-in-diff, no controls} 
+  \label{tab:mt_reg_noctrl} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{Republican two-party vote share} \\ 
+ & D-in-D & Interacted & D-in-D & Interacted \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ 2017 & $-$0.053$^{***}$ & $-$0.033 & $-$0.060$^{***}$ & $-$0.118$^{***}$ \\ 
+  & (0.005) & (0.021) & (0.005) & (0.027) \\ 
+  & & & & \\ 
+ Election Day & 0.073$^{***}$ & 0.153$^{***}$ & 0.092$^{***}$ & 0.312$^{***}$ \\ 
+  & (0.008) & (0.045) & (0.010) & (0.060) \\ 
+  & & & & \\ 
+ 2017 x Elect Day & $-$0.010 & $-$0.216$^{***}$ & $-$0.003 & $-$0.160$^{**}$ \\ 
+  & (0.009) & (0.039) & (0.009) & (0.055) \\ 
+  & & & & \\ 
+ \% R 2016 &  & 1.054$^{***}$ &  & 1.143$^{***}$ \\ 
+  &  & (0.031) &  & (0.041) \\ 
+  & & & & \\ 
+ 2017 x \% R 2016 &  & $-$0.030 &  & 0.086$^{*}$ \\ 
+  &  & (0.031) &  & (0.041) \\ 
+  & & & & \\ 
+ Elect Day x \% R 2016 &  & $-$0.124 &  & $-$0.326$^{***}$ \\ 
+  &  & (0.069) &  & (0.093) \\ 
+  & & & & \\ 
+ 2017 x Elect Day x \% R 2016 &  & 0.318$^{***}$ &  & 0.232$^{**}$ \\ 
+  &  & (0.063) &  & (0.086) \\ 
+  & & & & \\ 
+ Constant & 0.616$^{***}$ & $-$0.067$^{***}$ & 0.635$^{***}$ & $-$0.136$^{***}$ \\ 
+  & (0.014) & (0.020) & (0.017) & (0.026) \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 348 & 348 & 164 & 164 \\ 
+Adjusted R$^{2}$ & 0.096 & 0.896 & 0.199 & 0.919 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
+ & \multicolumn{4}{r}{Standard errors clustered by precinct.} \\ 
+\end{tabular} 
+\end{table} 
