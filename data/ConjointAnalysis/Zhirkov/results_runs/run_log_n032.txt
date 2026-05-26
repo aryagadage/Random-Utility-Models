@@ -314,3 +314,545 @@ Iter 143 | error = 0.000892 | best_score = 1.8556e-02 | FW gap = Inf | min = 1.8
 Iter 144 | error = 0.000887 | best_score = 1.8415e-02 | FW gap = Inf | min = 1.8415e-02 |
   IP pricing time: 6.9848 s (solve 6.9818 s, gurobi.runtime 6.9604 s)
 Iter 145 | error = 0.000882 | best_score = 1.7423e-02 | FW gap = Inf | min = 1.7423e-02 |
+  IP pricing time: 19.9455 s (solve 19.9423 s, gurobi.runtime 19.9290 s)
+Iter 146 | error = 0.000877 | best_score = 1.6378e-02 | FW gap = Inf | min = 1.6378e-02 |
+  IP pricing time: 22.9604 s (solve 22.9573 s, gurobi.runtime 22.9427 s)
+Iter 147 | error = 0.000873 | best_score = 1.6020e-02 | FW gap = Inf | min = 1.6020e-02 |
+  IP pricing time: 9.5047 s (solve 9.5011 s, gurobi.runtime 9.4829 s)
+Iter 148 | error = 0.000868 | best_score = 1.5785e-02 | FW gap = Inf | min = 1.5785e-02 |
+  IP pricing time: 11.4145 s (solve 11.4114 s, gurobi.runtime 11.3951 s)
+Iter 149 | error = 0.000864 | best_score = 1.5401e-02 | FW gap = Inf | min = 1.5401e-02 |
+  IP pricing time: 36.0409 s (solve 36.0384 s, gurobi.runtime 36.0233 s)
+Iter 150 | error = 0.000861 | best_score = 1.4486e-02 | FW gap = Inf | min = 1.4486e-02 |
+  IP pricing time: 48.2859 s (solve 48.2809 s, gurobi.runtime 48.2694 s)
+Iter 151 | error = 0.000857 | best_score = 1.4475e-02 | FW gap = Inf | min = 1.4475e-02 |
+  IP pricing time: 20.0732 s (solve 20.0689 s, gurobi.runtime 20.0426 s)
+Iter 152 | error = 0.000854 | best_score = 1.4104e-02 | FW gap = Inf | min = 1.4104e-02 |
+  IP pricing time: 10.5437 s (solve 10.5403 s, gurobi.runtime 10.5217 s)
+Iter 153 | error = 0.000851 | best_score = 1.4136e-02 | FW gap = Inf | min = 1.4136e-02 |
+  IP pricing time: 9.2623 s (solve 9.2566 s, gurobi.runtime 9.2276 s)
+Iter 154 | error = 0.000848 | best_score = 1.3851e-02 | FW gap = Inf | min = 1.3851e-02 |
+  IP pricing time: 13.7208 s (solve 13.7168 s, gurobi.runtime 13.6951 s)
+Iter 155 | error = 0.000845 | best_score = 1.3709e-02 | FW gap = Inf | min = 1.3709e-02 |
+  IP pricing time: 25.6137 s (solve 25.6091 s, gurobi.runtime 25.5897 s)
+Iter 156 | error = 0.000842 | best_score = 1.2862e-02 | FW gap = Inf | min = 1.2862e-02 |
+  IP pricing time: 19.3401 s (solve 19.3366 s, gurobi.runtime 19.3200 s)
+Iter 157 | error = 0.000840 | best_score = 1.3046e-02 | FW gap = Inf | min = 1.3046e-02 |
+  IP pricing time: 33.1155 s (solve 33.1108 s, gurobi.runtime 33.0952 s)
+Iter 158 | error = 0.000837 | best_score = 1.2445e-02 | FW gap = Inf | min = 1.2445e-02 |
+  IP pricing time: 13.5649 s (solve 13.5612 s, gurobi.runtime 13.5445 s)
+Iter 159 | error = 0.000834 | best_score = 1.2307e-02 | FW gap = Inf | min = 1.2307e-02 |
+  IP pricing time: 12.4509 s (solve 12.4479 s, gurobi.runtime 12.4339 s)
+Iter 160 | error = 0.000832 | best_score = 1.1605e-02 | FW gap = Inf | min = 1.1605e-02 |
+  IP pricing time: 28.9773 s (solve 28.9723 s, gurobi.runtime 28.9520 s)
+Iter 161 | error = 0.000830 | best_score = 1.0400e-02 | FW gap = Inf | min = 1.0400e-02 |
+  IP pricing time: 5.2306 s (solve 5.2271 s, gurobi.runtime 5.2044 s)
+Iter 162 | error = 0.000828 | best_score = 1.0734e-02 | FW gap = Inf | min = 1.0734e-02 |
+  IP pricing time: 24.2163 s (solve 24.2131 s, gurobi.runtime 24.1921 s)
+Iter 163 | error = 0.000826 | best_score = 9.6475e-03 | FW gap = Inf | min = 9.6475e-03 |
+Convergence Criterion Achieved (min(best_score, FW gap) = 9.6475e-03 < tol 1.0000e-02)
+  CG_IP  status=ok  error=8.262204e-04  total=1343.92s  iters=163  IP_calls=163  build=0.04s  solve_tot=1337.55s  gur_tot=1334.10s
+
+========================================================
+[2/5] n_sub = 32, seed = 2  (Zhirkov binary menus)
+========================================================
+Loaded Zhirkov subsample: 32 / 32 products (seed=2), 496 binary menus, 992 rows.
+Sampled original IDs: [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32]
+n_sub = 32 | 992 observations | 496 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 992 provided choice sets
+✓ 992 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.01s (nvars=1024, ncons=10416)
+  IP pricing time: 0.0906 s (solve 0.0688 s, gurobi.runtime 0.0512 s)
+Iter 1 | error = 274.820641 | best_score = 4.9208e+02 | FW gap = Inf | min = 4.9208e+02 |
+  IP pricing time: 0.0858 s (solve 0.0779 s, gurobi.runtime 0.0612 s)
+Iter 2 | error = 30.728537 | best_score = 7.0237e+01 | FW gap = Inf | min = 7.0237e+01 |
+  IP pricing time: 0.1037 s (solve 0.1001 s, gurobi.runtime 0.0798 s)
+Iter 3 | error = 10.836708 | best_score = 2.9090e+01 | FW gap = Inf | min = 2.9090e+01 |
+  IP pricing time: 0.1129 s (solve 0.1100 s, gurobi.runtime 0.0935 s)
+Iter 4 | error = 7.305084 | best_score = 2.0021e+01 | FW gap = Inf | min = 2.0021e+01 |
+  IP pricing time: 0.1898 s (solve 0.1870 s, gurobi.runtime 0.1751 s)
+Iter 5 | error = 5.602256 | best_score = 1.5791e+01 | FW gap = Inf | min = 1.5791e+01 |
+  IP pricing time: 3.3572 s (solve 3.3542 s, gurobi.runtime 3.3383 s)
+Iter 6 | error = 4.502259 | best_score = 1.2029e+01 | FW gap = Inf | min = 1.2029e+01 |
+  IP pricing time: 0.1722 s (solve 0.1692 s, gurobi.runtime 0.1615 s)
+Iter 7 | error = 3.859668 | best_score = 1.3108e+01 | FW gap = Inf | min = 1.3108e+01 |
+  IP pricing time: 0.2015 s (solve 0.1988 s, gurobi.runtime 0.1794 s)
+Iter 8 | error = 3.049996 | best_score = 1.1861e+01 | FW gap = Inf | min = 1.1861e+01 |
+  IP pricing time: 2.6954 s (solve 2.6915 s, gurobi.runtime 2.6763 s)
+Iter 9 | error = 2.401923 | best_score = 9.2072e+00 | FW gap = Inf | min = 9.2072e+00 |
+  IP pricing time: 0.5338 s (solve 0.5311 s, gurobi.runtime 0.5106 s)
+Iter 10 | error = 2.029770 | best_score = 7.9611e+00 | FW gap = Inf | min = 7.9611e+00 |
+  IP pricing time: 0.8913 s (solve 0.8887 s, gurobi.runtime 0.8768 s)
+Iter 11 | error = 1.749621 | best_score = 7.9312e+00 | FW gap = Inf | min = 7.9312e+00 |
+  IP pricing time: 1.3025 s (solve 1.2998 s, gurobi.runtime 1.2871 s)
+Iter 12 | error = 1.446026 | best_score = 6.9448e+00 | FW gap = Inf | min = 6.9448e+00 |
+  IP pricing time: 0.6662 s (solve 0.6634 s, gurobi.runtime 0.6523 s)
+Iter 13 | error = 1.196111 | best_score = 6.6246e+00 | FW gap = Inf | min = 6.6246e+00 |
+  IP pricing time: 1.2130 s (solve 1.2104 s, gurobi.runtime 1.1924 s)
+Iter 14 | error = 0.981046 | best_score = 5.5884e+00 | FW gap = Inf | min = 5.5884e+00 |
+  IP pricing time: 0.2804 s (solve 0.2776 s, gurobi.runtime 0.2581 s)
+Iter 15 | error = 0.848227 | best_score = 5.3813e+00 | FW gap = Inf | min = 5.3813e+00 |
+  IP pricing time: 1.7973 s (solve 1.7947 s, gurobi.runtime 1.7837 s)
+Iter 16 | error = 0.719790 | best_score = 4.1784e+00 | FW gap = Inf | min = 4.1784e+00 |
+  IP pricing time: 0.9912 s (solve 0.9879 s, gurobi.runtime 0.9776 s)
+Iter 17 | error = 0.632293 | best_score = 3.8864e+00 | FW gap = Inf | min = 3.8864e+00 |
+  IP pricing time: 2.3160 s (solve 2.3131 s, gurobi.runtime 2.2958 s)
+Iter 18 | error = 0.547931 | best_score = 3.0848e+00 | FW gap = Inf | min = 3.0848e+00 |
+  IP pricing time: 3.1126 s (solve 3.1098 s, gurobi.runtime 3.0777 s)
+Iter 19 | error = 0.499256 | best_score = 2.9620e+00 | FW gap = Inf | min = 2.9620e+00 |
+  IP pricing time: 1.1529 s (solve 1.1502 s, gurobi.runtime 1.1349 s)
+Iter 20 | error = 0.456958 | best_score = 2.7574e+00 | FW gap = Inf | min = 2.7574e+00 |
+  IP pricing time: 3.6602 s (solve 3.6574 s, gurobi.runtime 3.6418 s)
+Iter 21 | error = 0.419339 | best_score = 2.3434e+00 | FW gap = Inf | min = 2.3434e+00 |
+  IP pricing time: 0.6875 s (solve 0.6848 s, gurobi.runtime 0.6627 s)
+Iter 22 | error = 0.388467 | best_score = 2.4524e+00 | FW gap = Inf | min = 2.4524e+00 |
+  IP pricing time: 1.3526 s (solve 1.3494 s, gurobi.runtime 1.3396 s)
+Iter 23 | error = 0.349988 | best_score = 2.1573e+00 | FW gap = Inf | min = 2.1573e+00 |
+  IP pricing time: 6.2416 s (solve 6.2334 s, gurobi.runtime 6.2136 s)
+Iter 24 | error = 0.317563 | best_score = 1.9812e+00 | FW gap = Inf | min = 1.9812e+00 |
+  IP pricing time: 4.4559 s (solve 4.4509 s, gurobi.runtime 4.4129 s)
+Iter 25 | error = 0.294471 | best_score = 2.0206e+00 | FW gap = Inf | min = 2.0206e+00 |
+  IP pricing time: 2.6061 s (solve 2.6027 s, gurobi.runtime 2.5839 s)
+Iter 26 | error = 0.272067 | best_score = 1.8337e+00 | FW gap = Inf | min = 1.8337e+00 |
+  IP pricing time: 4.0605 s (solve 4.0572 s, gurobi.runtime 4.0378 s)
+Iter 27 | error = 0.253000 | best_score = 1.7571e+00 | FW gap = Inf | min = 1.7571e+00 |
+  IP pricing time: 4.4003 s (solve 4.3964 s, gurobi.runtime 4.3650 s)
+Iter 28 | error = 0.231622 | best_score = 1.7340e+00 | FW gap = Inf | min = 1.7340e+00 |
+  IP pricing time: 0.5627 s (solve 0.5597 s, gurobi.runtime 0.5470 s)
+Iter 29 | error = 0.210020 | best_score = 1.6028e+00 | FW gap = Inf | min = 1.6028e+00 |
+  IP pricing time: 3.6001 s (solve 3.5952 s, gurobi.runtime 3.5748 s)
+Iter 30 | error = 0.193762 | best_score = 1.5435e+00 | FW gap = Inf | min = 1.5435e+00 |
+  IP pricing time: 2.9314 s (solve 2.9282 s, gurobi.runtime 2.9091 s)
+Iter 31 | error = 0.179156 | best_score = 1.3904e+00 | FW gap = Inf | min = 1.3904e+00 |
+  IP pricing time: 1.2162 s (solve 1.2134 s, gurobi.runtime 1.2033 s)
+Iter 32 | error = 0.167015 | best_score = 1.4656e+00 | FW gap = Inf | min = 1.4656e+00 |
+  IP pricing time: 4.6342 s (solve 4.6313 s, gurobi.runtime 4.6089 s)
+Iter 33 | error = 0.154166 | best_score = 1.2632e+00 | FW gap = Inf | min = 1.2632e+00 |
+  IP pricing time: 5.5221 s (solve 5.5191 s, gurobi.runtime 5.5081 s)
+Iter 34 | error = 0.144948 | best_score = 1.1472e+00 | FW gap = Inf | min = 1.1472e+00 |
+  IP pricing time: 5.5430 s (solve 5.5401 s, gurobi.runtime 5.5299 s)
+Iter 35 | error = 0.136949 | best_score = 1.0476e+00 | FW gap = Inf | min = 1.0476e+00 |
+  IP pricing time: 7.7235 s (solve 7.7207 s, gurobi.runtime 7.7031 s)
+Iter 36 | error = 0.129256 | best_score = 1.0315e+00 | FW gap = Inf | min = 1.0315e+00 |
+  IP pricing time: 7.6230 s (solve 7.6196 s, gurobi.runtime 7.6050 s)
+Iter 37 | error = 0.121954 | best_score = 9.6275e-01 | FW gap = Inf | min = 9.6275e-01 |
+  IP pricing time: 0.7989 s (solve 0.7961 s, gurobi.runtime 0.7821 s)
+Iter 38 | error = 0.114376 | best_score = 1.0533e+00 | FW gap = Inf | min = 1.0533e+00 |
+  IP pricing time: 3.8657 s (solve 3.8623 s, gurobi.runtime 3.8531 s)
+Iter 39 | error = 0.105443 | best_score = 9.4108e-01 | FW gap = Inf | min = 9.4108e-01 |
+  IP pricing time: 6.0512 s (solve 6.0482 s, gurobi.runtime 6.0374 s)
+Iter 40 | error = 0.098696 | best_score = 8.9789e-01 | FW gap = Inf | min = 8.9789e-01 |
+  IP pricing time: 1.3157 s (solve 1.3129 s, gurobi.runtime 1.2921 s)
+Iter 41 | error = 0.093333 | best_score = 9.2954e-01 | FW gap = Inf | min = 9.2954e-01 |
+  IP pricing time: 3.7292 s (solve 3.7263 s, gurobi.runtime 3.7061 s)
+Iter 42 | error = 0.086874 | best_score = 8.5663e-01 | FW gap = Inf | min = 8.5663e-01 |
+  IP pricing time: 3.8325 s (solve 3.8296 s, gurobi.runtime 3.8175 s)
+Iter 43 | error = 0.081637 | best_score = 8.2743e-01 | FW gap = Inf | min = 8.2743e-01 |
+  IP pricing time: 5.9260 s (solve 5.9230 s, gurobi.runtime 5.9058 s)
+Iter 44 | error = 0.076615 | best_score = 7.9024e-01 | FW gap = Inf | min = 7.9024e-01 |
+  IP pricing time: 3.5542 s (solve 3.5511 s, gurobi.runtime 3.5383 s)
+Iter 45 | error = 0.072223 | best_score = 8.2350e-01 | FW gap = Inf | min = 8.2350e-01 |
+  IP pricing time: 3.8541 s (solve 3.8512 s, gurobi.runtime 3.8317 s)
+Iter 46 | error = 0.066912 | best_score = 7.6268e-01 | FW gap = Inf | min = 7.6268e-01 |
+  IP pricing time: 4.2613 s (solve 4.2584 s, gurobi.runtime 4.2474 s)
+Iter 47 | error = 0.062438 | best_score = 7.4312e-01 | FW gap = Inf | min = 7.4312e-01 |
+  IP pricing time: 3.7548 s (solve 3.7521 s, gurobi.runtime 3.7318 s)
+Iter 48 | error = 0.058359 | best_score = 7.0285e-01 | FW gap = Inf | min = 7.0285e-01 |
+  IP pricing time: 8.2135 s (solve 8.2107 s, gurobi.runtime 8.1933 s)
+Iter 49 | error = 0.054501 | best_score = 6.3184e-01 | FW gap = Inf | min = 6.3184e-01 |
+  IP pricing time: 1.7615 s (solve 1.7588 s, gurobi.runtime 1.7394 s)
+Iter 50 | error = 0.051498 | best_score = 6.7005e-01 | FW gap = Inf | min = 6.7005e-01 |
+  IP pricing time: 3.6660 s (solve 3.6631 s, gurobi.runtime 3.6529 s)
+Iter 51 | error = 0.048063 | best_score = 6.7127e-01 | FW gap = Inf | min = 6.7127e-01 |
+  IP pricing time: 4.3263 s (solve 4.3236 s, gurobi.runtime 4.3053 s)
+Iter 52 | error = 0.044174 | best_score = 6.2891e-01 | FW gap = Inf | min = 6.2891e-01 |
+  IP pricing time: 4.2465 s (solve 4.2438 s, gurobi.runtime 4.2236 s)
+Iter 53 | error = 0.041126 | best_score = 5.5553e-01 | FW gap = Inf | min = 5.5553e-01 |
+  IP pricing time: 2.4902 s (solve 2.4874 s, gurobi.runtime 2.4755 s)
+Iter 54 | error = 0.038060 | best_score = 5.4331e-01 | FW gap = Inf | min = 5.4331e-01 |
+  IP pricing time: 0.7543 s (solve 0.7516 s, gurobi.runtime 0.7311 s)
+Iter 55 | error = 0.035850 | best_score = 5.3399e-01 | FW gap = Inf | min = 5.3399e-01 |
+  IP pricing time: 2.1103 s (solve 2.1075 s, gurobi.runtime 2.0885 s)
+Iter 56 | error = 0.033137 | best_score = 4.8572e-01 | FW gap = Inf | min = 4.8572e-01 |
+  IP pricing time: 4.8361 s (solve 4.8334 s, gurobi.runtime 4.8169 s)
+Iter 57 | error = 0.030968 | best_score = 4.3341e-01 | FW gap = Inf | min = 4.3341e-01 |
+  IP pricing time: 3.8567 s (solve 3.8540 s, gurobi.runtime 3.8383 s)
+Iter 58 | error = 0.029270 | best_score = 4.3449e-01 | FW gap = Inf | min = 4.3449e-01 |
+  IP pricing time: 0.9602 s (solve 0.9535 s, gurobi.runtime 0.9314 s)
+Iter 59 | error = 0.027549 | best_score = 4.4482e-01 | FW gap = Inf | min = 4.4482e-01 |
+  IP pricing time: 4.8542 s (solve 4.8497 s, gurobi.runtime 4.8348 s)
+Iter 60 | error = 0.025815 | best_score = 4.1839e-01 | FW gap = Inf | min = 4.1839e-01 |
+  IP pricing time: 2.9689 s (solve 2.9657 s, gurobi.runtime 2.9509 s)
+Iter 61 | error = 0.024295 | best_score = 3.9932e-01 | FW gap = Inf | min = 3.9932e-01 |
+  IP pricing time: 1.3362 s (solve 1.3332 s, gurobi.runtime 1.3179 s)
+Iter 62 | error = 0.022780 | best_score = 3.9406e-01 | FW gap = Inf | min = 3.9406e-01 |
+  IP pricing time: 4.9867 s (solve 4.9839 s, gurobi.runtime 4.9717 s)
+Iter 63 | error = 0.021416 | best_score = 3.5061e-01 | FW gap = Inf | min = 3.5061e-01 |
+  IP pricing time: 4.4710 s (solve 4.4675 s, gurobi.runtime 4.4528 s)
+Iter 64 | error = 0.019970 | best_score = 3.6434e-01 | FW gap = Inf | min = 3.6434e-01 |
+  IP pricing time: 5.4875 s (solve 5.4829 s, gurobi.runtime 5.4631 s)
+Iter 65 | error = 0.018466 | best_score = 3.4596e-01 | FW gap = Inf | min = 3.4596e-01 |
+  IP pricing time: 4.7814 s (solve 4.7778 s, gurobi.runtime 4.7565 s)
+Iter 66 | error = 0.017301 | best_score = 3.3045e-01 | FW gap = Inf | min = 3.3045e-01 |
+  IP pricing time: 9.9391 s (solve 9.9362 s, gurobi.runtime 9.9140 s)
+Iter 67 | error = 0.016086 | best_score = 3.0667e-01 | FW gap = Inf | min = 3.0667e-01 |
+  IP pricing time: 8.1370 s (solve 8.1338 s, gurobi.runtime 8.1171 s)
+Iter 68 | error = 0.015178 | best_score = 3.0564e-01 | FW gap = Inf | min = 3.0564e-01 |
+  IP pricing time: 8.7124 s (solve 8.7093 s, gurobi.runtime 8.6983 s)
+Iter 69 | error = 0.014358 | best_score = 2.8089e-01 | FW gap = Inf | min = 2.8089e-01 |
+  IP pricing time: 6.3836 s (solve 6.3806 s, gurobi.runtime 6.3680 s)
+Iter 70 | error = 0.013582 | best_score = 2.6789e-01 | FW gap = Inf | min = 2.6789e-01 |
+  IP pricing time: 6.6999 s (solve 6.6966 s, gurobi.runtime 6.6864 s)
+Iter 71 | error = 0.013013 | best_score = 2.5160e-01 | FW gap = Inf | min = 2.5160e-01 |
+  IP pricing time: 26.0620 s (solve 26.0586 s, gurobi.runtime 26.0364 s)
+Iter 72 | error = 0.012333 | best_score = 2.1809e-01 | FW gap = Inf | min = 2.1809e-01 |
+  IP pricing time: 6.0998 s (solve 6.0966 s, gurobi.runtime 6.0827 s)
+Iter 73 | error = 0.011786 | best_score = 2.3702e-01 | FW gap = Inf | min = 2.3702e-01 |
+  IP pricing time: 4.7494 s (solve 4.7467 s, gurobi.runtime 4.7296 s)
+Iter 74 | error = 0.011188 | best_score = 2.1664e-01 | FW gap = Inf | min = 2.1664e-01 |
+  IP pricing time: 21.3569 s (solve 21.3537 s, gurobi.runtime 21.3329 s)
+Iter 75 | error = 0.010665 | best_score = 1.8434e-01 | FW gap = Inf | min = 1.8434e-01 |
+  IP pricing time: 24.4089 s (solve 24.4056 s, gurobi.runtime 24.3933 s)
+Iter 76 | error = 0.010283 | best_score = 1.8448e-01 | FW gap = Inf | min = 1.8448e-01 |
+  IP pricing time: 5.9458 s (solve 5.9428 s, gurobi.runtime 5.9288 s)
+Iter 77 | error = 0.009881 | best_score = 1.8560e-01 | FW gap = Inf | min = 1.8560e-01 |
+  IP pricing time: 5.7262 s (solve 5.7234 s, gurobi.runtime 5.7075 s)
+Iter 78 | error = 0.009389 | best_score = 1.8769e-01 | FW gap = Inf | min = 1.8769e-01 |
+  IP pricing time: 5.1912 s (solve 5.1885 s, gurobi.runtime 5.1774 s)
+Iter 79 | error = 0.009053 | best_score = 1.9573e-01 | FW gap = Inf | min = 1.9573e-01 |
+  IP pricing time: 5.2267 s (solve 5.2238 s, gurobi.runtime 5.2028 s)
+Iter 80 | error = 0.008572 | best_score = 1.8763e-01 | FW gap = Inf | min = 1.8763e-01 |
+  IP pricing time: 1.3143 s (solve 1.3117 s, gurobi.runtime 1.2948 s)
+Iter 81 | error = 0.008209 | best_score = 1.9583e-01 | FW gap = Inf | min = 1.9583e-01 |
+  IP pricing time: 3.6684 s (solve 3.6624 s, gurobi.runtime 3.6505 s)
+Iter 82 | error = 0.007706 | best_score = 1.9898e-01 | FW gap = Inf | min = 1.9898e-01 |
+  IP pricing time: 7.2598 s (solve 7.2571 s, gurobi.runtime 7.2403 s)
+Iter 83 | error = 0.007306 | best_score = 1.8440e-01 | FW gap = Inf | min = 1.8440e-01 |
+  IP pricing time: 7.1522 s (solve 7.1491 s, gurobi.runtime 7.1370 s)
+Iter 84 | error = 0.006952 | best_score = 1.7534e-01 | FW gap = Inf | min = 1.7534e-01 |
+  IP pricing time: 4.0914 s (solve 4.0885 s, gurobi.runtime 4.0711 s)
+Iter 85 | error = 0.006642 | best_score = 1.7483e-01 | FW gap = Inf | min = 1.7483e-01 |
+  IP pricing time: 1.0751 s (solve 1.0725 s, gurobi.runtime 1.0575 s)
+Iter 86 | error = 0.006263 | best_score = 1.8657e-01 | FW gap = Inf | min = 1.8657e-01 |
+  IP pricing time: 2.1171 s (solve 2.1143 s, gurobi.runtime 2.1056 s)
+Iter 87 | error = 0.005831 | best_score = 1.6995e-01 | FW gap = Inf | min = 1.6995e-01 |
+  IP pricing time: 5.2291 s (solve 5.2264 s, gurobi.runtime 5.2125 s)
+Iter 88 | error = 0.005536 | best_score = 1.5668e-01 | FW gap = Inf | min = 1.5668e-01 |
+  IP pricing time: 16.6174 s (solve 16.6140 s, gurobi.runtime 16.5989 s)
+Iter 89 | error = 0.005254 | best_score = 1.3948e-01 | FW gap = Inf | min = 1.3948e-01 |
+  IP pricing time: 9.4002 s (solve 9.3970 s, gurobi.runtime 9.3788 s)
+Iter 90 | error = 0.005006 | best_score = 1.4471e-01 | FW gap = Inf | min = 1.4471e-01 |
+  IP pricing time: 9.0401 s (solve 9.0368 s, gurobi.runtime 9.0211 s)
+Iter 91 | error = 0.004723 | best_score = 1.4352e-01 | FW gap = Inf | min = 1.4352e-01 |
+  IP pricing time: 5.0888 s (solve 5.0855 s, gurobi.runtime 5.0704 s)
+Iter 92 | error = 0.004461 | best_score = 1.4174e-01 | FW gap = Inf | min = 1.4174e-01 |
+  IP pricing time: 15.4509 s (solve 15.4459 s, gurobi.runtime 15.4297 s)
+Iter 93 | error = 0.004243 | best_score = 1.3186e-01 | FW gap = Inf | min = 1.3186e-01 |
+  IP pricing time: 4.5576 s (solve 4.5539 s, gurobi.runtime 4.5309 s)
+Iter 94 | error = 0.004055 | best_score = 1.3056e-01 | FW gap = Inf | min = 1.3056e-01 |
+  IP pricing time: 4.1217 s (solve 4.1176 s, gurobi.runtime 4.1058 s)
+Iter 95 | error = 0.003813 | best_score = 1.2898e-01 | FW gap = Inf | min = 1.2898e-01 |
+  IP pricing time: 8.0360 s (solve 8.0333 s, gurobi.runtime 8.0165 s)
+Iter 96 | error = 0.003612 | best_score = 1.1909e-01 | FW gap = Inf | min = 1.1909e-01 |
+  IP pricing time: 4.6378 s (solve 4.6348 s, gurobi.runtime 4.6149 s)
+Iter 97 | error = 0.003440 | best_score = 1.2231e-01 | FW gap = Inf | min = 1.2231e-01 |
+  IP pricing time: 3.9200 s (solve 3.9172 s, gurobi.runtime 3.9026 s)
+Iter 98 | error = 0.003252 | best_score = 1.1705e-01 | FW gap = Inf | min = 1.1705e-01 |
+  IP pricing time: 7.7685 s (solve 7.7637 s, gurobi.runtime 7.7515 s)
+Iter 99 | error = 0.003076 | best_score = 1.0507e-01 | FW gap = Inf | min = 1.0507e-01 |
+  IP pricing time: 15.5431 s (solve 15.5397 s, gurobi.runtime 15.5276 s)
+Iter 100 | error = 0.002946 | best_score = 1.0029e-01 | FW gap = Inf | min = 1.0029e-01 |
+  IP pricing time: 8.2070 s (solve 8.2038 s, gurobi.runtime 8.1926 s)
+Iter 101 | error = 0.002837 | best_score = 1.0025e-01 | FW gap = Inf | min = 1.0025e-01 |
+  IP pricing time: 16.7871 s (solve 16.7820 s, gurobi.runtime 16.7644 s)
+Iter 102 | error = 0.002719 | best_score = 9.1848e-02 | FW gap = Inf | min = 9.1848e-02 |
+  IP pricing time: 12.1240 s (solve 12.1197 s, gurobi.runtime 12.0947 s)
+Iter 103 | error = 0.002619 | best_score = 8.8483e-02 | FW gap = Inf | min = 8.8483e-02 |
+  IP pricing time: 10.7291 s (solve 10.7256 s, gurobi.runtime 10.7019 s)
+Iter 104 | error = 0.002521 | best_score = 8.5027e-02 | FW gap = Inf | min = 8.5027e-02 |
+  IP pricing time: 14.3909 s (solve 14.3852 s, gurobi.runtime 14.3717 s)
+Iter 105 | error = 0.002422 | best_score = 8.0639e-02 | FW gap = Inf | min = 8.0639e-02 |
+  IP pricing time: 11.0782 s (solve 11.0738 s, gurobi.runtime 11.0535 s)
+Iter 106 | error = 0.002333 | best_score = 7.8578e-02 | FW gap = Inf | min = 7.8578e-02 |
+  IP pricing time: 12.6282 s (solve 12.6230 s, gurobi.runtime 12.6037 s)
+Iter 107 | error = 0.002243 | best_score = 7.5735e-02 | FW gap = Inf | min = 7.5735e-02 |
+  IP pricing time: 12.1903 s (solve 12.1863 s, gurobi.runtime 12.1717 s)
+Iter 108 | error = 0.002172 | best_score = 7.2334e-02 | FW gap = Inf | min = 7.2334e-02 |
+  IP pricing time: 7.5877 s (solve 7.5835 s, gurobi.runtime 7.5615 s)
+Iter 109 | error = 0.002110 | best_score = 7.4284e-02 | FW gap = Inf | min = 7.4284e-02 |
+  IP pricing time: 4.0538 s (solve 4.0508 s, gurobi.runtime 4.0274 s)
+Iter 110 | error = 0.002044 | best_score = 7.7123e-02 | FW gap = Inf | min = 7.7123e-02 |
+  IP pricing time: 5.5490 s (solve 5.5461 s, gurobi.runtime 5.5290 s)
+Iter 111 | error = 0.001975 | best_score = 7.2251e-02 | FW gap = Inf | min = 7.2251e-02 |
+  IP pricing time: 0.9367 s (solve 0.9338 s, gurobi.runtime 0.9162 s)
+Iter 112 | error = 0.001914 | best_score = 7.1311e-02 | FW gap = Inf | min = 7.1311e-02 |
+  IP pricing time: 4.9956 s (solve 4.9926 s, gurobi.runtime 4.9835 s)
+Iter 113 | error = 0.001847 | best_score = 6.6589e-02 | FW gap = Inf | min = 6.6589e-02 |
+  IP pricing time: 2.4485 s (solve 2.4457 s, gurobi.runtime 2.4347 s)
+Iter 114 | error = 0.001789 | best_score = 6.7545e-02 | FW gap = Inf | min = 6.7545e-02 |
+  IP pricing time: 10.9399 s (solve 10.9369 s, gurobi.runtime 10.9256 s)
+Iter 115 | error = 0.001727 | best_score = 6.1380e-02 | FW gap = Inf | min = 6.1380e-02 |
+  IP pricing time: 1.7056 s (solve 1.7029 s, gurobi.runtime 1.6853 s)
+Iter 116 | error = 0.001675 | best_score = 6.8611e-02 | FW gap = Inf | min = 6.8611e-02 |
+  IP pricing time: 6.2413 s (solve 6.2376 s, gurobi.runtime 6.2166 s)
+Iter 117 | error = 0.001615 | best_score = 6.2958e-02 | FW gap = Inf | min = 6.2958e-02 |
+  IP pricing time: 8.1642 s (solve 8.1613 s, gurobi.runtime 8.1396 s)
+Iter 118 | error = 0.001567 | best_score = 6.1781e-02 | FW gap = Inf | min = 6.1781e-02 |
+  IP pricing time: 10.0916 s (solve 10.0886 s, gurobi.runtime 10.0719 s)
+Iter 119 | error = 0.001519 | best_score = 5.9046e-02 | FW gap = Inf | min = 5.9046e-02 |
+  IP pricing time: 8.7709 s (solve 8.7677 s, gurobi.runtime 8.7513 s)
+Iter 120 | error = 0.001469 | best_score = 5.9388e-02 | FW gap = Inf | min = 5.9388e-02 |
+  IP pricing time: 9.9048 s (solve 9.9018 s, gurobi.runtime 9.8874 s)
+Iter 121 | error = 0.001424 | best_score = 5.7961e-02 | FW gap = Inf | min = 5.7961e-02 |
+  IP pricing time: 4.5470 s (solve 4.5431 s, gurobi.runtime 4.5211 s)
+Iter 122 | error = 0.001381 | best_score = 5.4340e-02 | FW gap = Inf | min = 5.4340e-02 |
+  IP pricing time: 14.7038 s (solve 14.6998 s, gurobi.runtime 14.6850 s)
+Iter 123 | error = 0.001344 | best_score = 4.5899e-02 | FW gap = Inf | min = 4.5899e-02 |
+  IP pricing time: 12.3601 s (solve 12.3566 s, gurobi.runtime 12.3343 s)
+Iter 124 | error = 0.001316 | best_score = 4.1944e-02 | FW gap = Inf | min = 4.1944e-02 |
+  IP pricing time: 5.8997 s (solve 5.8968 s, gurobi.runtime 5.8848 s)
+Iter 125 | error = 0.001293 | best_score = 4.1596e-02 | FW gap = Inf | min = 4.1596e-02 |
+  IP pricing time: 18.7310 s (solve 18.7277 s, gurobi.runtime 18.7100 s)
+Iter 126 | error = 0.001270 | best_score = 3.7196e-02 | FW gap = Inf | min = 3.7196e-02 |
+  IP pricing time: 8.8156 s (solve 8.8112 s, gurobi.runtime 8.7969 s)
+Iter 127 | error = 0.001252 | best_score = 3.6494e-02 | FW gap = Inf | min = 3.6494e-02 |
+  IP pricing time: 5.8337 s (solve 5.8304 s, gurobi.runtime 5.8121 s)
+Iter 128 | error = 0.001233 | best_score = 3.5672e-02 | FW gap = Inf | min = 3.5672e-02 |
+  IP pricing time: 7.6182 s (solve 7.6150 s, gurobi.runtime 7.6046 s)
+Iter 129 | error = 0.001214 | best_score = 3.4597e-02 | FW gap = Inf | min = 3.4597e-02 |
+  IP pricing time: 7.3725 s (solve 7.3693 s, gurobi.runtime 7.3484 s)
+Iter 130 | error = 0.001197 | best_score = 3.2024e-02 | FW gap = Inf | min = 3.2024e-02 |
+  IP pricing time: 28.7006 s (solve 28.6973 s, gurobi.runtime 28.6807 s)
+Iter 131 | error = 0.001183 | best_score = 2.9321e-02 | FW gap = Inf | min = 2.9321e-02 |
+  IP pricing time: 26.0990 s (solve 26.0902 s, gurobi.runtime 26.0742 s)
+Iter 132 | error = 0.001171 | best_score = 2.9015e-02 | FW gap = Inf | min = 2.9015e-02 |
+  IP pricing time: 4.9166 s (solve 4.9132 s, gurobi.runtime 4.8953 s)
+Iter 133 | error = 0.001157 | best_score = 3.0517e-02 | FW gap = Inf | min = 3.0517e-02 |
+  IP pricing time: 14.9786 s (solve 14.9757 s, gurobi.runtime 14.9584 s)
+Iter 134 | error = 0.001143 | best_score = 2.9606e-02 | FW gap = Inf | min = 2.9606e-02 |
+  IP pricing time: 2.1808 s (solve 2.1781 s, gurobi.runtime 2.1598 s)
+Iter 135 | error = 0.001129 | best_score = 3.1464e-02 | FW gap = Inf | min = 3.1464e-02 |
+  IP pricing time: 4.0725 s (solve 4.0698 s, gurobi.runtime 4.0565 s)
+Iter 136 | error = 0.001115 | best_score = 3.0699e-02 | FW gap = Inf | min = 3.0699e-02 |
+  IP pricing time: 6.1361 s (solve 6.1333 s, gurobi.runtime 6.1122 s)
+Iter 137 | error = 0.001101 | best_score = 2.8420e-02 | FW gap = Inf | min = 2.8420e-02 |
+  IP pricing time: 15.6227 s (solve 15.6189 s, gurobi.runtime 15.6050 s)
+Iter 138 | error = 0.001088 | best_score = 2.7111e-02 | FW gap = Inf | min = 2.7111e-02 |
+  IP pricing time: 25.5858 s (solve 25.5823 s, gurobi.runtime 25.5677 s)
+Iter 139 | error = 0.001075 | best_score = 2.7496e-02 | FW gap = Inf | min = 2.7496e-02 |
+  IP pricing time: 5.3298 s (solve 5.3262 s, gurobi.runtime 5.3105 s)
+Iter 140 | error = 0.001063 | best_score = 3.0010e-02 | FW gap = Inf | min = 3.0010e-02 |
+  IP pricing time: 4.8392 s (solve 4.8360 s, gurobi.runtime 4.8241 s)
+Iter 141 | error = 0.001049 | best_score = 2.8885e-02 | FW gap = Inf | min = 2.8885e-02 |
+  IP pricing time: 8.8907 s (solve 8.8878 s, gurobi.runtime 8.8770 s)
+Iter 142 | error = 0.001037 | best_score = 2.8696e-02 | FW gap = Inf | min = 2.8696e-02 |
+  IP pricing time: 22.0709 s (solve 22.0676 s, gurobi.runtime 22.0509 s)
+Iter 143 | error = 0.001023 | best_score = 2.8322e-02 | FW gap = Inf | min = 2.8322e-02 |
+  IP pricing time: 4.8108 s (solve 4.8076 s, gurobi.runtime 4.7864 s)
+Iter 144 | error = 0.001011 | best_score = 2.9797e-02 | FW gap = Inf | min = 2.9797e-02 |
+  IP pricing time: 11.2970 s (solve 11.2930 s, gurobi.runtime 11.2796 s)
+Iter 145 | error = 0.000999 | best_score = 2.8092e-02 | FW gap = Inf | min = 2.8092e-02 |
+  IP pricing time: 7.0545 s (solve 7.0515 s, gurobi.runtime 7.0375 s)
+Iter 146 | error = 0.000988 | best_score = 2.8928e-02 | FW gap = Inf | min = 2.8928e-02 |
+  IP pricing time: 8.4609 s (solve 8.4577 s, gurobi.runtime 8.4402 s)
+Iter 147 | error = 0.000976 | best_score = 2.7270e-02 | FW gap = Inf | min = 2.7270e-02 |
+  IP pricing time: 6.9760 s (solve 6.9709 s, gurobi.runtime 6.9529 s)
+Iter 148 | error = 0.000966 | best_score = 2.5005e-02 | FW gap = Inf | min = 2.5005e-02 |
+  IP pricing time: 10.6595 s (solve 10.6555 s, gurobi.runtime 10.6374 s)
+Iter 149 | error = 0.000956 | best_score = 2.3474e-02 | FW gap = Inf | min = 2.3474e-02 |
+  IP pricing time: 8.9957 s (solve 8.9929 s, gurobi.runtime 8.9781 s)
+Iter 150 | error = 0.000948 | best_score = 2.2013e-02 | FW gap = Inf | min = 2.2013e-02 |
+  IP pricing time: 20.8086 s (solve 20.8049 s, gurobi.runtime 20.7910 s)
+Iter 151 | error = 0.000940 | best_score = 2.1119e-02 | FW gap = Inf | min = 2.1119e-02 |
+  IP pricing time: 12.6547 s (solve 12.6513 s, gurobi.runtime 12.6387 s)
+Iter 152 | error = 0.000934 | best_score = 2.0927e-02 | FW gap = Inf | min = 2.0927e-02 |
+  IP pricing time: 8.6767 s (solve 8.6735 s, gurobi.runtime 8.6601 s)
+Iter 153 | error = 0.000926 | best_score = 2.0906e-02 | FW gap = Inf | min = 2.0906e-02 |
+  IP pricing time: 5.3814 s (solve 5.3784 s, gurobi.runtime 5.3645 s)
+Iter 154 | error = 0.000918 | best_score = 2.0811e-02 | FW gap = Inf | min = 2.0811e-02 |
+  IP pricing time: 9.0630 s (solve 9.0598 s, gurobi.runtime 9.0407 s)
+Iter 155 | error = 0.000911 | best_score = 1.9402e-02 | FW gap = Inf | min = 1.9402e-02 |
+  IP pricing time: 6.8014 s (solve 6.7986 s, gurobi.runtime 6.7823 s)
+Iter 156 | error = 0.000905 | best_score = 1.9043e-02 | FW gap = Inf | min = 1.9043e-02 |
+  IP pricing time: 4.6062 s (solve 4.6030 s, gurobi.runtime 4.5903 s)
+Iter 157 | error = 0.000899 | best_score = 2.0173e-02 | FW gap = Inf | min = 2.0173e-02 |
+  IP pricing time: 6.4151 s (solve 6.4121 s, gurobi.runtime 6.3950 s)
+Iter 158 | error = 0.000894 | best_score = 1.9250e-02 | FW gap = Inf | min = 1.9250e-02 |
+  IP pricing time: 7.5235 s (solve 7.5203 s, gurobi.runtime 7.5044 s)
+Iter 159 | error = 0.000887 | best_score = 1.9288e-02 | FW gap = Inf | min = 1.9288e-02 |
+  IP pricing time: 14.5309 s (solve 14.5272 s, gurobi.runtime 14.5141 s)
+Iter 160 | error = 0.000882 | best_score = 1.8365e-02 | FW gap = Inf | min = 1.8365e-02 |
+  IP pricing time: 16.0248 s (solve 16.0215 s, gurobi.runtime 16.0026 s)
+Iter 161 | error = 0.000876 | best_score = 1.8088e-02 | FW gap = Inf | min = 1.8088e-02 |
+  IP pricing time: 32.6208 s (solve 32.6180 s, gurobi.runtime 32.6059 s)
+Iter 162 | error = 0.000870 | best_score = 1.7477e-02 | FW gap = Inf | min = 1.7477e-02 |
+  IP pricing time: 21.7624 s (solve 21.7590 s, gurobi.runtime 21.7444 s)
+Iter 163 | error = 0.000866 | best_score = 1.6543e-02 | FW gap = Inf | min = 1.6543e-02 |
+  IP pricing time: 50.9727 s (solve 50.9695 s, gurobi.runtime 50.9490 s)
+Iter 164 | error = 0.000862 | best_score = 1.4444e-02 | FW gap = Inf | min = 1.4444e-02 |
+  IP pricing time: 8.8789 s (solve 8.8753 s, gurobi.runtime 8.8547 s)
+Iter 165 | error = 0.000859 | best_score = 1.4493e-02 | FW gap = Inf | min = 1.4493e-02 |
+  IP pricing time: 15.1812 s (solve 15.1781 s, gurobi.runtime 15.1657 s)
+Iter 166 | error = 0.000855 | best_score = 1.4022e-02 | FW gap = Inf | min = 1.4022e-02 |
+  IP pricing time: 9.2968 s (solve 9.2936 s, gurobi.runtime 9.2757 s)
+Iter 167 | error = 0.000852 | best_score = 1.3454e-02 | FW gap = Inf | min = 1.3454e-02 |
+  IP pricing time: 12.0654 s (solve 12.0619 s, gurobi.runtime 12.0457 s)
+Iter 168 | error = 0.000849 | best_score = 1.2751e-02 | FW gap = Inf | min = 1.2751e-02 |
+  IP pricing time: 19.7617 s (solve 19.7505 s, gurobi.runtime 19.7310 s)
+Iter 169 | error = 0.000847 | best_score = 1.2385e-02 | FW gap = Inf | min = 1.2385e-02 |
+  IP pricing time: 15.2065 s (solve 15.2032 s, gurobi.runtime 15.1853 s)
+Iter 170 | error = 0.000844 | best_score = 1.1572e-02 | FW gap = Inf | min = 1.1572e-02 |
+  IP pricing time: 13.7422 s (solve 13.7379 s, gurobi.runtime 13.7216 s)
+Iter 171 | error = 0.000842 | best_score = 1.1279e-02 | FW gap = Inf | min = 1.1279e-02 |
+  IP pricing time: 15.3855 s (solve 15.3820 s, gurobi.runtime 15.3686 s)
+Iter 172 | error = 0.000840 | best_score = 1.1026e-02 | FW gap = Inf | min = 1.1026e-02 |
+  IP pricing time: 10.3095 s (solve 10.3066 s, gurobi.runtime 10.2916 s)
+Iter 173 | error = 0.000838 | best_score = 1.0954e-02 | FW gap = Inf | min = 1.0954e-02 |
+  IP pricing time: 18.5227 s (solve 18.5199 s, gurobi.runtime 18.5028 s)
+Iter 174 | error = 0.000836 | best_score = 1.0650e-02 | FW gap = Inf | min = 1.0650e-02 |
+  IP pricing time: 12.0705 s (solve 12.0672 s, gurobi.runtime 12.0527 s)
+Iter 175 | error = 0.000834 | best_score = 1.0181e-02 | FW gap = Inf | min = 1.0181e-02 |
+  IP pricing time: 7.8068 s (solve 7.8036 s, gurobi.runtime 7.7898 s)
+Iter 176 | error = 0.000832 | best_score = 1.0207e-02 | FW gap = Inf | min = 1.0207e-02 |
+  IP pricing time: 13.5230 s (solve 13.5195 s, gurobi.runtime 13.4991 s)
+Iter 177 | error = 0.000830 | best_score = 9.7390e-03 | FW gap = Inf | min = 9.7390e-03 |
+Convergence Criterion Achieved (min(best_score, FW gap) = 9.7390e-03 < tol 1.0000e-02)
+  CG_IP  status=ok  error=8.299589e-04  total=1359.98s  iters=177  IP_calls=177  build=0.01s  solve_tot=1357.92s  gur_tot=1355.02s
+
+========================================================
+[3/5] n_sub = 32, seed = 3  (Zhirkov binary menus)
+========================================================
+Loaded Zhirkov subsample: 32 / 32 products (seed=3), 496 binary menus, 992 rows.
+Sampled original IDs: [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32]
+n_sub = 32 | 992 observations | 496 unique menus | menu sizes 2..2
+
+  -- CG_IP --  (budget: 604800.0 s)
+Starting column generation with 1 initial columns...
+Pricing mode: IP
+Generating choice sets only (rankings built on-demand)...
+Using 992 provided choice sets
+✓ 992 choice sets generated (no ranking enumeration needed)
+
+B_IP_pricing_build: 0.01s (nvars=1024, ncons=10416)
+  IP pricing time: 0.0678 s (solve 0.0634 s, gurobi.runtime 0.0554 s)
+Iter 1 | error = 294.735572 | best_score = 5.1199e+02 | FW gap = Inf | min = 5.1199e+02 |
+  IP pricing time: 0.0685 s (solve 0.0654 s, gurobi.runtime 0.0531 s)
+Iter 2 | error = 30.486264 | best_score = 6.9972e+01 | FW gap = Inf | min = 6.9972e+01 |
+  IP pricing time: 0.0792 s (solve 0.0764 s, gurobi.runtime 0.0602 s)
+Iter 3 | error = 10.736050 | best_score = 2.9451e+01 | FW gap = Inf | min = 2.9451e+01 |
+  IP pricing time: 0.7802 s (solve 0.7776 s, gurobi.runtime 0.7606 s)
+Iter 4 | error = 6.976759 | best_score = 1.8760e+01 | FW gap = Inf | min = 1.8760e+01 |
+  IP pricing time: 2.8266 s (solve 2.8238 s, gurobi.runtime 2.8056 s)
+Iter 5 | error = 5.370717 | best_score = 1.4779e+01 | FW gap = Inf | min = 1.4779e+01 |
+  IP pricing time: 1.0937 s (solve 1.0909 s, gurobi.runtime 1.0753 s)
+Iter 6 | error = 4.364775 | best_score = 1.3061e+01 | FW gap = Inf | min = 1.3061e+01 |
+  IP pricing time: 2.1784 s (solve 2.1756 s, gurobi.runtime 2.1560 s)
+Iter 7 | error = 3.574591 | best_score = 1.1482e+01 | FW gap = Inf | min = 1.1482e+01 |
+  IP pricing time: 0.3385 s (solve 0.3359 s, gurobi.runtime 0.3278 s)
+Iter 8 | error = 2.955457 | best_score = 9.9992e+00 | FW gap = Inf | min = 9.9992e+00 |
+  IP pricing time: 3.7515 s (solve 3.7488 s, gurobi.runtime 3.7342 s)
+Iter 9 | error = 2.469263 | best_score = 8.5291e+00 | FW gap = Inf | min = 8.5291e+00 |
+  IP pricing time: 0.6334 s (solve 0.6306 s, gurobi.runtime 0.6100 s)
+Iter 10 | error = 2.118357 | best_score = 8.5191e+00 | FW gap = Inf | min = 8.5191e+00 |
+  IP pricing time: 1.1228 s (solve 1.1202 s, gurobi.runtime 1.1076 s)
+Iter 11 | error = 1.786933 | best_score = 7.9734e+00 | FW gap = Inf | min = 7.9734e+00 |
+  IP pricing time: 1.4169 s (solve 1.4141 s, gurobi.runtime 1.3978 s)
+Iter 12 | error = 1.500581 | best_score = 7.2542e+00 | FW gap = Inf | min = 7.2542e+00 |
+  IP pricing time: 4.4503 s (solve 4.4472 s, gurobi.runtime 4.4367 s)
+Iter 13 | error = 1.241887 | best_score = 5.9280e+00 | FW gap = Inf | min = 5.9280e+00 |
+  IP pricing time: 3.8681 s (solve 3.8654 s, gurobi.runtime 3.8459 s)
+Iter 14 | error = 1.065991 | best_score = 5.8222e+00 | FW gap = Inf | min = 5.8222e+00 |
+  IP pricing time: 1.1652 s (solve 1.1625 s, gurobi.runtime 1.1432 s)
+Iter 15 | error = 0.896628 | best_score = 5.1029e+00 | FW gap = Inf | min = 5.1029e+00 |
+  IP pricing time: 1.2032 s (solve 1.2006 s, gurobi.runtime 1.1904 s)
+Iter 16 | error = 0.780549 | best_score = 4.4399e+00 | FW gap = Inf | min = 4.4399e+00 |
+  IP pricing time: 3.5693 s (solve 3.5664 s, gurobi.runtime 3.5541 s)
+Iter 17 | error = 0.677387 | best_score = 4.0004e+00 | FW gap = Inf | min = 4.0004e+00 |
+  IP pricing time: 0.2901 s (solve 0.2872 s, gurobi.runtime 0.2781 s)
+Iter 18 | error = 0.601316 | best_score = 3.9752e+00 | FW gap = Inf | min = 3.9752e+00 |
+  IP pricing time: 3.6978 s (solve 3.6951 s, gurobi.runtime 3.6738 s)
+Iter 19 | error = 0.529562 | best_score = 2.9450e+00 | FW gap = Inf | min = 2.9450e+00 |
+  IP pricing time: 0.2616 s (solve 0.2590 s, gurobi.runtime 0.2430 s)
+Iter 20 | error = 0.484536 | best_score = 3.0896e+00 | FW gap = Inf | min = 3.0896e+00 |
+  IP pricing time: 3.2392 s (solve 3.2364 s, gurobi.runtime 3.2200 s)
+Iter 21 | error = 0.425171 | best_score = 2.4974e+00 | FW gap = Inf | min = 2.4974e+00 |
+  IP pricing time: 0.7052 s (solve 0.7027 s, gurobi.runtime 0.6874 s)
+Iter 22 | error = 0.393557 | best_score = 2.4455e+00 | FW gap = Inf | min = 2.4455e+00 |
+  IP pricing time: 1.6126 s (solve 1.6099 s, gurobi.runtime 1.5938 s)
+Iter 23 | error = 0.359777 | best_score = 2.3127e+00 | FW gap = Inf | min = 2.3127e+00 |
+  IP pricing time: 1.3818 s (solve 1.3788 s, gurobi.runtime 1.3680 s)
+Iter 24 | error = 0.331015 | best_score = 2.2457e+00 | FW gap = Inf | min = 2.2457e+00 |
+  IP pricing time: 1.0845 s (solve 1.0819 s, gurobi.runtime 1.0653 s)
+Iter 25 | error = 0.302958 | best_score = 2.0580e+00 | FW gap = Inf | min = 2.0580e+00 |
+  IP pricing time: 1.3426 s (solve 1.3397 s, gurobi.runtime 1.3280 s)
+Iter 26 | error = 0.278992 | best_score = 1.9420e+00 | FW gap = Inf | min = 1.9420e+00 |
+  IP pricing time: 1.8046 s (solve 1.8020 s, gurobi.runtime 1.7855 s)
+Iter 27 | error = 0.257587 | best_score = 1.7547e+00 | FW gap = Inf | min = 1.7547e+00 |
+  IP pricing time: 3.9373 s (solve 3.9345 s, gurobi.runtime 3.9212 s)
+Iter 28 | error = 0.237600 | best_score = 1.5227e+00 | FW gap = Inf | min = 1.5227e+00 |
+  IP pricing time: 5.6806 s (solve 5.6779 s, gurobi.runtime 5.6603 s)
+Iter 29 | error = 0.222326 | best_score = 1.5033e+00 | FW gap = Inf | min = 1.5033e+00 |
+  IP pricing time: 3.4855 s (solve 3.4827 s, gurobi.runtime 3.4657 s)
+Iter 30 | error = 0.206616 | best_score = 1.4388e+00 | FW gap = Inf | min = 1.4388e+00 |
+  IP pricing time: 4.2005 s (solve 4.1947 s, gurobi.runtime 4.1775 s)
+Iter 31 | error = 0.193501 | best_score = 1.4474e+00 | FW gap = Inf | min = 1.4474e+00 |
+  IP pricing time: 4.0119 s (solve 4.0090 s, gurobi.runtime 3.9871 s)
+Iter 32 | error = 0.179522 | best_score = 1.3056e+00 | FW gap = Inf | min = 1.3056e+00 |
+  IP pricing time: 7.6121 s (solve 7.6093 s, gurobi.runtime 7.5926 s)
+Iter 33 | error = 0.168451 | best_score = 1.1991e+00 | FW gap = Inf | min = 1.1991e+00 |
+  IP pricing time: 3.6402 s (solve 3.6372 s, gurobi.runtime 3.6256 s)
+Iter 34 | error = 0.159505 | best_score = 1.2176e+00 | FW gap = Inf | min = 1.2176e+00 |
+  IP pricing time: 3.3055 s (solve 3.3027 s, gurobi.runtime 3.2845 s)
+Iter 35 | error = 0.149369 | best_score = 1.2485e+00 | FW gap = Inf | min = 1.2485e+00 |
+  IP pricing time: 1.7268 s (solve 1.7241 s, gurobi.runtime 1.7059 s)
+Iter 36 | error = 0.139125 | best_score = 1.1233e+00 | FW gap = Inf | min = 1.1233e+00 |
+  IP pricing time: 2.0931 s (solve 2.0904 s, gurobi.runtime 2.0771 s)
+Iter 37 | error = 0.130938 | best_score = 1.0339e+00 | FW gap = Inf | min = 1.0339e+00 |
+  IP pricing time: 1.6133 s (solve 1.6106 s, gurobi.runtime 1.5924 s)
+Iter 38 | error = 0.123356 | best_score = 1.0062e+00 | FW gap = Inf | min = 1.0062e+00 |
+  IP pricing time: 2.4638 s (solve 2.4610 s, gurobi.runtime 2.4448 s)
+Iter 39 | error = 0.116365 | best_score = 9.4228e-01 | FW gap = Inf | min = 9.4228e-01 |
+  IP pricing time: 3.6629 s (solve 3.6597 s, gurobi.runtime 3.6430 s)
+Iter 40 | error = 0.110450 | best_score = 1.0141e+00 | FW gap = Inf | min = 1.0141e+00 |
+  IP pricing time: 3.8592 s (solve 3.8564 s, gurobi.runtime 3.8397 s)
+Iter 41 | error = 0.104098 | best_score = 9.2686e-01 | FW gap = Inf | min = 9.2686e-01 |
+  IP pricing time: 0.9381 s (solve 0.9353 s, gurobi.runtime 0.9247 s)
+Iter 42 | error = 0.097991 | best_score = 9.3024e-01 | FW gap = Inf | min = 9.3024e-01 |
+  IP pricing time: 3.8182 s (solve 3.8154 s, gurobi.runtime 3.8016 s)
+Iter 43 | error = 0.091441 | best_score = 8.7583e-01 | FW gap = Inf | min = 8.7583e-01 |
+  IP pricing time: 7.3414 s (solve 7.3385 s, gurobi.runtime 7.3254 s)
+Iter 44 | error = 0.085144 | best_score = 7.7819e-01 | FW gap = Inf | min = 7.7819e-01 |
+  IP pricing time: 5.8065 s (solve 5.8038 s, gurobi.runtime 5.7823 s)
+Iter 45 | error = 0.080690 | best_score = 7.8765e-01 | FW gap = Inf | min = 7.8765e-01 |
+  IP pricing time: 3.1762 s (solve 3.1734 s, gurobi.runtime 3.1626 s)
+Iter 46 | error = 0.075448 | best_score = 7.9153e-01 | FW gap = Inf | min = 7.9153e-01 |
+  IP pricing time: 1.8219 s (solve 1.8192 s, gurobi.runtime 1.8011 s)
+Iter 47 | error = 0.070349 | best_score = 7.1291e-01 | FW gap = Inf | min = 7.1291e-01 |
+  IP pricing time: 1.0837 s (solve 1.0809 s, gurobi.runtime 1.0707 s)
+Iter 48 | error = 0.066298 | best_score = 7.8034e-01 | FW gap = Inf | min = 7.8034e-01 |
+  IP pricing time: 4.3673 s (solve 4.3644 s, gurobi.runtime 4.3467 s)
+Iter 49 | error = 0.061000 | best_score = 6.5203e-01 | FW gap = Inf | min = 6.5203e-01 |
+  IP pricing time: 1.3893 s (solve 1.3867 s, gurobi.runtime 1.3724 s)
+Iter 50 | error = 0.057638 | best_score = 7.1137e-01 | FW gap = Inf | min = 7.1137e-01 |
+  IP pricing time: 5.0061 s (solve 5.0034 s, gurobi.runtime 4.9844 s)
+Iter 51 | error = 0.053985 | best_score = 6.6454e-01 | FW gap = Inf | min = 6.6454e-01 |
+  IP pricing time: 6.0549 s (solve 6.0521 s, gurobi.runtime 6.0371 s)
+Iter 52 | error = 0.050869 | best_score = 5.9492e-01 | FW gap = Inf | min = 5.9492e-01 |
+  IP pricing time: 5.8796 s (solve 5.8759 s, gurobi.runtime 5.8590 s)
+Iter 53 | error = 0.047436 | best_score = 6.0002e-01 | FW gap = Inf | min = 6.0002e-01 |
+  IP pricing time: 1.7625 s (solve 1.7595 s, gurobi.runtime 1.7452 s)
+Iter 54 | error = 0.043756 | best_score = 6.0410e-01 | FW gap = Inf | min = 6.0410e-01 |
+  IP pricing time: 6.4827 s (solve 6.4796 s, gurobi.runtime 6.4653 s)
+Iter 55 | error = 0.040687 | best_score = 5.3842e-01 | FW gap = Inf | min = 5.3842e-01 |
+  IP pricing time: 9.9242 s (solve 9.9192 s, gurobi.runtime 9.9057 s)
+Iter 56 | error = 0.038384 | best_score = 4.9880e-01 | FW gap = Inf | min = 4.9880e-01 |
+  IP pricing time: 5.4721 s (solve 5.4689 s, gurobi.runtime 5.4524 s)
+Iter 57 | error = 0.035932 | best_score = 5.0132e-01 | FW gap = Inf | min = 5.0132e-01 |
+  IP pricing time: 5.2232 s (solve 5.2203 s, gurobi.runtime 5.1993 s)
+Iter 58 | error = 0.033696 | best_score = 4.6310e-01 | FW gap = Inf | min = 4.6310e-01 |
