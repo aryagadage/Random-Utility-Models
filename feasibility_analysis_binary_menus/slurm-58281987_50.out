@@ -36,3 +36,13 @@ Using 2450 provided choice sets
 B_IP_pricing_build: 0.04s (nvars=2500, ncons=40425)
   IP pricing time: 0.3384 s (solve 0.3159 s, gurobi.runtime 0.2722 s)
 Iter 1 | error = 823.167413 | best_score = 1.2326e+03 | FW gap = Inf | min = 1.2326e+03 |
+  IP pricing time: 306823.8666 s (solve 306823.8508 s, gurobi.runtime 306823.6924 s)
+Iter 2 | error = 203.024588 | best_score = 1.1611e+02 | FW gap = Inf | min = 1.1611e+02 |
+  IP pricing time: 78842.8176 s (solve 78842.8091 s, gurobi.runtime 78842.6771 s)
+Iter 3 | error = 181.011753 | best_score = 1.0817e+02 | FW gap = Inf | min = 1.0817e+02 |
+  IP pricing time: 27089.1323 s (solve 27089.1212 s, gurobi.runtime 27088.9942 s)
+Iter 4 | error = 160.523773 | best_score = 1.0673e+02 | FW gap = Inf | min = 1.0673e+02 |
+  IP pricing time: 27182.5170 s (solve 27182.4997 s, gurobi.runtime 27182.3552 s)
+Iter 5 | error = 137.734998 | best_score = 9.5006e+01 | FW gap = Inf | min = 9.5006e+01 |
+  IP pricing time: 25266.9580 s (solve 25266.9511 s, gurobi.runtime 25266.8355 s)
+Iter 6 | error = 122.184397 | best_score = 8.0089e+01 | FW gap = Inf | min = 8.0089e+01 |

@@ -50,3 +50,5 @@ Iter 9 | error = 70.052692 | best_score = 3.0247e+01 | FW gap = 1.7072e+00 | min
 Iter 10 | error = 67.796352 | best_score = 2.5765e+01 | FW gap = 1.0415e+00 | min = 1.0415e+00 |
   IP pricing time: 13886.5606 s (solve 13886.5529 s, gurobi.runtime 13886.4584 s)
 Iter 11 | error = 66.246568 | best_score = 2.2780e+01 | FW gap = 7.8956e-01 | min = 7.8956e-01 |
+  IP pricing time: 89562.8305 s (solve 89562.8258 s, gurobi.runtime 89562.6971 s)
+Iter 12 | error = 64.920213 | best_score = 1.9115e+01 | FW gap = 5.5963e-01 | min = 5.5963e-01 |

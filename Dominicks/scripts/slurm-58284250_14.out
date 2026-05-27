@@ -114,3 +114,8 @@ Iter 41 | error = 1.344670 | best_score = 3.9929e-01 | FW gap = 5.6918e-01 | min
 Iter 42 | error = 1.338425 | best_score = 3.8961e-01 | FW gap = 5.4706e-01 | min = 3.8961e-01 |
   IP pricing time: 2918.1608 s (solve 2918.0737 s, gurobi.runtime 2917.6048 s)
 Iter 43 | error = 1.332672 | best_score = 3.7346e-01 | FW gap = 5.0836e-01 | min = 3.7346e-01 |
+  IP pricing time: 2530.0839 s (solve 2529.9878 s, gurobi.runtime 2529.4927 s)
+Iter 44 | error = 1.327328 | best_score = 3.7128e-01 | FW gap = 5.0660e-01 | min = 3.7128e-01 |
+  IP pricing time: 2960.0138 s (solve 2959.9269 s, gurobi.runtime 2959.4549 s)
+Iter 45 | error = 1.318631 | best_score = 3.5979e-01 | FW gap = 4.8364e-01 | min = 3.5979e-01 |
+slurmstepd: error: *** JOB 58284252 ON r914u05n03 CANCELLED AT 2026-05-21T14:05:01 DUE TO TIME LIMIT ***

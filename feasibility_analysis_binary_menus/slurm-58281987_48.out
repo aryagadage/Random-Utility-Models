@@ -38,3 +38,13 @@ B_IP_pricing_build: 0.04s (nvars=2304, ncons=35720)
 Iter 1 | error = 739.675215 | best_score = 1.1121e+03 | FW gap = Inf | min = 1.1121e+03 |
   IP pricing time: 21185.0694 s (solve 21185.0596 s, gurobi.runtime 21184.9814 s)
 Iter 2 | error = 191.511744 | best_score = 1.0501e+02 | FW gap = Inf | min = 1.0501e+02 |
+  IP pricing time: 185625.1564 s (solve 185625.1492 s, gurobi.runtime 185624.9839 s)
+Iter 3 | error = 171.928803 | best_score = 9.9180e+01 | FW gap = Inf | min = 9.9180e+01 |
+  IP pricing time: 5946.7655 s (solve 5946.7558 s, gurobi.runtime 5946.6751 s)
+Iter 4 | error = 153.044486 | best_score = 1.0095e+02 | FW gap = Inf | min = 1.0095e+02 |
+  IP pricing time: 2377.3540 s (solve 2377.3393 s, gurobi.runtime 2377.2667 s)
+Iter 5 | error = 131.719453 | best_score = 9.5123e+01 | FW gap = Inf | min = 9.5123e+01 |
+  IP pricing time: 3623.9891 s (solve 3623.9829 s, gurobi.runtime 3623.8877 s)
+Iter 6 | error = 115.047665 | best_score = 7.4120e+01 | FW gap = Inf | min = 7.4120e+01 |
+  IP pricing time: 28585.0610 s (solve 28585.0553 s, gurobi.runtime 28584.9587 s)
+Iter 7 | error = 106.775857 | best_score = 5.6695e+01 | FW gap = Inf | min = 5.6695e+01 |

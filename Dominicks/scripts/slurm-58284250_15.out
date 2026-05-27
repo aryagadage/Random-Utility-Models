@@ -32,3 +32,4 @@ B_IP_pricing_build: 0.75s (nvars=52216, ncons=4266612)
 Iter 1 | error = 45.143175 | best_score = 4.6859e+01 | FW gap = Inf | min = 4.6859e+01 |
   IP pricing time: 228.8815 s (solve 228.1786 s, gurobi.runtime 226.2496 s)
 Iter 2 | error = 20.191804 | best_score = 2.3315e+01 | FW gap = Inf | min = 2.3315e+01 |
+slurmstepd: error: *** JOB 58284253 ON r914u05n04 CANCELLED AT 2026-05-21T14:05:01 DUE TO TIME LIMIT ***

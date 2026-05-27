@@ -28,3 +28,4 @@ Using 37019 provided choice sets
 ✓ 37019 choice sets generated (no ranking enumeration needed)
 
 B_IP_pricing_build: 4.83s (nvars=158820, ncons=20127599)
+slurmstepd: error: *** JOB 58284267 ON r918u36n03 CANCELLED AT 2026-05-21T14:05:01 DUE TO TIME LIMIT ***

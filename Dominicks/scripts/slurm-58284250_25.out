@@ -30,3 +30,4 @@ Using 6442 provided choice sets
 B_IP_pricing_build: 0.16s (nvars=19667, ncons=741523)
   IP pricing time: 381.9912 s (solve 381.8355 s, gurobi.runtime 381.4626 s)
 Iter 1 | error = 183.087996 | best_score = 1.9200e+02 | FW gap = Inf | min = 1.9200e+02 |
+slurmstepd: error: *** JOB 58284263 ON r918u05n01 CANCELLED AT 2026-05-21T14:05:01 DUE TO TIME LIMIT ***

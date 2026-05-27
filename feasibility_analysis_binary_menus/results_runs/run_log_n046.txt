@@ -40,3 +40,9 @@ Iter 4 | error = 138.246623 | best_score = 9.7097e+01 | FW gap = Inf | min = 9.7
 Iter 5 | error = 115.390094 | best_score = 8.5640e+01 | FW gap = Inf | min = 8.5640e+01 |
   IP pricing time: 1023.5378 s (solve 1023.5321 s, gurobi.runtime 1023.4714 s)
 Iter 6 | error = 101.505334 | best_score = 6.4610e+01 | FW gap = Inf | min = 6.4610e+01 |
+  IP pricing time: 80112.9775 s (solve 80112.9721 s, gurobi.runtime 80112.9070 s)
+Iter 7 | error = 93.922142 | best_score = 5.0757e+01 | FW gap = Inf | min = 5.0757e+01 |
+  IP pricing time: 125126.0497 s (solve 125126.0445 s, gurobi.runtime 125125.9603 s)
+Iter 8 | error = 89.130523 | best_score = 4.1118e+01 | FW gap = 2.5954e+00 | min = 2.5954e+00 |
+  IP pricing time: 39275.2406 s (solve 39275.2354 s, gurobi.runtime 39275.1508 s)
+Iter 9 | error = 85.995135 | best_score = 3.6007e+01 | FW gap = 1.4801e+00 | min = 1.4801e+00 |

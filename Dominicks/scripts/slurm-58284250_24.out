@@ -42,3 +42,4 @@ Iter 5 | error = 27.127200 | best_score = 4.2185e+01 | FW gap = Inf | min = 4.21
 Iter 6 | error = 20.437040 | best_score = 3.2060e+01 | FW gap = Inf | min = 3.2060e+01 |
   IP pricing time: 23145.9641 s (solve 23145.8005 s, gurobi.runtime 23145.3704 s)
 Iter 7 | error = 16.464092 | best_score = 2.7398e+01 | FW gap = Inf | min = 2.7398e+01 |
+slurmstepd: error: *** JOB 58284262 ON r918u01n03 CANCELLED AT 2026-05-21T14:05:01 DUE TO TIME LIMIT ***
