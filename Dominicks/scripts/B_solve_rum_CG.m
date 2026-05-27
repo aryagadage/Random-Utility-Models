@@ -1,18 +1,26 @@
-function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol, time_limit_s, iptimes_path, run_tag)
-% Optional 11th arg time_limit_s: wall-time budget in seconds for the
+function [result_CG,residual]  = B_solve_rum_CG(p_obs, n, init_k, max_iters, choice_sets, pricing_mode, chosen_alts,choice_set_list, IP, tol_level, tol_relative, time_limit_s, iptimes_path, run_tag)
+% Termination tolerances (args 10 and 11):
+%   tol_level    : absolute gap tolerance — stop if UB - LB    < tol_level
+%   tol_relative : relative gap tolerance — stop if (UB-LB)/LB < tol_relative
+% where UB = sqrt(F_current), LB = sqrt(max(F_current - 2*best_score, 0)),
+% F_current = ||p_obs - V_sub*lambda||^2. Mirrors feasibility_analysis_
+% binary_menus_second_round/B_solve_rum_CG.m. Either tolerance firing
+% terminates the loop.
+%
+% Optional 12th arg time_limit_s: wall-time budget in seconds for the
 % entire CG run (Inf = no cap). Checked at iteration boundaries; the
 % remaining budget is also passed to B_IP_pricing as Gurobi TimeLimit
 % so individual IP solves cannot exceed it either.
 %
-% Optional 12th arg iptimes_path: path to a per-IP-call CSV. When provided,
+% Optional 13th arg iptimes_path: path to a per-IP-call CSV. When provided,
 % one row is appended after every IP pricing call (file is fclose'd between
 % rows so a SLURM kill leaves a durable record). Columns:
 %   run_tag, iter, ip_total_s, ip_solve_s, gurobi_runtime_s
-% Optional 13th arg run_tag: string label written as the first column of
+% Optional 14th arg run_tag: string label written as the first column of
 % iptimes CSV (e.g. 'group013_PaperTowels_store142__CG_IP'). Defaults to ''.
-if nargin < 11 || isempty(time_limit_s), time_limit_s = Inf; end
-if nargin < 12, iptimes_path = ''; end
-if nargin < 13, run_tag = ''; end
+if nargin < 12 || isempty(time_limit_s), time_limit_s = Inf; end
+if nargin < 13, iptimes_path = ''; end
+if nargin < 14, run_tag = ''; end
 % B_solve_rum_CG
 % -------------------------------------------------------------------------
 % Column generation solver for discrete choice RUM problem.
@@ -158,35 +166,37 @@ while and(exit==0, iter <= max_iters)
     %%%%%%%%%%%%%%%Print Progres %%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    % --- Termination Criterion: hybrid (raw RC) AND (FW relative gap) ---
+    % --- Termination Criterion: absolute OR relative distance gap -------
     % F(p) = ||p_obs - p||^2 is the master objective.
-    %   UB  = sqrt(F_current)
-    %   LB  = sqrt(max(F_current - 2*best_score, 0))   (convexity bound on F*)
-    %   gap = (UB - LB)/LB                              (relative distance gap)
-    % LB is clamped to 0 (instead of using sqrt of a possibly negative
-    % argument); when LB == 0 we treat the relative gap as infinite. We
-    % stop whenever the EITHER the raw best_score OR the relative gap is
-    % below tol, whichever happens first.
+    %   UB      = sqrt(F_current)
+    %   LB      = sqrt(max(F_current - 2*best_score, 0))   (convexity bound on F*)
+    %   abs_gap = UB - LB
+    %   rel_gap = (UB - LB) / LB
+    % LB is clamped to 0; when LB == 0 the relative gap is treated as
+    % infinite. We stop when EITHER abs_gap < tol_level OR
+    % rel_gap < tol_relative (whichever fires first).
     F_current = error_val;
     UB        = sqrt(max(F_current, 0));
     LB        = sqrt(max(F_current - 2*best_score, 0));
+    abs_gap   = UB - LB;
     if LB > 0
-        fw_gap = (UB - LB) / LB;
+        rel_gap = abs_gap / LB;
     else
-        fw_gap = Inf;
+        rel_gap = Inf;
     end
-    term_metric = min(best_score, fw_gap);
-    fprintf(['Iter %d | error = %.6f | best_score = %.4e | FW gap = %.4e | ' ...
-             'min = %.4e |\n'], iter, error_val, best_score, fw_gap, term_metric);
+    fprintf(['Iter %d | error = %.6f | best_score = %.4e | abs_gap = %.4e | ' ...
+             'rel_gap = %.4e |\n'], iter, error_val, best_score, abs_gap, rel_gap);
 
-    if term_metric < tol
+    converged = (abs_gap < tol_level) || (rel_gap < tol_relative);
+
+    if converged
         if strcmp(pricing_mode, 'IP')
-            % IP pricing already ran this iteration; best_score is an upper
-            % bound on the exact reduced cost, so the gap above is honest.
+            % IP pricing already ran this iteration; best_score is the
+            % exact reduced cost, so abs_gap / rel_gap above are honest.
             exit = 1;
             fprintf(['Convergence Criterion Achieved ' ...
-                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
-                    term_metric, tol);
+                     '(abs_gap %.4e < tol_level %.4e || rel_gap %.4e < tol_relative %.4e)\n'], ...
+                    abs_gap, tol_level, rel_gap, tol_relative);
         elseif IP==true
             fprintf('IP Pricing (verification)\n')
             ip_tic = tic;
@@ -201,28 +211,31 @@ while and(exit==0, iter <= max_iters)
             append_iptimes_row(iptimes_path, run_tag, iter, ip_time, sw, gr);
 
             best_score_ip = optim_value - result.QP.inner_product;
-            LB_ip = sqrt(max(F_current - 2*best_score_ip, 0));
+            LB_ip      = sqrt(max(F_current - 2*best_score_ip, 0));
+            abs_gap_ip = UB - LB_ip;
             if LB_ip > 0
-                fw_gap_ip = (sqrt(F_current) - LB_ip) / LB_ip;
+                rel_gap_ip = abs_gap_ip / LB_ip;
             else
-                fw_gap_ip = Inf;
+                rel_gap_ip = Inf;
             end
-            term_metric_ip = min(best_score_ip, fw_gap_ip);
+            converged_ip = (abs_gap_ip < tol_level) || (rel_gap_ip < tol_relative);
 
-            if term_metric_ip < tol
+            if converged_ip
                 exit = 1;
-                fprintf('best_score: %.4e | FW gap: %.4e | min: %.4e\n', ...
-                    best_score_ip, fw_gap_ip, term_metric_ip);
-                fprintf('Convergence Criterion Achieved (min < tol)\n');
+                fprintf('best_score: %.4e | abs_gap: %.4e | rel_gap: %.4e\n', ...
+                    best_score_ip, abs_gap_ip, rel_gap_ip);
+                fprintf(['Convergence Criterion Achieved ' ...
+                         '(abs_gap %.4e < tol_level %.4e || rel_gap %.4e < tol_relative %.4e)\n'], ...
+                        abs_gap_ip, tol_level, rel_gap_ip, tol_relative);
             else
-                fprintf(['best_score: %.4e | FW gap: %.4e | min: %.4e ' ...
-                         '-- continuing\n'], best_score_ip, fw_gap_ip, term_metric_ip);
+                fprintf(['best_score: %.4e | abs_gap: %.4e | rel_gap: %.4e ' ...
+                         '-- continuing\n'], best_score_ip, abs_gap_ip, rel_gap_ip);
                 exit = 0;
             end
         else
             fprintf(['Convergence Criterion Achieved ' ...
-                     '(min(best_score, FW gap) = %.4e < tol %.4e)\n'], ...
-                    term_metric, tol);
+                     '(abs_gap %.4e < tol_level %.4e || rel_gap %.4e < tol_relative %.4e)\n'], ...
+                    abs_gap, tol_level, rel_gap, tol_relative);
             exit = 1;
         end
     end

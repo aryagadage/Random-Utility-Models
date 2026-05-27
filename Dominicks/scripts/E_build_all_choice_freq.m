@@ -4,6 +4,12 @@
 % non-empty upc_menu complexity group, with one CSV + one *_upc_map.csv
 % written per draw into scripts/results_choice_freq/.
 %
+% Items are *effective UPCs*: at each store, raw UPCs offered in exactly
+% the same set of weeks are collapsed into one class with combined MOVE
+% (see D_build_choice_freq_per_group for details). This keeps the
+% identification problem honest — co-offered raw UPCs that the menu
+% structure cannot tell apart are represented as one product.
+%
 % Reads (per-category) w*.csv files from Dominicks/data/<category>/, so
 % this is the slow step — expect minutes per category. Run once; rerun
 % only when you want a fresh random sample.

@@ -6,7 +6,9 @@
 #   2. Per-store summary from the movement file (w<xxx>.csv):
 #        - # distinct UPCs ever offered at the store
 #        - # distinct menus (a "menu" = distinct set of UPCs offered in a
-#          (STORE, WEEK) occasion, where "offered" means OK == 1 & PRICE > 0)
+#          (STORE, WEEK) occasion, where "offered" means OK == 1)
+#          Rows with PRICE == 0 / MOVE == 0 are kept as "available but not
+#          chosen" alternatives rather than excluded.
 #
 # Output: pretty-printed tables to console + tidy CSV summaries.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -89,21 +91,21 @@ for (cat_name in categories) {
     dplyr::n_distinct(upc_df$NITEM[!is.na(upc_df$NITEM)]) else NA_integer_
 
   # --- Movement-based offerings -------------------------------------------
-  # Apply the project's "offered" definition: OK == 1 & PRICE > 0.
-  # If those columns aren't present, fall back to MOVE > 0.
-  has_ok    <- "OK"    %in% names(w_df)
-  has_price <- "PRICE" %in% names(w_df)
-  has_move  <- "MOVE"  %in% names(w_df)
+  # "Offered" = OK == 1.  Zero-sale rows are kept (they represent UPCs the
+  # store carried that week but that had no sales).  If OK is absent, fall
+  # back to MOVE > 0.
+  has_ok   <- "OK"   %in% names(w_df)
+  has_move <- "MOVE" %in% names(w_df)
 
-  if (has_ok && has_price) {
-    offered <- w_df %>% filter(OK == 1, PRICE > 0)
-    offer_def <- "OK == 1 & PRICE > 0"
+  if (has_ok) {
+    offered <- w_df %>% filter(OK == 1)
+    offer_def <- "OK == 1"
   } else if (has_move) {
     offered <- w_df %>% filter(MOVE > 0)
-    offer_def <- "MOVE > 0  (fallback: OK/PRICE not present)"
+    offer_def <- "MOVE > 0  (fallback: OK not present)"
   } else {
     offered <- w_df
-    offer_def <- "all rows  (fallback: no OK/PRICE/MOVE)"
+    offer_def <- "all rows  (fallback: no OK/MOVE)"
   }
 
   cat("  offered rule:", offer_def, "\n")
@@ -167,6 +169,21 @@ for (cat_name in categories) {
     distinct(STORE, UPC) %>%
     count(STORE, name = "n_upcs")
 
+  # 7. Effective UPCs: collapse UPCs that are present in exactly the same
+  # set of menus at this store (i.e. they are never separable in the data,
+  # so the choice model can't tell them apart).  Each UPC's "signature" is
+  # its sorted set of offered weeks at the store; UPCs with identical
+  # signatures form one equivalence class and count as a single product.
+  upc_signatures <- offered %>%
+    distinct(STORE, WEEK, UPC) %>%
+    arrange(STORE, UPC, WEEK) %>%
+    group_by(STORE, UPC) %>%
+    summarise(week_sig = paste(WEEK, collapse = "_"), .groups = "drop")
+
+  effective_upcs <- upc_signatures %>%
+    group_by(STORE) %>%
+    summarise(n_effective_upc = dplyr::n_distinct(week_sig), .groups = "drop")
+
   # --- NITEM-level analogs (parallel to UPC block above) ------------------
   if (nrow(offered_n) > 0) {
     occ_n <- offered_n %>%
@@ -208,13 +225,14 @@ for (cat_name in categories) {
 
   per_store <- store_weeks %>%
     left_join(upcs_per_store,    by = "STORE") %>%
+    left_join(effective_upcs,    by = "STORE") %>%
     left_join(menus_per_store,   by = "STORE") %>%
     left_join(always_95,         by = "STORE") %>%
     left_join(nitems_per_store,  by = "STORE") %>%
     left_join(menus_per_store_n, by = "STORE") %>%
     left_join(always_95_n,       by = "STORE") %>%
     select(STORE, n_weeks,
-           n_menus, n_upcs,   n_upcs_always,   n_upcs_95pct,
+           n_menus, n_upcs, n_effective_upc, n_upcs_always, n_upcs_95pct,
            n_menus_nitem, n_nitems, n_nitems_always, n_nitems_95pct) %>%
     arrange(STORE)
 
@@ -232,6 +250,7 @@ for (cat_name in categories) {
 
   cat("\n  Across-store distribution:\n")
   cat("    n_upcs          : "); print(summary(per_store$n_upcs))
+  cat("    n_effective_upc : "); print(summary(per_store$n_effective_upc))
   cat("    n_menus         : "); print(summary(per_store$n_menus))
   cat("    n_weeks         : "); print(summary(per_store$n_weeks))
   cat("    n_upcs_always   : "); print(summary(per_store$n_upcs_always))
@@ -255,6 +274,7 @@ for (cat_name in categories) {
     n_stores                 = nrow(per_store),
     n_storeweeks             = sum(per_store$n_weeks),
     median_upcs_store        = stats::median(per_store$n_upcs),
+    median_effective_upc_store = stats::median(per_store$n_effective_upc),
     median_menus_store       = stats::median(per_store$n_menus),
     median_always_store      = stats::median(per_store$n_upcs_always),
     median_95pct_store       = stats::median(per_store$n_upcs_95pct),

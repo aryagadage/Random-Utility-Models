@@ -31,18 +31,29 @@ nm = size(choice_set_list, 1);
 nvars = size(ip_model.A, 2);
 
 %% Objective (depends on `price`; changes every call) -------------------
+% `price` is grouped by menu in choice_set_list order: for each menu j the
+% next |D_j| entries of `price` are that menu's observation residuals (in
+% the same item-within-menu order used by the build, which is sorted).
+% Walk through `price` and choice_set_list together; do not split into a
+% "all size-2 first, then size-≥3 in bulk" pass — menus aren't sorted by
+% size, so that splitting silently mis-pairs residuals with variables.
 index = @(i, j) n*(i-1) + j;
 obj   = zeros(1, nvars);
-counter = 1;
+counter   = 1;          % running index into `price`
+p_offset  = n*n + 1;    % running index into the p(D,a) section of `obj`
 for j = 1:nm
     cs = choice_set_list{j};
-    if size(cs, 2) == 2
+    s  = size(cs, 2);
+    if s == 2
         obj(index(cs(1), cs(2))) = price(counter);
         obj(index(cs(2), cs(1))) = price(counter + 1);
         counter = counter + 2;
+    else
+        obj(p_offset:p_offset+s-1) = price(counter:counter+s-1);
+        counter  = counter  + s;
+        p_offset = p_offset + s;
     end
 end
-obj((n*n+1):end) = price(counter:end);
 
 ip_model.obj        = obj;
 ip_model.modelsense = 'max';

@@ -50,7 +50,8 @@ end
 %% ---- Configuration ----------------------------------------------------
 init_k       = 1;
 max_iters    = Inf;
-tol          = 1e-2;            % FW relative-distance-gap tolerance
+tol_level    = 1e-3;            % absolute distance-gap tolerance (UB - LB)
+tol_relative = 1e-3;            % relative distance-gap tolerance ((UB - LB)/LB)
 csv_budget_s = 86400;           % 1-day wall-time cap shared across methods
 methods      = {'CG_IP', 'CG_heurIP'};
 
@@ -204,7 +205,7 @@ for mi = 1:numel(methods)
 
         [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
             choice_sets, pricing_mode, chosen_alts, choice_set_list, ...
-            true, tol, remaining, iptimes_path, run_tag);
+            true, tol_level, tol_relative, remaining, iptimes_path, run_tag);
 
         total_time(row)   = toc(t0);
         err_col(row)      = res.QP.error;

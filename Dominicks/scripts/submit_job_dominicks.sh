@@ -7,7 +7,7 @@
 #SBATCH --mail-user=haoge.chang@yale.edu
 #SBATCH --partition=day
 #SBATCH --time=1-00:00:00
-#SBATCH --array=13-33
+#SBATCH --array=1-121
 #SBATCH --mem=64G
 echo "SLURM_JOBID:            $SLURM_JOBID"
 echo "SLURM_ARRAY_TASK_ID:    $SLURM_ARRAY_TASK_ID"

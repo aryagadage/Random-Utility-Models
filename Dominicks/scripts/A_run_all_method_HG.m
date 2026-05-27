@@ -20,7 +20,8 @@ fprintf('RUM estimation across all draws in results_choice_freq/\n');
 % --- Algorithm parameters (same for all methods) ---
 init_k        = 1;
 max_iters     = 100;
-tol           = 1e-2;   % Frank-Wolfe relative distance gap tolerance
+tol_level     = 1e-3;   % absolute distance-gap tolerance (UB - LB)
+tol_relative  = 1e-2;   % relative distance-gap tolerance ((UB - LB)/LB)
 csv_budget_s  = 3600;   % wall-time cap per CSV (total across both methods)
 
 % --- Paths -----------------------------------------------------------
@@ -152,10 +153,10 @@ for fi = 1:numel(csv_files)
                 switch meth
                     case 'CG_IP'
                         [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
-                            choice_sets, 'IP', chosen_alts, choice_set_list, true, tol, remaining);
+                            choice_sets, 'IP', chosen_alts, choice_set_list, true, tol_level, tol_relative, remaining);
                     case 'CG_heurIP'
                         [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
-                            choice_sets, 'bestinsertion_rand', chosen_alts, choice_set_list, true, tol, remaining);
+                            choice_sets, 'bestinsertion_rand', chosen_alts, choice_set_list, true, tol_level, tol_relative, remaining);
                 end
                 total_time(row)  = toc(t0);
                 err_col(row)     = res.QP.error;

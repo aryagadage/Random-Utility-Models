@@ -6,7 +6,13 @@
 # augmented with two columns:
 #   min_menu_size — smallest weekly choice set at (STORE, category)
 #   max_menu_size — largest  weekly choice set at (STORE, category)
-# Menus use the project's "offered" rule: OK == 1 & PRICE > 0 (fallback MOVE > 0).
+#
+# Menus use the project's "offered" rule: OK == 1 (fallback MOVE > 0).  Menu
+# size is counted in *effective UPCs*: UPCs that are offered in exactly the
+# same set of weeks at a store collapse into one class, since the data can't
+# separate them.  See UPC_Store_exploratory_analysis.R (column
+# n_effective_upc) for the same equivalence relation.
+#
 # Slow step: re-reads each category's w*.csv.
 # -----------------------------------------------------------------------------
 
@@ -38,8 +44,8 @@ find_one <- function(folder, pattern) {
 }
 
 apply_offered_rule <- function(df) {
-  if (all(c("OK","PRICE") %in% names(df))) {
-    df %>% filter(OK == 1, PRICE > 0)
+  if ("OK" %in% names(df)) {
+    df %>% filter(OK == 1)
   } else if ("MOVE" %in% names(df)) {
     df %>% filter(MOVE > 0)
   } else {
@@ -60,8 +66,24 @@ for (cat_name in categories) {
                                        progress = FALSE))
   offered <- apply_offered_rule(w_df)
 
+  # Each (STORE, UPC) has a "signature" = sorted set of offered weeks.
+  # UPCs with identical signatures at the same store are inseparable and
+  # collapse to a single effective UPC.  We label each class by its
+  # smallest constituent UPC (eff_id) and count distinct eff_ids per menu.
+  upc_sig <- offered %>%
+    distinct(STORE, WEEK, UPC) %>%
+    arrange(STORE, UPC, WEEK) %>%
+    group_by(STORE, UPC) %>%
+    summarise(week_sig = paste(WEEK, collapse = "_"), .groups = "drop") %>%
+    group_by(STORE, week_sig) %>%
+    mutate(eff_id = min(UPC)) %>%
+    ungroup() %>%
+    select(STORE, UPC, eff_id)
+
   per_store_min <- offered %>%
     distinct(STORE, WEEK, UPC) %>%
+    inner_join(upc_sig, by = c("STORE", "UPC")) %>%
+    distinct(STORE, WEEK, eff_id) %>%
     count(STORE, WEEK, name = "menu_size") %>%
     group_by(STORE) %>%
     summarise(
