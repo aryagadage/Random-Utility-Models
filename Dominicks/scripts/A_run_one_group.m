@@ -7,10 +7,8 @@ function A_run_one_group(group_id)
 %   A_run_one_group(13)
 %   matlab -batch "A_run_one_group($SLURM_ARRAY_TASK_ID)"
 %
-% Runs BOTH solvers (sharing a per-CSV wall-time budget), matching the
-% schema of A_run_all_method_HG.m:
-%   (1) CG_IP        — IP pricing every iteration
-%   (2) CG_heurIP    — random-insertion heuristic pricing + IP at exit
+% Runs CG_IP only (IP pricing every iteration), matching the schema of
+% A_run_all_method_HG.m.
 %
 % Per-group outputs (in results_runs/):
 %   run_summary_g{NN}.csv   — one row per (csv, method)
@@ -52,8 +50,8 @@ init_k       = 1;
 max_iters    = Inf;
 tol_level    = 1e-3;            % absolute distance-gap tolerance (UB - LB)
 tol_relative = 1e-3;            % relative distance-gap tolerance ((UB - LB)/LB)
-csv_budget_s = 86400;           % 1-day wall-time cap shared across methods
-methods      = {'CG_IP', 'CG_heurIP'};
+csv_budget_s = 86400;           % 1-day wall-time cap
+methods      = {'CG_IP'};
 
 %% ---- Paths ------------------------------------------------------------
 results_dir = fullfile(script_dir, 'results_choice_freq');
@@ -197,8 +195,6 @@ for mi = 1:numel(methods)
         switch meth
             case 'CG_IP'
                 pricing_mode = 'IP';
-            case 'CG_heurIP'
-                pricing_mode = 'bestinsertion_rand';
             otherwise
                 error('Unknown method %s', meth);
         end
