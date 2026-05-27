@@ -1,8 +1,7 @@
 %% Column Generation on Dominick's choice-frequency data
 % Loops over every CSV in scripts/results_choice_freq/ (one per non-empty
-% upc_menu complexity group) and runs two RUM solvers on each:
+% upc_menu complexity group) and runs:
 %   (1) CG with IP pricing every iteration
-%   (2) CG with random-insertion heuristic pricing + IP at convergence check
 %
 % For each (csv, method) it records:
 %   - complexity group, category, STORE
@@ -22,7 +21,7 @@ init_k        = 1;
 max_iters     = 100;
 tol_level     = 1e-3;   % absolute distance-gap tolerance (UB - LB)
 tol_relative  = 1e-2;   % relative distance-gap tolerance ((UB - LB)/LB)
-csv_budget_s  = 3600;   % wall-time cap per CSV (total across both methods)
+csv_budget_s  = 3600;   % wall-time cap per CSV
 
 % --- Paths -----------------------------------------------------------
 script_dir  = fileparts(mfilename('fullpath'));
@@ -47,7 +46,7 @@ end
 fprintf('Found %d CSV(s) to process.\n\n', numel(csv_files));
 
 % --- Storage ---------------------------------------------------------
-methods = {'CG_IP', 'CG_heurIP'};
+methods = {'CG_IP'};
 nrows = numel(csv_files) * numel(methods);
 csv_name_col  = strings(nrows, 1);
 group_col     = zeros(nrows, 1);
@@ -154,9 +153,6 @@ for fi = 1:numel(csv_files)
                     case 'CG_IP'
                         [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
                             choice_sets, 'IP', chosen_alts, choice_set_list, true, tol_level, tol_relative, remaining);
-                    case 'CG_heurIP'
-                        [res, residual] = B_solve_rum_CG(p_obs, n, init_k, max_iters, ...
-                            choice_sets, 'bestinsertion_rand', chosen_alts, choice_set_list, true, tol_level, tol_relative, remaining);
                 end
                 total_time(row)  = toc(t0);
                 err_col(row)     = res.QP.error;
