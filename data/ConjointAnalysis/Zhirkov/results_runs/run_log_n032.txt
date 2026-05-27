@@ -856,3 +856,9 @@ Iter 56 | error = 0.038384 | best_score = 4.9880e-01 | FW gap = Inf | min = 4.98
 Iter 57 | error = 0.035932 | best_score = 5.0132e-01 | FW gap = Inf | min = 5.0132e-01 |
   IP pricing time: 5.2232 s (solve 5.2203 s, gurobi.runtime 5.1993 s)
 Iter 58 | error = 0.033696 | best_score = 4.6310e-01 | FW gap = Inf | min = 4.6310e-01 |
+  IP pricing time: 7.5346 s (solve 7.5317 s, gurobi.runtime 7.5109 s)
+Iter 59 | error = 0.031502 | best_score = 4.3154e-01 | FW gap = Inf | min = 4.3154e-01 |
+  IP pricing time: 6.9062 s (solve 6.9025 s, gurobi.runtime 6.8851 s)
+Iter 60 | error = 0.029920 | best_score = 4.4652e-01 | FW gap = Inf | min = 4.4652e-01 |
+  IP pricing time: 7.1517 s (solve 7.1480 s, gurobi.runtime 7.1265 s)
+Iter 61 | error = 0.028050 | best_score = 4.0367e-01 | FW gap = Inf | min = 4.0367e-01 |
